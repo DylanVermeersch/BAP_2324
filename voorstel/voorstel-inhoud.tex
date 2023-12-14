@@ -14,7 +14,7 @@ Die tools zouden het werken op zo'n omgeving vereenvoudigen voor zowel gebruiker
 \\ \\
 Het doel van dit onderzoek is dan ook om een coolgen programma, gemaakt met een moderne Git ondersteunende Integrated Development Environment, kortweg IDE, zoals bijvoorbeeld Visual Studio Code.
 Volledig automatisch te kunnen compileren en binden op het moment dat er wijzigingen opgeslagen worden naar de Azure Repo dit zal door een Azure Pipeline in gang gezet worden.
-Hierdoor wordt het bestaande proces dat een aanzienlijk aantal stappen extra heeft vereenvoudigd tot één stap, namelijk de applicatie opslaan en pushen naar Azure Repo. 
+Hierdoor wordt het bestaande proces dat een aanzienlijk aantal stappen extra heeft vereenvoudigd tot één stap, namelijk de applicatie opslaan en pushen naar een Azure Repo. 
 \\ \\
 Het onderzoek zal als een succes worden beschouwd indien de proof of concept een positief resultaat geeft, dit wil zeggen dat er moet aangetoond worden dat het mogelijk is om een coolgen programma 
 automatisch te laten compileren en binden door een Azure Pipeline met behulp van IBM DBB. 
@@ -49,17 +49,52 @@ Je mag deze sectie nog verder onderverdelen in subsecties als dit de structuur v
 \section{Methodologie}%
 \label{sec:methodologie}
 
-Hier beschrijf je hoe je van plan bent het onderzoek te voeren. Welke onderzoekstechniek ga je toepassen om elk van je onderzoeksvragen te beantwoorden? Gebruik je hiervoor literatuurstudie, interviews met belanghebbenden (bv.~voor requirements-analyse), experimenten, simulaties, vergelijkende studie, risico-analyse, PoC, \ldots?
+De methodologie bestaat uit een aantal fases.
+In de eerste fase van dit onderzoek wordt er een uitgebreide literatuurstudie gemaakt. 
+Deze literatuurstudie zal gebruikt worden als voornaamste gegevensbron voor het verdere verloop van het onderzoek.
+De literatuurstudie heeft vier grote onderwerpen namelijk de mainframe, IBM Dependency Based Build, Git workflows en Azure DevOps.
+In het hoofdstuk omtrent de mainframe zal er gekeken worden wat en mainframe is, waarvoor het gebruikt wordt en wat de geschiedenis ervan is. 
+\\ \\
+In het stuk over IBM Dependency Based Build zal er beschreven worden wat IBM DBB is, wat het doet en hoe het werkt. 
+Verder zal er ook te vinden zijn wat een aantal van de valkuilen kunnen zijn waarmee rekening gehouden moet worden.
+\\ \\
+Het voorlaatste deel van de literatuurstudie zal een aantal Git workflows toelichten en onderzoeken, hierin zal er gezocht worden naar een workflow die zowel flexibel, veilig en robuust is. 
+Allemaal eigenschappen die synoniem staan aan een mainframe dus dat moet ook getoond worden dat dat nog altijd mogelijk is met een Git workflow. 
+\\ \\ 
+In het laatste deel van de literatuurstudie zal er beschreven worden wat Azure DevOps is, wat het kan doen en waarvoor het in het onderzoek zal gebruikt worden. 
+Een aantal onderwerpen die aan bod zullen komen in dit hoofstuk zullen betrekking hebben op onderdelen van de Azure DevOps suite meerbepaald Azure Repos en Azure Pipelines. 
+Waarvoor die zaken in het onderzoek gebruikt kunnen worden en wat voor meerwaarde dat geeft aan het onderzoek. 
+\\ \\ 
+Deze eerste fase die geschat wordt op anderhalve week heeft als resultaat een diepgaande en volledige literatuurstudie die de rode draad zal zijn wat betreft informatie in het onderzoek. 
+\\ \\
+Het doel van de volgende fase is om IBM Dependency Based Build volledig te configureren op de omgeving van ArcelorMittal Gent, 
+zo zal er onder andere een aantal .properties bestanden moeten aangemaakt en aangevuld worden en indien nodig zullen er zelf properties moeten toegevoegd worden aan deze bestanden.
+Door deze properties aan te passen zal IBM DBB de volledige toegang hebben tot de nodige datasets en bestanden op zowel z/OS als op Unix System Services (USS) om een goede werking van de scripts horende bij de software te kunnen garanderen.
+Dit vergt wat opzoekwerk en wordt geschat op 1 week om de volledige configuratie van IBM DBB te vervolledigen. 
+\\ \\
+Na de configuratie van IBM DBB kan er overgegaan worden naar de grootste fase van het onderzoek namelijk het uitzetten en realiseren van de proof of concept.
+Deze fase is een heel belangrijke omwille van het feit dat hier de resultaten worden bekomen om een conclusie te trekken op het einde van dit onderzoek. 
+De opdracht bestaat erin om de volledige ontwikkeling van een coolgen applicatie van het mainframe te halen, 
+dat wil zeggen dat de source aangemaakt zal worden in een Git ondersteunende IDE zoals bijvoorbeeld Visual Studio Code of IBM Developer for Z (IDz) en vanuit diezelfde IDE een pipeline 
+gestart wordt om het programma dan te compileren en binden en te plaatsen in de juiste load libraries op z/OS.
+Dit zal onder meer gebeuren via een push vanuit de IDE naar de Azure Repo die dan het aangepast programma opslaat en daarna een pipeline start om het aangepaste programma ook 
+te compileren en te binden en met als doel het plaatsen van de bekomen load module na de bind stap in de juiste load library te plaatsen.
+Verder moet er ook bij elke succesvolle aanpassing van het programma ook een nieuwe versie ontstaan zo zal een programma CGTST met initiële versie 1.0 na een succesvolle 
+aanpassing bijvoorbeeld de versie 1.1 krijgen toegewezen. 
+Zodat er op een duidelijke en overzichtelijke manier kan bijgehouden worden wat de huidige versie is van een programma, de vorige versies en eventueel de mogelijkheid om naar een vorige versie terug te gaan.
+Na deze fase die zes en een halve week zal duren zal er genoeg informatie zijn om een goede en volledige conclusie te trekken. 
+\\ \\
+De volgende fase van dit onderzoek is om de resultaten die doorheen dit onderzoek zijn bekomen te analyseren. 
+Deze analyse zal in samenspraak gebeuren met ArcelorMittal en een aantal ontwikkelaars om ook te polsen naar hun mening over het onderzoek en de resultaten ervan. 
+De fase waarin deze analyse gebeurt zal 1 week in beslag nemen.
+\\ \\
+Na de resultaten analyse volgt de fase waarin er conclusies worden getrokken, dit zal afhankelijk zijn van hoeveel vereisten er daadwerkelijk zijn bereikt en aan welke eventueel niet werd voldaan. 
+Voor deze fase wordt opnieuw 1 week gerekend.
+\\ \\
+De laatste fase is om de scriptie af te werken, zo zal er in die week gekeken worden om alle puntjes op de i te zetten en alles nog eens goed na te kijken alvorens in te dienen.
+Deze laatste fase zal niet langer dan 1 week duren en zal ook het einde van dit onderzoek inluiden.  
 
-Valt je onderwerp onder één van de typische soorten bachelorproeven die besproken zijn in de lessen Research Methods (bv.\ vergelijkende studie of risico-analyse)? Zorg er dan ook voor dat we duidelijk de verschillende stappen terug vinden die we verwachten in dit soort onderzoek!
 
-Vermijd onderzoekstechnieken die geen objectieve, meetbare resultaten kunnen opleveren. Enquêtes, bijvoorbeeld, zijn voor een bachelorproef informatica meestal \textbf{niet geschikt}. De antwoorden zijn eerder meningen dan feiten en in de praktijk blijkt het ook bijzonder moeilijk om voldoende respondenten te vinden. Studenten die een enquête willen voeren, hebben meestal ook geen goede definitie van de populatie, waardoor ook niet kan aangetoond worden dat eventuele resultaten representatief zijn.
-
-Uit dit onderdeel moet duidelijk naar voor komen dat je bachelorproef ook technisch voldoen\-de diepgang zal bevatten. Het zou niet kloppen als een bachelorproef informatica ook door bv.\ een student marketing zou kunnen uitgevoerd worden.
-
-Je beschrijft ook al welke tools (hardware, software, diensten, \ldots) je denkt hiervoor te gebruiken of te ontwikkelen.
-
-Probeer ook een tijdschatting te maken. Hoe lang zal je met elke fase van je onderzoek bezig zijn en wat zijn de concrete \emph{deliverables} in elke fase?
 
 %---------- Verwachte resultaten ----------------------------------------------
 \section{Verwacht resultaat, conclusie}%
