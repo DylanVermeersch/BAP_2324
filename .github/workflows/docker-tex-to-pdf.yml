@@ -20,11 +20,11 @@ jobs:
     - name: Build the proposal
       run: docker run --rm -v "$PWD":/bp bpimg sh /bp/docker/render_thesis.sh voorstel
 
-    - name: Build the thesis
-      run: docker run --rm -v "$PWD":/bp bpimg sh /bp/docker/render_thesis.sh bachproef
+    #- name: Build the thesis
+    #  run: docker run --rm -v "$PWD":/bp bpimg sh /bp/docker/render_thesis.sh bachproef
 
-    - name: Build the poster
-      run: docker run --rm -v "$PWD":/bp bpimg sh /bp/docker/render_thesis.sh poster
+    #- name: Build the poster
+    #  run: docker run --rm -v "$PWD":/bp bpimg sh /bp/docker/render_thesis.sh poster
 
     - uses: actions/upload-artifact@v3
       name: Upload artifacts
