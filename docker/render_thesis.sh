@@ -28,7 +28,6 @@ for latex_file in ${source_files}; do
   #  -synctex=1 \
   #  -xelatex \
   latexmk -xelatex -shell-escape -synctex=1 -interaction=nonstopmode -file-line-error -f "${latex_file}"
-  biber.exe %
   #latexmk -xelatex -shell-escape -synctex=1 -interaction=nonstopmode -file-line-error -f "${latex_file}"
   set +x
 done
