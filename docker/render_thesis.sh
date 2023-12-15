@@ -21,7 +21,7 @@ for latex_file in ${source_files}; do
   echo "========== Compiling ${latex_file} =========="
   set -x
   latexmk \
-    -file-line-error \
+    -file-line-error -f \
     -interaction=nonstopmode \
     -output-directory="${output_dir}" \
     -shell-escape \
