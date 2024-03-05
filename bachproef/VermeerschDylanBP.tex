@@ -5,7 +5,7 @@
 
 \documentclass[dutch,dit,thesis]{hogentreport}
 
-\usepackage{lipsum} % For blind text, can be removed after adding actual content
+\usepackage{lipsum}
 
 %% Pictures to include in the text can be put in the graphics/ folder
 \graphicspath{{graphics/}}
@@ -13,9 +13,6 @@
 %% For source code highlighting, requires pygments to be installed
 %% Compile with the -shell-escape flag!
 \usepackage[section]{minted}
-%% If you compile with the make_thesis.{bat,sh} script, use the following
-%% import instead:
-%% \usepackage[section,outputdir=../output]{minted}
 \usemintedstyle{solarized-light}
 \definecolor{bg}{RGB}{253,246,227} %% Set the background color of the codeframe
 
@@ -45,7 +42,6 @@
 % Other packages not already included can be imported here
 
 %%---------- Document metadata -------------------------------------------------
-% TODO: Replace this with your own information
 \author{Dylan Vermeersch}
 \supervisor{Dhr. D. Marichal}
 \cosupervisor{Dhr. L. Blondeel}
@@ -53,7 +49,7 @@
 \academicyear{\advance\year by -1 \the\year--\advance\year by 1 \the\year}
 \examperiod{1}
 \degreesought{\IfLanguageName{dutch}{Professionele bachelor in de toegepaste informatica}{Bachelor of applied computer science}}
-\partialthesis{false} %% To display 'in partial fulfilment'
+\partialthesis{false}
 \institution{ArcelorMittal Gent}
 
 %% Add global exceptions to the hyphenation here
@@ -147,7 +143,6 @@
 
 Het onderwerp van deze bachelorproef is gebaseerd op een onderzoeksvoorstel dat vooraf werd beoordeeld door de promotor. Dat voorstel is opgenomen in deze bijlage.
 
-%% TODO: 
 \section*{Samenvatting}
 
 Dit onderzoek zal gaan over het uitwerken van een werkende Azure DevOps pipeline om coolgen programma’ste compileren en binden met behulp van IBM Dependency Based Build (DBB) en zijn ingebouwd framework.Er werd gezocht naar een oplossing om de mainframe omgeving van ArcelorMittal Gent te moderniseren omzo aantrekkelijker te zijn voor afgestudeerden en om gebruik te maken van de nieuwere technologieën binnenhet mainframe landschap. In de proof of concept is er een proefopstelling opgezet zodat de coolgen applicatieskunnen worden gecompileerd en gebind via een Azure pipeline. Op die manier hoeft de ontwikkelaar niet zelfde compilatie en/of bind te starten. Het verwachte resultaat is dat de pipeline een correcte compilatie en bindkan uitvoeren zonder dat de ontwikkelaar zelf iets moet uitvoeren op de mainframe omgeving en dat het ver-siebeheer volledig kan beheerd worden door Azure DevOps. Zo zal er een einde komen aan de vele stappen dienodig zijn om een compilatie en bind van een coolgen programma uit te voeren ook zal er voortaan in een Gitondersteunende IDE gewerkt kunnen worden.
