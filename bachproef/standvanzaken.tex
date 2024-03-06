@@ -7,12 +7,270 @@
 
 % Pas na deze inleidende paragraaf komt de eerste sectiehoofding.
 
-Dit hoofdstuk bevat je literatuurstudie. De inhoud gaat verder op de inleiding, maar zal het onderwerp van de bachelorproef *diepgaand* uitspitten. De bedoeling is dat de lezer na lezing van dit hoofdstuk helemaal op de hoogte is van de huidige stand van zaken (state-of-the-art) in het onderzoeksdomein. Iemand die niet vertrouwd is met het onderwerp, weet nu voldoende om de rest van het verhaal te kunnen volgen, zonder dat die er nog andere informatie moet over opzoeken \autocite{Pollefliet2011}.
+% Let er ook op: het \texttt{cite}-commando voor de punt, dus binnen de zin. Je verwijst meteen naar een bron % in de eerste zin die erop gebaseerd is, dus niet pas op het einde van een paragraaf.
 
-Je verwijst bij elke bewering die je doet, vakterm die je introduceert, enz.\ naar je bronnen. In \LaTeX{} kan dat met het commando \texttt{$\backslash${textcite\{\}}} of \texttt{$\backslash${autocite\{\}}}. Als argument van het commando geef je de ``sleutel'' van een ``record'' in een bibliografische databank in het Bib\LaTeX{}-formaat (een tekstbestand). Als je expliciet naar de auteur verwijst in de zin (narratieve referentie), gebruik je \texttt{$\backslash${}textcite\{\}}. Soms is de auteursnaam niet expliciet een onderdeel van de zin, dan gebruik je \texttt{$\backslash${}autocite\{\}} (referentie tussen haakjes). Dit gebruik je bv.~bij een citaat, of om in het bijschrift van een overgenomen afbeelding, broncode, tabel, enz. te verwijzen naar de bron. In de volgende paragraaf een voorbeeld van elk.
+In de snel evoluerende wereld van technologie speelt de mainframe nog altijd een essentiële rol als krachtige en betrouwbare computerinfrastructuur. Het is de ruggengraat van talloze organisaties, variërend van grote bedrijven tot overheidsinstanties, die vertrouwen op mainframes voor het verwerken van bedrijfskritieke workloads. Met de opkomst van moderne applicatie-ontwikkeling en de behoefte aan automatisering van het software ontwikkelproces, hebben mainframes zich aangepast aan het veranderende landschap. Dit doen ze door het aanbieden van de DevOps werkwijze en geavanceerde technologieën zoals Git, Azure DevOps en IBM Dependency Based Build ook wel bekend als IBM DBB. 
+\\ \\
+Deze literatuurstudie onderzoekt de samenstelling van mainframe-technologie, IBM Dependency Based Build, Git workflows en Azure DevOps als een krachtige combinatie om een brug te slaan tussen het legendarische mainframe-erfgoed en het moderne automatisatie-gedreven software ontwikkelproces. Het onderzoek verkent de essentie van mainframes en hun evolutie door de jaren heen, evenals de cruciale rol die ze blijven spelen in het ondersteunen van kritieke bedrijfsprocessen. 
+\\ \\
+Daarnaast wordt er dieper ingegaan op IBM Dependency Based Build, een krachtige tool ontwikkeld door IBM om mainframes te verbinden met moderne DevOps tools zoals Azure DevOps en Git. De studie onderzoekt de kenmerken en voordelen van IBM DBB en hoe dat het mogelijk maakt om een mainframe landschap open te stellen tot de DevOps werkwijze om op die manier software te ontwikkelen op de wijze waarop veel moderne platformen dat ook doen. 
+\\ \\
+Verder wordt de focus gelegd op Azure DevOps, een krachtige tool-set die onder andere Azure Repos en Azure Pipelines bevat. Beide zijn noodzakelijk voor een goede DevOps werkwijze op te zetten. De studie verkent de mogelijkheden van de tool-set, zoals de verschillende onderdelen ervan en hoe deze bijdragen aan een DevOps werkomgeving. 
+\\ \\
+Tot slot komt ook Git workflows aan bod, dit is een manier van werken om zo de ``flow'' van het software ontwikkelproces te bepalen. Dit is noodzakelijk voor de integriteit van de software die ontwikkeld wordt te bewaren. Er wordt in de studie onderzoekt wat een Git workflow is, welke workflow het best aanleunt tegen de mainframe waarden die zo hoog aangeschreven staan zoals betrouwbaarheid, integriteit en veiligheid.
+\\ \\
+\section{De mainframe}
+\label{sec:de mainframe}
 
-\textcite{Knuth1998} schreef een van de standaardwerken over sorteer- en zoekalgoritmen. Experten zijn het erover eens dat cloud computing een interessante opportuniteit vormen, zowel voor gebruikers als voor dienstverleners op vlak van informatietechnologie~\autocite{Creeger2009}.
+\subsection{Etymologie van de term mainframe}
+De term mainframe is afgeleid van het Engelse woord ”frame”, dat in dit geval verwijst naar de behuizing of structuur van de computer. Het woord ”main” duidt op de centrale rol van deze computer in een gegevensverwerkingsomgeving. Een mainframe was bedoeld als het belangrijkste systeem in een computerinstallatie, waar andere randapparatuur en terminals op waren aangesloten \autocite{IBM2024}.
+\\ \\
+De oorsprong van de term mainframe kan worden toegeschreven aan de evolutie van computersystemen van die tijd. In de beginjaren van computers werden ze meestal aangeduid als grote computers of elektronische rekenmachines. Naarmate de technologie vorderde en de computers krachtiger en complexer werden, ontstond de behoefte aan een specifieke term om deze geavanceerde systemen te beschrijven \autocite{IBM2024}. 
+\\ \\
+\subsection{Historie van de IBM mainframe}
+De Ibm mainframe heeft een rijke geschiedenis die teruggaat tot de vroege dagen van de computertechnologie. 
+\\ \\
+\subsubsection{IBM 701 Electronic Data Processing machine (1952)}
+In 1952 werd de IBM 701 gelanceerd als een geavanceerde elektronische gegevensverwerkingsmachine. Het was ontworpen om wetenschappelijke berekeningen en gegevensverwerkingstaken uit te voeren en bood meer rekenkracht en geheugencapaciteit dan eerdere computersystemen aan \autocite{IBM2024a}.
+\\ \\
+De IBM 701 maakte gebruik van vacuümbuizen als belangrijkste elektronische componenten en kon ongeveer 10.000 optellingen per seconde uitvoeren. Het systeem werd voornamelijk gebruikt door overheidsinstanties, laboratoria en grote bedrijven voor complexe wetenschappelijke en technische berekeningen \autocite{IBM2024a}.
+\\ \\
+De IBM 701 markeerde een belangrijke ontwikkeling in de computertechnologie, aangezien het een van de eerste commercieel succesvolle computers was die specifiek werd ontworpen voor gegevensverwerking. Het opende de deur naar geavanceerdere computersystemen en legde de basis voor toekomstige mainframes \auocite{IBM2024a}.
+\\ \\
+\subsubsection{IBM System/360 (1964)}
+De ontwikkeling van de IBM/360 begon in de late jaren 1950 als een ambitieus project binnen IBM om een nieuwe generatie computersystemen te creëren die compatibiliteit zouden bieden tussen verschillende modellen. Het doel was om een reeks computers te ontwikkelen die zowel kleinere als grotere organisaties kon bedienen \autocite{IBM2024b}. 
+\\ \\
+Op 7 april 1964 werd de IBM/360 officieel geïntroduceerd en werd het de eerste commercieel succesvolle mainframe computerreeks. Het systeem bood een breed scala aan modellen met verschillende prestatieniveaus en configuraties, waardoor het aan de behoeften van verschillende organisaties kon voldoen \autocite{IBM2024b}.
+\\ \\
+De IBM/360 was revolutionair omdat het een gemeenschappelijke architectuur introduceerde die compatibiliteit bood tussen de verschillende modellen. Hierdoor konden klanten hun investeringen in software en hardware beschermen, omdat programma’s op meerdere systemen konden draaien. Het was ook een van de eerste computersystemen die gebruikmaakte van geïntegreerde schakelingen \autocite{IBM2024b}.
+\\ \\
+De IBM/360 had een enorme impact op de computerindustrie en droeg bij aan de standaardisatie van computerarchitectuur. Het systeem werd breed geadopteerd door bedrijven, overheden en academische instellingen over de hele wereld en legde de basis voor latere ontwikkelingen in de mainframe-technologie \autocite{IBM2024b}.
+\\ \\
+\subsubsection{IBM System/370 (1970)}
+De IBM/370 werd gelanceerd als opvolger van de IBM/360 en introduceerde belangrijke technologische verbeteringen, waaronder een uitgebreidere instructieset, verbeterde virtualisatiemogelijkheden en grotere geheugencapaciteit. Deze verbeteringen maakten het systeem krachtiger en veelzijdiger \autocite{IBM2024c}.
+\\ \\
+Een belangrijk kenmerk van de IBM/370 was de ondersteuning voor virtual memory, waardoor meerdere programma’s tegelijkertijd konden uitgevoerd worden en gebruik maken van het beschikbare geheugen. Dit leidde tot verbeterde systeemprestaties en efficiënter gebruik van resources \autocite{IBM2024c}. 
+\\ \\
+De IBM/370 mainframe werd breed gebruikt door bedrijven en overheidsinstanties voor diverse toepassingen, waaronder gegevensverwerking, transactionele systemen, wetenschappelijke berekeningen en databasebeheer. Het bood hogere prestaties en schaalbaarheid, waardoor het kon voldoen aan de groeiende behoeften van organisaties \autocite{IBM2024c}. 
+\\ \\
+\subsubsection{IBM System ZSeries (2000)}
+De IBM zSeries, gelanceerd in het jaar 2000, was een belangrijke mijlpaal voor de mainframe-industrie. Het bood verschillende baanbrekende kenmerken en voordelen die een grote impact hadden. 
+\\ \\
+Een van de belangrijkste aspecten van de zSeries was de aanzienlijke verbetering in prestaties en schaalbaarheid. Het systeem was in staat om enorme werklasten te verwerken en te voldoen aan de groeiende behoeften van bedrijven. Dit maakte het een krachtige keuze voor organisaties die behoefte hadden aan grote rekenkracht en verwerkingscapaciteit \autocite{IBM2024d}. 
+\\ \\
+Naast prestatieverbeteringen stond de zSeries bekend om zijn ongeëvenaarde betrouwbaarheid en beschikbaarheid. Het bevatte geavanceerde functies zoals redundantie, fouttolerantie en hot-swappable componenten. Deze kenmerken minimaliseerden ongeplande downtime en waarborgden een hoge beschikbaarheid van systemen, wat van cruciaal belang was voor bedrijfskritieke toepassingen \autocite{IBM2024d}.
+\\ \\
+Een ander belangrijk aspect van de zSeries was de ondersteuning voor moderne technologieën. Het introduceerde onder andere Linux op mainframes, waardoor organisaties zowel mainframe- als open source-technologieën op één platform konden gebruiken. Dit opende de deur voor een breed scala aan toepassingen en bood flexibiliteit in de ontwikkeling en implementatie van software \autocite{IBM2024d}. 
+\\ \\
+Beveiliging is altijd een cruciale factor geweest in de mainframe-wereld, en de zSeries stelde op dit gebied niet teleur. Het bood geavanceerde beveiligingsfuncties, zoals ingebouwde encryptie, toegangscontrolemechanismen en auditmogelijkheden. Deze functies waarborgden de integriteit en vertrouwelijkheid van gegevens, wat essentieel is in omgevingen waar gevoelige informatie wordt verwerkt \autocite{IBM2024d}.
+\\ \\
+Een ander belangrijk voordeel van de zSeries was de mogelijkheid om naadloos te integreren met bestaande legacy-systemen en applicaties. Hierdoor konden organisaties waardevolle bedrijfsactiva behouden en moderniseren zonder de noodzaak van grootschalige herontwikkeling. Dit zorgde voor een soepele overgang naar de nieuwe technologie en minimaliseerde de verstoring van bestaande processen \autocite{IBM2024d}.
+\\ \\
+\subsubsection{Tijdlijn van de grootste IBM mainframes}
+%TODO: Kopieer de tijdlijn van vorige BAP naar hier, vergeet package niet te importeren!
+\\ \\
+\subsection{Concurrentie op het mainframe platform}
+\subsubsection{1960s}
+In de jaren 1960 had IBM een dominante positie op de mainframe-markt. Ze waren de toonaangevende leverancier van mainframes en hun System/360-serie was een belangrijke mijlpaal in de computerindustrie. Echter, waren er ook andere belangrijke concurrenten die IBM uitdaagden. Burroughs Corporation was daar een van, met hun B5000-serie die bekend stond om zijn geavanceerde architectuur en programmeertaal. Control Data Corporation (CDC) was ook een belangrijke concurrent, met hun CDC 6600 die destijds bekend stond als ’s werelds snelste computer \autocite{Museum2024}.
+\\ \\
+\subsubsection{1970s}
+In de jaren 1970 bleef IBM een dominante positie behouden op de mainframe-markt, maar er waren nieuwe concurrenten die uitdagingen boden. Een belangrijke concurrent was Digital Equipment Corporation (DEC), een bedrijf dat bekend stond om zijn minicomputers. DEC bracht echter ook mainframes op de markt, zoals de DECsystem-10 en DECsystem-20, die aantrekkelijk waren voor verschillende organisaties \autocite{Society2017}.
+\\ \\
+Een andere belangrijke speler was Honeywell, dat zijn eigen reeks mainframes aanbood, zoals de Honeywell 6000-serie. Deze systemen waren populair in sectoren zoals banken en overheidsinstanties \autocite{Society2017}.
+\\ \\
+Bovendien begonnen in de jaren 1970 ook nieuwe bedrijven, zoals Amdahl Corporation en Hitachi, de mainframe-markt te betreden. Amdahl Corporation, opgericht door een voormalige IBM-manager, bood mainframes aan die compatibel waren met IBM-systemen, maar tegen lagere prijzen \autocite{Society2017}.
+\\ \\
+\subsubsection{1980s}
+Doorheen de jaren 1980 werd de concurrentie op de mainframe-markt intenser, met verschillende spelers die de dominante positie van IBM probeerden uit te dagen. Een van de grootste concurrenten was Digital Equipment Corporation (DEC), dat in deze periode zijn VAX-computers lanceerde. De VAX-systemen waren krachtige machines die in staat waren om complexe taken uit te voeren en werden populair in bedrijfsomgevingen \autocite{Society2017}. 
+\\ \\
+Een andere opkomende concurrent was Amdahl Corporation, dat IBM-compatibele mainframes aanbood tegen lagere prijzen. Amdahl wist een aanzienlijk marktaandeel te veroveren en werd een belangrijke speler in de mainframe-industrie \autocite{Society2017}.
+\\ \\
+Ook Hewlett-Packard (HP) betrad de mainframe-markt met zijn HP 3000-serie. Deze systemen waren gericht op kleinere organisaties en boden een combinatie van mainframe-functionaliteit met de gebruiksvriendelijkheid van minicomputers \autocite{Society2017}.
+\\ \\
+Naast deze concurrenten zette IBM zelf ook belangrijke ontwikkelingen voort. In 1980 introduceerde IBM de IBM 3081-mainframeserie, die verbeterde prestaties bood ten opzichte van eerdere modellen. Later in het decennium lanceerde IBM de IBM 3090-serie, die geavanceerde mogelijkheden bood, zoals verbeterde geheugencapaciteit en verwerkingssnelheid \autocite{Society2017}.
+\\ \\
+\subsubsection{1990s}
+Gedurende de jaren ’90 was IBM nog altijd leider in de markt, maar er waren ook concurrenten die uitdagende alternatieven aanboden. Zoals Amdahl, dat bracht in deze periode de 9000-serie mainframes uit, die concurrerende prestaties en betrouwbaarheid boden \autocite{Ceruzzi2003}.
+\\ \\
+Een andere concurrent die ook al in de jaren '80 aanwezig was is Hitachi met zijn Hitachi Mainframe Systems. Deze systemen waren populair in de Aziatische markt en boden krachtige verwerkingsmogelijkheden en schaalbaarheid \autocite{Ceruzzi2003}.
+\\ \\
+Een opvallende ontwikkeling in de jaren 1990 was de opkomst van open systemen en de Unix-besturingssystemen. Sun Microsystems was een belangrijke speler met zijn Sun Enterprise-servers, die draaiden op het Solaris-besturingssysteem. Deze systemen werden vaak gebruikt voor zware reken- en databasetoepassingen \autocite{Ceruzzi2003}.
+\\ \\
+Daarnaast begon IBM zelf ook met het aanbieden van open-systemen op basis van de IBM RS/6000-architectuur, die het AIX-besturingssysteem draaiden. Deze systemen combineerden de kracht van mainframes met de flexibiliteit van open systemen \autocite{Ceruzzi2003}.
+\\ \\
+\subsubsection{2000s}
+Bij het begin van het nieuwe millenium bleef IBM veruit de grootste speler in de mainframe-wereld. Toch waren er nog altijd geduchte concurrenten zoals Fujitsu, een Japans technologiebedrijf. Fujitsu bood zijn eigen lijn van mainframes aan, zoals de Fujitsu BS2000-serie, die bekend stond om zijn betrouwbaarheid en schaalbaarheid \autocite{LaMonica2004}.
+\\ \\
+Een andere uitdager was Hewlett-Packard (HP), dat de NonStop-servers aanbood. Deze servers waren gericht op transactionele verwerking en waren populair in sectoren zoals banken en financiële dienstverlening \autocite{LaMonica2004}.
+\\ \\
+Naast deze gevestigde spelers begon de opkomst van cloud computing in de jaren 2000 de dynamiek in de mainframe-markt te veranderen. Bedrijven zoals AmazonWeb Services (AWS) en Google Cloud Platform (GCP) boden schaalbare en flexibele cloudinfrastructuur aan, waardoor organisaties een alternatief kregen voor het beheren van hun eigen mainframes \autocite{AWS} \autocite{Google}.
+\\ \\
+IBM speelde ook in op de opkomst van cloud computing en introduceerde zijn eigen mainframe-gebaseerde cloudoplossingen, zoals IBM Cloud en IBM Z als een Service. Deze diensten boden klanten de mogelijkheid om mainframe-functionaliteit te benutten in een cloudomgeving \autocite{IBM}.
+\\ \\
+\subsubsection{2010s}
+In de jaren 2010 bleef IBM zijn dominante positie voort zetten in de mainframe-markt, met zijn IBM Z-systemen die bekend stonden om hun schaalbaarheid, beveiliging en betrouwbaarheid. IBM investeerde voortdurend in de ontwikkeling van nieuwe mainframe-technologieën en introduceerde regelmatig verbeterde versies van zijn mainframe-systemen \autocite{IBM2024d}.
+\\ \\
+Naast IBM waren er enkele andere spelers die zich in de mainframe-markt begaven. Een belangrijke concurrent was Oracle Corporation, dat zijn Engineered Systems-lijn aanbood, waaronder de Oracle SuperCluster en de Oracle Exadata Database Machine. Deze systemen combineerden high-performance hardware met geoptimaliseerde software en waren specifiek gericht op gegevensverwerking en databasebeheer \autocite{Oracle}.
+\\ \\
+Een andere opkomende trend in die periode was de verschuiving naar gevirtualiseerde en softwaregedefinieerde infrastructuren. Bedrijven zoals VMware, met zijn virtualisatieoplossingen, en OpenStack, met zijn open-source cloudbeheerplatform, begonnen aan populariteit te winnen. Hoewel deze technologieën niet rechtstreeks mainframe-gericht waren, boden ze alternatieve manieren om IT-infrastructuur te schalen en beheren. Bovendien speelden cloudproviders zoals Amazon WebServices (AWS), Microsoft Azure en Google Cloud Platform (GCP) een steeds grotere rol in de IT-industrie \autocite{Google} \autocite{AWS} \autocite{VMWare}.
+\\ \\
+\subsubsection{Heden}
+In de hedendaagse markt is IBM nog altijd heer en meester met zijn IBM Z-systemen. Deze systemen zijn geoptimaliseerd voor high-performance computing, beveiliging, schaalbaarheid en worden nog steeds gebruikt door organisaties over de hele wereld voor kritieke workloads en bedrijfsprocessen.
+\\ \\
+Naast IBM hebben andere technologiebedrijven, zoals Fujitsu en Unisys, nog steeds een aanwezigheid in de mainframe-markt. Fujitsu biedt zijn BS2000-mainframes aan, die zich richten op betrouwbaarheid en schaalbaarheid. Unisys heeft zijn Clear-Path Libra- en Dorado-systemen die geschikt zijn voor bedrijfskritieke applicaties \autocite{Fujitsu} \autocite{Unisys}.
+\\ \\
+Een opvallende trend is de verschuiving naar hybride cloudarchitecturen en de opkomst van cloud-native technologieën. Bedrijven zijn op zoek naar manieren om mainframe-technologie te integreren met cloudoplossingen, zoals IBM Cloud, Amazon Web Services (AWS), Microsoft Azure en Google Cloud Platform (GCP). Dit stelt organisaties in staat om de schaalbaarheid, flexibiliteit en kostenefficiëntie van de cloud te benutten, terwijl ze nog steeds kunnen profiteren van de kracht en betrouwbaarheid van mainframes voor hun kritieke workloads \autocite{Google} \autocite{AWS}.
+\\ \\
+Een andere belangrijke ontwikkeling in de mainframe-markt is de focus op beveiliging. Met de groeiende dreiging van cyberaanvallen en gegevensinbreuken is beveiliging een topprioriteit geworden voor organisaties. IBM Z-systemen hebben ingebouwde beveiligingsfuncties zoals IBM Secure Service Container en Secure Execution voor het beschermen van gevoelige gegevens en het voorkomen van ongeautoriseerde toegang \autocite{IBMa}.
+\\ \\
+\section{IBM Dependency Based Build}
+\label{sec:IBM dependency based build}
+In dit hoofdstuk wordt er beschreven wat IBM Dependency Based Build is en waarvoor het in dit onderzoek zal gebruikt worden. Er zal ook besproken worden hoe IBM DBB werkt zowel op de voorgrond als op de achtergrond. 
+\\ \\
+\subsection{Introductie tot IBM Dependency Based Build?}
+\subsubsection{Geschiedenis}
+Een van de eerste versies van DBB is versie 1.0.1, deze versie was uitgekomen in juni 2018 en had als nieuwe features over de initiële 1.0.0 versie dat het JCL kon submitten en een dat het object beheer door middel van eigenaarsrollen verbeterd is. Bij versie 1.0.1 werden ook nog eens 2 extra sample programma's geïntroduceerd namelijk PL/I Helloworld en DB2 Bind Sample in Mortgage Application.
+\\ \\
+Terwijl de versie van DBB in 2018 nog maar heel pril is worden er aan sneltempo versies met bijhorende extra features en verbeteringen uitgebracht. Zo is er op het einde van 2018 al een versie 1.0.3 uitgebracht die extra features zoals:
+\begin{itemize}
+    \item Versie 1.0.2
+    \begin{itemize}
+        \item Multi-thread build support
+        \item Binary en load module kopie support
+        \item ISPF interactieve gateway support voor TSOExec en ISPFExec
+        \item Opvangen en opslaan van indirecte dependencies
+        \item Automatische Groovy script caching
+        \item Build properties kunnen opgebouwd zijn uit andere build properties
+        \item DBB configuratie properties
+        \item SMF record generatie 
+        \item DBB Build manager introductie
+    \end{itemize}
+    \item Versie 1.0.3
+    \begin{itemize}
+        \item SMF record generatie 
+        \item DBB Build manager introductie
+    \end{itemize}
+    
+\end{itemize}
+\\ \\
+In 2019 blijven er op hetzelfde tempo nieuwe versies uitkomen, elk kwartaal wordt er een nieuwe versie uitgerold van DBB zo zitten we eind 2019 al aan versie 1.0.7. 
+De belangrijkste features zijn onder andere:
+\begin{itemize}
+    \item Versie 1.0.4
+    \begin{itemize}
+        \item zFS directories in DD statements
+        \item FIPS 140-2 compliance
+        \item Error en warning messages zijn nu te vinden in het knowledge center
+        \item 
+    \end{itemize}
+    \item Versie 1.0.5
+    \begin{itemize}
+        \item Tar/gzip file support voor depedencies
+        \item Non-roundtrippable character detectie door de migratie tool
+        \item Linux on IBM Z support
+    \end{itemize}
+    \item Versie 1.0.6
+    \begin{itemize}
+        \item Introducering van Z Open Automation Utilities (ZOAU)
+        \item Support voor aanpassingen aan database schema 
+        \item Support voor Db2 voor z/OS
+        \item YAML bestanden voor build configuraties
+        \item Swagger API documentatie
+    \end{itemize}
+    \item Versie 1.0.7
+    \begin{itemize}
+        \item Toevoeging van nieuwe ZOAU functionaliteit
+        \item File tagging support voor CopyToHFS commando
+    \end{itemize}
+\end{itemize}
+\\ \\ 
+Doorheen 2020 zwakte het aantal versie-updates af naar slechts 2, zo werd er een update in maart en in juni uitgebracht voor DBB. Respectievelijk versies 1.0.8 en 1.0.9 hiervan zijn er een aantal nieuwe features opgelijst:
+\begin{itemize}
+    \item Versie 1.0.8
+    \begin{itemize}
+        \item File tagging support voor het CopyToHFS commando bij non-ASCII en UTF-8 gecodeerde bestanden
+        \item Nieuwe copy mode toegevoegd bij het CopyToHFS commando dat ASA carriage control characters behoudt
+        \item Support om het CopyToPDS commando als een build stap te registreren in de build report
+    \end{itemize}
+    \item Versie 1.0.9
+    \begin{itemize}
+        \item Personal daemon beschikbaar als toevoeging op de bestaande shared daemon
+    \end{itemize}
+\end{itemize}
+\\ \\
+Het bleef wat betreft versie-updates heel stil in het jaar 2021 en 2022 al was er in 2022 nog een laatste versie-update voor versie 1.0x van DBB. Die update werd doorgevoerd in maart 2022 en bepaald tot op heden de huidige versie van DBB 1.0x:
+\begin{itemize}
+    \item Versie 1.0.10
+    \begin{itemize}
+        \item Apache Groovy 4.0 upgrade
+    \end{itemize}
+\end{itemize}
+\autocite{IBM2022}
+\\ \\
+In oktober 2021 komt er een nieuwe versie uit van DBB namelijk de versie 1.1x, deze versie heeft 4 updates gekregen sinds zijn onstaan, de updates zijn niet zo talrijk als in versie 1.0x. Met de laatste update van versie 1.1x in maart 2023 zit men aan de huidige versie van DBB 1.1x, er zijn nog updates uitgekomen in juni 2021, oktober 2021 en maart 2022. De belangrijkste features per versie zijn de volgende: 
+\begin{itemize}
+    \item Versie 1.1.0
+    \begin{itemize}
+        \item DBB Web Applicatie beschikbaar als een Red Hat OpenShift Container Platform (OCP) cluster
+        \item Integratie met z/OS Automated Unit Testing Framework (zUnit)
+        \item Introducering van simpelere dependency resolution en impact analyse API's
+    \end{itemize}
+    \item Versie 1.1.1
+    \begin{itemize}
+        \item DBB Web Applicatie kan geïnstalleerd worden op een Red Hat OpenShift Cotainer Platform (OCP cluster) door middel van een operator
+        \item Support voor ``report only'' mode tijdens het uitvoeren van DBB z/OS commando API's
+        \item DBB source code scanner kan programma's met IBM MQ call statements herkennen
+    \end{itemize}
+    \item Versie 1.1.2
+    \begin{itemize}
+        \item DBB Web Applicatie User Interface
+        \item Introducering van de SearchPathDependencyResolver en SearchPathImpactFinder klassen
+    \end{itemize}
+    \item Versie 1.1.3
+    \begin{itemize}
+        \item Apache Groovy 4.0 upgrade
+    \end{itemize}
+    \item Versie 1.1.4
+    \begin{itemize}
+        \item JSON Web Token (JWT) eenmalige inlog authenticatie
+        \item Statisch build report in HTML bestand 
+        \item APAR verbeteringen
+    \end{itemize}
+\end{itemize}
+\autocite{IBM2023}
+\\ \\
+De versie die gebruikt zal worden voor dit onderzoek is de versie 2.0.0, die maakt deel uit van DBB 2.0x en werd geïntroduceerd in oktober 2022 en kreeg zijn eerste en voorlopig recentste update in mei 2023 (2.0.1). Zoals vermeld zal dit onderzoek gebruik maken van DBB 2.0.0, de belangrijkste feature updates voor DBB 2.0x zijn als volgt:
+\begin{itemize}
+    \item Versie 2.0.0 (versie onderzoek)
+    \begin{itemize}
+        \item DBB toolkit geïnstalleerd op z/OS UNIX verbind direct met db2 databases
+        \item DBB toolkit heeft support voor zowel Java 8 als Java 11
+        \item DBB 2.0 toolkit heeft de Apache Log4J logging technologie vervangen door SLF4J
+    \end{itemize}
+    \item Versie 2.0.1
+    \begin{itemize}
+        \item Toevoeging van het JobExec commando
+        \item Toevoeging RACF Group Configuratie 
+    \end{itemize}
+\end{itemize}
+\autocite{IBM2023a}
+\\ \\
+\subsubsection{Definitie}
+IBM Dependency Based Build biedt de mogelijkheid aan om traditionele z/OS applicaties die ontwikkeld zijn in programmeer talen zoals COBOL, PL/I en Assemblerte builden als onderdeel van een moderne DevOps pipeline. Het biedt een moderne, op scripttaal gebaseerde, automatisatie mogelijkheid dat kan gebruikt worden op z/OS. DBB is gebouwd als een stand-alone product waarvoor geen specifieke source code manager of pipeline automation tool nodig is \autocite{IBM2023b}.
+\\ \\
+\subsection{Technische aspecten van DBB}
+\subsubsection{Hoe het werkt}
+DBB bevat een Java Application Programming Interface, kortweg API, die het mogelijk maakt om taken op z/OS te ondersteunen en afhanlijkheidsinformatie te creëren en te gebruiken voor de broncode die wordt verwerkt. DBB bestaat uit een z/OS-gebaseerde toolkit die de API's, een afhankelijkheidsscanner en Apache Groovy bevat. Er zijn ook afzonderlijk verkrijgbare componenten, waaronder een webapplicatie die de afhankelijkheidsinformatie en bouwrapporten opslaat en beheert, en een set Apache Groovy-templates om het gebruik van de API's voor het bouwen van applicaties te demonstreren \autocite{IBM2021}.
+\\ \\
+\subsubsection{Architectuur van DBB}
+% beschrijving van de architectuur van DBB (2.0.0)
+\\ \\
+\subsubsection{Beheer van afhankelijkheden en automatisering van bouwprocessen}
+% Uitleg over hoe DBB afhankelijkheden beheert en bouwprocessen automatiseert
+\\ \\
+\subsubsection{Concepten}
+% Belangrijke concepten zoals builds, dependencies, enzovoort.
+\\ \\
 
-Let er ook op: het \texttt{cite}-commando voor de punt, dus binnen de zin. Je verwijst meteen naar een bron in de eerste zin die erop gebaseerd is, dus niet pas op het einde van een paragraaf.
-
-\lipsum[7-20]
+\subsection{Toekomstige ontwikkelingen}
+\\ \\
