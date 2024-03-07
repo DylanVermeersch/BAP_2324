@@ -11,7 +11,7 @@
 
 In de snel evoluerende wereld van technologie speelt de mainframe nog altijd een essentiële rol als krachtige en betrouwbare computerinfrastructuur. Het is de ruggengraat van talloze organisaties, variërend van grote bedrijven tot overheidsinstanties, die vertrouwen op mainframes voor het verwerken van bedrijfskritieke workloads. Met de opkomst van moderne applicatie-ontwikkeling en de behoefte aan automatisering van het software ontwikkelproces, hebben mainframes zich aangepast aan het veranderende landschap. Dit doen ze door het aanbieden van de DevOps werkwijze en geavanceerde technologieën zoals Git, Azure DevOps en IBM Dependency Based Build ook wel bekend als IBM DBB. 
 \\ \\
-Deze literatuurstudie onderzoekt de samenstelling van mainframe-technologie, IBM Dependency Based Build, Git workflows en Azure DevOps als een krachtige combinatie om een brug te slaan tussen het legendarische mainframe-erfgoed en het moderne automatisatie-gedreven software ontwikkelproces. Het onderzoek verkent de essentie van mainframes en hun evolutie door de jaren heen, evenals de cruciale rol die ze blijven spelen in het ondersteunen van kritieke bedrijfsprocessen. 
+Deze literatuurstudie onderzoekt de samenstelling van mainframe-technologie, IBM Dependency Based Build, Azure DevOps en Git workflows als een krachtige combinatie om een brug te slaan tussen het legendarische mainframe-erfgoed en het moderne automatisatie-gedreven software ontwikkelproces. Het onderzoek verkent de essentie van mainframes en hun evolutie door de jaren heen, evenals de cruciale rol die ze blijven spelen in het ondersteunen van kritieke bedrijfsprocessen. 
 \\ \\
 Daarnaast wordt er dieper ingegaan op IBM Dependency Based Build, een krachtige tool ontwikkeld door IBM om mainframes te verbinden met moderne DevOps tools zoals Azure DevOps en Git. De studie onderzoekt de kenmerken en voordelen van IBM DBB en hoe dat het mogelijk maakt om een mainframe landschap open te stellen tot de DevOps werkwijze om op die manier software te ontwikkelen op de wijze waarop veel moderne platformen dat ook doen. 
 \\ \\
@@ -67,7 +67,23 @@ Beveiliging is altijd een cruciale factor geweest in de mainframe-wereld, en de 
 Een ander belangrijk voordeel van de zSeries was de mogelijkheid om naadloos te integreren met bestaande legacy-systemen en applicaties. Hierdoor konden organisaties waardevolle bedrijfsactiva behouden en moderniseren zonder de noodzaak van grootschalige herontwikkeling. Dit zorgde voor een soepele overgang naar de nieuwe technologie en minimaliseerde de verstoring van bestaande processen \autocite{IBM2024d}.
 \\ \\
 \subsubsection{Tijdlijn van de grootste IBM mainframes}
-%TODO: Kopieer de tijdlijn van vorige BAP naar hier, vergeet package niet te importeren!
+\color{gray}
+\rule{\linewidth}{1pt}
+    \ytl{1952}{IBM 701-de eerste commerciële mainframe van IBM.}
+    \ytl{1964}{IBM System/360-de eerste mainframe-reeks die compatibiliteit bood over meerdere modellen.}
+    \ytl{1970}{IBM System/370-deze mainframe bood nieuwe mogelijkheden zoals virtueel geheugen en verbeterde instructiesets.}
+    \ytl{1980}{IBM System/38-mainframe met microprocessoren en een nieuwe programmeertaal genaamd \quotedblbase{CPF} (Control Program Facility).}
+    \ytl{1985}{IBM ES/9000-ondersteuning voor geavanceerde besturingssystemen zoals MVS/ESA en VM/ESA.}
+    \ytl{1990}{IBM System/390-opvolger van System/370, met de focus op verbeterde prestaties, beveiliging en schaalbaarheid.}
+    \ytl{2000}{IBM zSeries-deze mainframe had betere ondersteuning voor internet en webgebaseerde toepassingen, en verbeterde virtualisatie- en partitioneringsmogelijkheden.}
+    \ytl{2005}{IBM System z9-de opvolger van de zSeries, met een focus op betere prestaties en beveiliging, en verbeterde virtualisatie- en partitioneringsmogelijkheden.}
+    \ytl{2010}{IBM zEnterprise System-een hybride mainframe dat zowel traditionele mainframe- als BladeCenter-technologie combineerde.}
+    \ytl{2015}{IBM z13-de opvolger van zEnterprise System, met verbeterde prestaties, beveiliging en betere ondersteuning voor cloud computing en big-data analyse.}
+    \ytl{2021}{IBM z15-deze mainframe kreeg betere ondersteuning voor hybride cloud-omgevingen en AI-workloads.}
+    \ytl{2023}{IBM z16-de nieuwste generatie mainframe van IBM, het biedt real-time AI-inferentie en is het eerste kwantumveilige systeem op de markt.}
+\rule{\linewidth}{1pt}
+\\
+\autocite{Elliot2015} \autocite{IBMa} \autocite{IBMb}
 \\ \\
 \subsection{Concurrentie op het mainframe platform}
 \subsubsection{1960s}
@@ -263,14 +279,116 @@ IBM Dependency Based Build biedt de mogelijkheid aan om traditionele z/OS applic
 DBB bevat een Java Application Programming Interface, kortweg API, die het mogelijk maakt om taken op z/OS te ondersteunen en afhanlijkheidsinformatie te creëren en te gebruiken voor de broncode die wordt verwerkt. DBB bestaat uit een z/OS-gebaseerde toolkit die de API's, een afhankelijkheidsscanner en Apache Groovy bevat. Er zijn ook afzonderlijk verkrijgbare componenten, waaronder een webapplicatie die de afhankelijkheidsinformatie en bouwrapporten opslaat en beheert, en een set Apache Groovy-templates om het gebruik van de API's voor het bouwen van applicaties te demonstreren \autocite{IBM2021}.
 \\ \\
 \subsubsection{Architectuur van DBB}
-% beschrijving van de architectuur van DBB (2.0.0)
+De architectuur van DBB bestaat volgens \textcite{IBM2021a} uit acht onderdelen die elk hun eigen taak hebben en absoluut nodig zijn om de DBB build uit te voeren. Elk van deze onderdelen kan vervangen worden door een alternatief product, DBB is niet afhankelijk van eender welk merk of product.
+\paragraph{Component 1: MVS bestandssysteem}
+Het MVS bestandssysteem is nodig omdat het resultaat van de compile/link stap nog altijd PDS gebaseerd is en daardoor is zo'n bestandssysteem onmisbaar.
+\paragraph{Component 2: DBB}
+Vanzelfsprekend is het DBB product nodig om een DBB build uit te voeren, het product komt met een DBB toolkit, bijhorende Groovy build scripts en z/OS build API's die bijvoorbeeld de compile/link in goede banen leidt.
+\paragraph{Component 3: DBB WebApp}
+In de DBB WebApp worden vooral de metadata van afhankelijkheden en de build resultaten bijgehouden in een web server. Deze web server is verbonden met een database, dit kan op eender welke database maar er wordt aangeraden om in productie gebruik te maken van Db2.
+\paragraph{Component 4: Rocket Git}
+Rocket Git is nodig om de communicatie met een Git server te verzorgen en heeft ook de functionaliteit om aan code conversie te doen van ASCII naar EBCDIC.
+\paragraph{Component 5: Enterprise Git server}
+In deze enterprise Git server zal de main repository komen en daarin zitten alle bestanden die nodig zijn om een DBB build uit te kunnen voeren. Dit gaat dan vooral over properties bestanden en source code voor applicatie ontwikkeling taken en om de development pipeline te kunnen uitvoeren. In dit onderzoek zal er gebruikgemaakt worden van Azure Repos als enterprise Git server maar een alternatief is bijvoorbeeld om een eigen Git server op te zetten op een eigen linux omgeving. 
+\paragraph{Component 6: Pipeline orchestrator}
+Een DBB build pipeline heeft ook een pipeline ochestrator nodig, dit is gedistribueerde server gebaseerde software die ervoor zorgt dat de pipeline stappen uitgevoerd kunnen worden. Dit kan gaan over automatische testing, cloning van de repository, DBB build en andere gautomatiseerde taken. Deze orchestrator houdt ook informatie over de builds bij zoals build status en logs. Er wordt in dit onderzoek gebruik gemaakt van Azure Pipelines als pipeline orchestrator maar een alternatief is bijvoorbeeld Jenkins.
+\paragraph{Component 7: Pipeline agent}
+Deze agent is nodig om de pipeline orchestrator te laten runnen en communiceren met z/OS.
+\paragraph{Component 8: App dev IDE}
+Dit is de plaats waarin de applicatie ontwikkelaar zijn aanpassingen aan source code zal aanbrengen. Dit kan elke Git gebaseerde IDE zijn zoals IBM Developer for zOS (IDz) of Visual Studio Code. In dit onderzoek wordt er gebruik gemaakt van beide IDE's. 
 \\ \\
-\subsubsection{Beheer van afhankelijkheden en automatisering van bouwprocessen}
-% Uitleg over hoe DBB afhankelijkheden beheert en bouwprocessen automatiseert
+De architectuur heeft ook een workflow die het doorloopt, \textcite{IBM2021a} geeft aan dat in een standaard geval dit neerkomt op negen stappen van begin tot einde. De stappen worden in chronologische volgorde hieronder opgesomd. 
 \\ \\
-\subsubsection{Concepten}
-% Belangrijke concepten zoals builds, dependencies, enzovoort.
+De applicatie ontwikkelaar maat wijzigingen aan de source code van een applicatie en maakt gebruik van DBB user build om te verifiëren dat de wijzigingen goed compileren en om eventueel een aantal testen uit te voeren. 
 \\ \\
-
-\subsection{Toekomstige ontwikkelingen}
+De applicatie ontwikkelaar gaat nadien de wijzigingen commiten/pushen naar de enterprise Git server. De Git server ontvangt de wijzigingen nadat een push of merge is gebeurd en gaat dan, automatisch of manueel, het signaal geven aan de pipeline orchestrator dat er een pipeline mag gestart worden. 
+\\ \\
+Deze start op zijn beurt dan een job die wordt doorgegeven aan de agent in z/OS, de communicatie tussen de pipeline orchestrator en de pipeline agent kan gebeuren via SSH of Personal Acces Token (PAT). Dit onderzoek zal gebruik maken van Personal Acces Tokens om de communicatie tussen pipeline agent en pipeline orchestrator te verzorgen.
+\\ \\
+De eerste stap die de agent zal doen nadat die het start job signaal krijgt is om de source code/repository van de Git server te clonen op z/OS naar een working tree repository. Deze working tree repository zal dan gebruikt worden in de volgende stap door de Groovy build scripts die in werking treden doordat de agent de DBB build start. 
+\\ \\
+Deze build scripts voeren een compile/link uit via de z/OS build API's en zorgen ervoor dat de verkregen of aangepaste load modules op de juiste plek terechtkomen in het MVS bestandssysteem.
+\\ \\
+Eenmaal dat de build compleet is worden de gegevens zoals de metdata van afhankelijkheden en het resultaat van de build verstuurd naar de DBB Web App die deze gegevens dan opslaat in zijn databank. 
+\\ \\
+Tot slot krijgt ook de agent de logs en resultaten binnen en die stuurt die op zijn beurt dan weer door naar de pipeline orchestrator om ook daar bepaalde logs en gegevens bij te houden over het resultaat. Dit alles is ook visueel terug te vinden in \ref{fig:dbb architectuur}.
+\begin{figure}[h]
+    \centering
+    \includegraphics[scale=0.5]{DBB_architecture}
+    \caption{DBB architectuur van dit onderzoek}
+    \label{fig:dbb architectuur}
+\end{figure}
+\\ \\
+\section{Azure DevOps}
+\label{sec:azure devops}
+\subsection{Wat is Azure DevOps?}
+Volgens \textcite{Microsoft2024} ondersteunt Azure DevOps de samenwerking van ontwikkelaars, projectmanagers en medewerkers door een reeks processen aan te bieden die gebruikt worden om software te ontwikkelen. Het stelt organisaties in staat om sneller producten te maken en te verbeteren dan mogelijk is met traditionele softwareontwikkelingsmethoden.
+\\ \\
+Azure DevOps biedt geïntegreerde functies waartoe je toegang hebt via je webbrowser of IDE-client. Je kunt alle services gebruiken die bij Azure DevOps worden geleverd of alleen die services kiezen die je nodig hebt om je bestaande workflows aan te vullen.
+\\ \\
+\subsubsection{Azure producten}
+Azure DevOps is een verzameling van vijf individuele services die samen de DevOps ontwikkel filosofie omarmt. Omdat de services onder de Azure DevOps suite zitten is communicatie tussen de services heel snel en heel eenvoudig op te zetten zonder gecompliceerde methodes om de communicatie tot stand te brengen. 
+\\ \\
+Onder de \textcite{Microsoft2024} Azure DevOps suite zitten de volgende services:
+\begin{itemize}
+    \item Azure Boards: levert een suite van Agile tools om werk, code defecten en problemen te plannen en op te volgen, gebruikmakend van Kanban en Scrum methodes.
+    \item Azure Repos: voorziet Git repositories of Team Foundation Version Control (TFVC) voor de source control van code. 
+    \item Azure Pipelines: voorziet build en release services om Continuous Integration (CI) en Continuous Delivery (CD) van applicaties te ondersteunen. 
+    \item Azure Test Plans: set van tools om applicaties te testen, inclusief manueel/exploratieve testing en continuous testing. 
+    \item Azure Artifacts: teams kunnen hier gebruik van maken om het delen van packages zoals Maven, npm, NuGet en andere packages van private- of publieke sources te integreren in pipelines. 
+\end{itemize}
+Voor dit onderzoek zal er enkel gebruik gemaakt worden van de Azure Repos en Azure Pipelines services. 
+\\ \\
+\subsection{Azure Repos als Source Code Control}
+In Azure Repos zijn er twee manieren om aan Source Code Control te doen, via Team Foundation Version Control (TFVC) of via Git (gedistribueerd). TFVC is een gecentraliseerd client-server systeem. In zowel Git als TFVC kan er gebruik gemaakt worden van folders, branches en repositories om bestanden te organiseren. Voor dit onderzoek zal er gebruik gemaakt worden van een gedistribueerd Source Code Control (Git) \autocite{Microsoft2022}. 
+\\ \\
+Via Azure Repos kan je alle repositories waartoe je toegang hebt beheren en eventueel aanpassen. Zo kunnen er branches, tags (versies), commits, pushes, merges en pull requests aangemaakt worden. Er kunnen ook handmatig, via Azure Repos, bestanden of folders geüpload worden \autocite{Microsoft2022}.
+\\ \\
+Azure Repos heeft ook de functionaliteit om automatisch of handmatig applicaties een nieuwe versie te bezorgen na een push. Zo kan er ook aan versiebeheer gedaan worden binnen Azure Repos, er kan ten allen tijden teruggegaan worden naar een vorige versie of commit. Op die manier hoef je niet expliciet meerdere versies bij te houden van eenzelfde applicatie en kan er bij problemen altijd teruggegaan worden naar een vorige werkende versie \autocite{Microsoft2022}. 
+\\ \\
+Een ontwikkelaar die werkt met Azure Repos heeft een eigen kopie van de source repository op zijn computer. De source repository komt inclusief met alle branches en vorige versies van de repository. De ontwikkelaar werkt rechtstreeks op zijn eigen lokale repository en de aanpassingen worden gedeeld naar de centrale repository door een push naar de main source repository. Op die manier kan de ontwikkelaar zelf aan versiebeheer doen door de vorige versies te vergelijken met elkaar zonder netwerk connectie \autocite{Microsoft2022}.
+\\ \\
+Wanneer de ontwikkelaar een nieuw onderdeel wil toevoegen aan de applicatie kan die ook zijn eigen lokale branch maken om daarop verder te werken zonder andere ontwikkelaars te dwarsbomen. Doordat de branches lichtgewichten zijn op vlak van opslag kan er snel en makkelijk gewisseld worden tussen branches. Indien de ontwikkelaar klaar is met zijn onderdeel kan die door middel van een push/merge de main branch updaten met zijn nieuwe code, zo kan zijn lokale branch opgeruimd worden na de push/merge \autocite{Microsoft2022}. 
+\\ \\
+\subsection{Azure Pipelines als pipeline orchestrator}
+Azure Pipelines zorgt ervoor dat het mogelijk is om meerdere taken opeenvolgend te automatiseren om op die manier het builden en deployen van applicaties makkelijker en gestroomlijnder te maken. Met Azure Pipelines kan je taken zoals bestanden aanmaken en scripts of commando's uitvoeren, automatiseren in één of meerdere pipelines. Zo kan er met Azure Pipelines een systeem opgezet worden dat na afloop van een pipeline er opnieuw een pipeline zal gestart worden. Dit kan automatisch of manueel ingesteld worden. Het is ook mogelijk om Azure Pipelines je Git repository in Azure Repos te laten observeren en wanneer die een verandering detecteert in de source code, wordt er automatisch een pipeline gestart. Dit maakt het mogelijk om aan Continuous Integration (CI) te doen en doordat de mogelijkheid bestaat om meerdere pipelines/taken na elkaar uit te voeren kan er ook gedaan worden aan Continuous Delivery (CD). \autocite{Microsoft2023}
+\\ \\
+Een ontwikkelaar die werkt met Azure Pipelines hoeft, indien de optie CI aanstaat voor de repository en pipeline, enkel maar een push uit te voeren naar de repository en dan activeert die push de pipeline die daaraan gekoppeld is. De taken van de pipeline worden dan zelfstandig uitgevoerd zonder dat de ontwikkelaar zelf iets moet selecteren of uitvoeren. Er kan ook manueel een pipeline gestart worden, eenmaal gestart werkt die op dezelfde manier als de pipeline die geactiveerd werd door een push naar de gelinkte repository. \autocite{Microsoft2023}
+\\ \\
+Standaard is er ondersteuning om controle mechanismen in te schakelen binnenin de pipeline. Zo kan er voordat de pipeline effectief verandering brengt in bijvoorbeeld een productie applicatie eerst een review gevraagd worden aan een of meer leidinggevenden. Pipelines kunnen ook afgeschermd worden van bepaalde personen of groepen om zo confidentialiteit te waarborgen. \autocite{Microsoft2023}
+\\ \\
+Azure Pipelines hebben ook de mogelijkheid om automatische testing in gang te zetten bij het uitvoeren van de pipeline. Zo kan er naargelang het resultaat van de testen alsnog de wijziging van een applicatie afgebroken worden. Indien de pipeline succesvol beëindigd wordt kan er ook een optie aangevinkt worden om automatische versie controle aan te zetten. Zo kan er bij een applicatie van versie 1.0.1 na een succesvolle uitvoering van de pipeline de versie 1.0.2 meegegeven worden. \autocite{Microsoft2023}
+\\ \\ \\ \\ \\ \\
+\section{Git workflows}
+\subsection{Software Development Lifecycle}
+Een van de belangrijkste aspecten van mainframe software ontwikkeling is dat het betrouwbaar, beschikbaar en bruikbaar is. Deze workflow zit nagenoeg standaard ingebakken in mainframe softwareontwikkeling, maar hoe kan die workflow gerecreëerd of zelfs verbeterd worden door middel van gebruik te maken van Git om de softwareontwikkeling workflow op te stellen. Volgens Nelson \textcite{Lopez2023} is een van de beste strategieën om dezelfde eigenschappen van een mainframe workflow te bekomen om de Software Development Lifecycle te recreëren met behulp van Git, een Git ondersteunende IDE, CI pipeline, deployment policies en een CD pipeline.
+\\ \\
+Op de manier zoals voorgesteld door \textcite{Lopez2023} zou de source code storage niet meer in PDS's opgeslagen worden maar in een Git gedistribueerd bestandssysteem, versiebeheer zal niet meer verlopen via een SCM package ID maar via Git commit ID of Git tags. Indien er wijzigingen moeten aangebracht worden in de source code wordt er geen ISPF maar een IDE zoals vscode of IDz, de compile/link van een programma zal dan weer verzorgd worden door een CI pipeline en niet door een JCL. Toestemmingen en het aanvaarden van wijzigingen aan applicaties zal je dan weer kunnen doen door middel van Git merge en deployment policies in plaats van de SCM. Als laatste zal het uiteindelijk deployen van een programma niet via JCL gebeuren maar via een CD pipeline.
+\begin{figure}[h]
+    \centering
+    \includegraphics[scale=0.75]{Software_development_lifecycle}
+    \caption{Software Development Lifecycle: Legacy vs DevOps \autocite{Lopez2023}}
+    \label{fig:software development lifecycle}
+\end{figure}
+\\ \\ \\ \\
+\subsection{Git branching strategie}
+Elk bedrijf regelt zijn software ontwikkeling op een manier zodat er een duidelijk onderscheid en doel is voor elke omgeving. Zo is er een productieomgeving, de lopende versie van een applicatie zit daar te draaien. Er is ook een development omgeving waarin nieuwe features of verbeteringen voor die applicatie worden ontwikkeld. Tot slot is er ook nog de QA omgeving (Quality Assesment) deze omgeving wordt gebruikt om applicaties te testen op functioneel vlak vaak tegenover de productie database. 
+\\ \\
+Om een goede branching strategie te bekomen is het belangrijk volgens \textcite{Lopez2023} dat tenminste die drie omgevingen worden geïmplementeerd als een branch in de branching strategie. Dit komt neer op een main (productie) branch, een develop (development/ontwikkeling) branch en een release (QA) branch. 
+\\ \\
+Om nog beter te werk te gaan moeten er nog een aantal zaken toegevoegd worden aan de branching strategie zo heeft Nelson Lopez het onder andere over een feature en hotfix/nood branch. Die laatste is voor noodgevallen waarin er heel snel iets veranderd moet worden aan de applicatie die in productie draait. De feature branch zou dan weer een lokale branch worden waarin de ontwikkelaar werkt aan zijn opdracht voor die applicatie. De workflow die wordt beschreven door Nelson Lopez is visueel te vinden in \ref{fig:git branching strategie}.
+\begin{figure}[h]
+    \centering
+    \includegraphics[scale=0.75]{Git_branching_strategy}
+    \caption{Git branching strategie beschreven door Nelson Lopez}
+    \label{fig:git branching strategie}
+\end{figure}
+\\ \\
+De weg die een applicatie aflegt binnen de strategie die afgebeeld wordt op \ref{fig:git branching strategie} begint bij het binnenhalen van de applicatie versie die in de ontwikkelomgeving draait. Die is te vinden op de develop branch, vandaar wordt er een clone gemaakt naar een lokaal werkstation en wordt allereerst een nieuwe feature branch aangemaakt. De naamgeving van die branch kan als volgt zijn: feature-array-toevoegen, dit is afhankelijk van de policy binnen de werkomgeving omtrent naamgeving van branches. 
+\\ \\
+Eenmaal de feature branch aangemaakt is kan de ontwikkelaar aan het werk gaan om de feature te coderen. In de tussentijd kan er een andere ontwikkelaar aan hetzelfde programma werken op nog een andere feature branch. Die ontwikkelaar moet bijvoorbeeld foutmeldingen aanpassen dus zijn feature branch krijgt de naam feature-update-foutmeldingen. Als een ontwikkelaar klaar is met zijn feature dan kan die een merge uitvoeren naar de develop branch om de versie die daar draait te updaten met zijn aangepaste versie. Doordat Git een merge functie heeft gaat Git enkel hetgeen aanpassen dat de ontwikkelaar zelf heeft gewijzigd. Zo kan er tussendoor iemand anders al een merge uitgevoerd hebben naar diezelfde branch zonder dat er conflicten zijn. 
+\\ \\
+Nadat een applicatie in de ontwikkelomgeving een of meerdere updates heeft gekregen kan er gekozen worden om die versie over te zetten naar de productie omgeving. Voordat effectief plaatsvindt zal er eerst een release branch aangemaakt worden om de functionele testen uit te voeren en indien nodig source code aan te passen. Pas als de testen vlot verlopen dan wordt er zowel met de main branch (productie) als met de develop branch een merge uitgevoerd. Zo zijn beide versies up to date met de versie die doorheen de functionele test fase is geraakt (QA). 
+\\ \\ 
+In geval dat er een situatie is waarin de productie versie niet meer draait dan wordt er een hotfix branch gemaakt vanaf de versie die draait op productie. Source code wordt aangepast en testing wordt opnieuw uitgevoerd zoals bij de release branch. Indien die testen succesvol zijn dan wordt de aangepaste versie zowel met de main branch als met de develop branch gemerged. Hierdoor wordt de fout die in de productie versie zat zowel in de ontwikkelomgeving als in de productieomgeving opgelost. 
 \\ \\

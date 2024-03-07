@@ -6,6 +6,9 @@
 \documentclass[dutch,dit,thesis]{hogentreport}
 
 \usepackage{lipsum}
+\usepackage{pgfgantt}
+\usepackage{tabularx}
+\usepackage{graphicx}
 
 %% Pictures to include in the text can be put in the graphics/ folder
 \graphicspath{{graphics/}}
@@ -40,6 +43,10 @@
 }
 
 % Other packages not already included can be imported here
+\usepackage{xcolor}
+\newcommand\ytl[2]{
+    \parbox[b]{8em}{\hfill{\color{cyan}\bfseries\sffamily #1}~$\cdots\cdots$~}\makebox[0pt][c]{$\bullet$}\vrule\quad \parbox[c]{13cm}{\vspace{12pt}\color{red!40!black!80}\raggedright\sffamily #2.\\[7pt]}\\[-3pt]}
+
 
 %%---------- Document metadata -------------------------------------------------
 \author{Dylan Vermeersch}
