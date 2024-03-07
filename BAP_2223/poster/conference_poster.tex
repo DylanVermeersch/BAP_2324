@@ -1,0 +1,119 @@
+%==============================================================================
+% Sjabloon poster bachproef
+%==============================================================================
+% Gebaseerd op document class `a0poster' door Gerlinde Kettl en Matthias Weiser
+% Aangepast voor gebruik aan HOGENT door Jens Buysse en Bert Van Vreckem
+
+\documentclass[a0,portrait]{hogent-poster}
+\usepackage{pgfgantt}
+
+% Info over de opleiding
+\course{Bachelorproef}
+\studyprogramme{toegepaste informatica}
+\academicyear{2022-2023}
+\institution{Hogeschool Gent, Valentin Vaerwyckweg 1, 9000 Gent}
+
+% Info over de bachelorproef
+\title{Onderzoek naar de implementatie van z/OS Connect in een mainframe productieomgeving met proof of concept.}
+\author{Dylan Vermeersch}
+\email{dylan.vermeersch@student.hogent.be}
+\supervisor{Leendert Blondeel}
+\cosupervisor{Didier Marichal (Arcelor Mittal Gent)}
+
+% Indien ingevuld, wordt deze informatie toegevoegd aan het einde van de
+% abstract. Zet in commentaar als je dit niet wilt.
+\specialisation{Mainframe Expert}
+\keywords{z/OS Connect, mainframe, API}
+\projectrepo{https://github.com/user/repo}
+
+\begin{document}
+
+\maketitle
+
+\begin{abstract}
+Dit onderzoek zal gaan over de implementatie van z/OS Connect in een mainframe productieomgeving. Dit onderzoek zal een literatuurstudie, een exploratief onderzoek en een proof of concept omvangen. De methodologie zal in dit voorstel worden uitgelegd alsook het verwachte resultaat ervan. Verder zal er nog besproken worden wat voor impact het verwachte resultaat zou hebben op de productieomgeving van ArcelorMittal.
+\end{abstract}
+
+\begin{multicols}{2}
+
+\section{Introductie}
+
+Mainframe is een van de oudste en meest gebruikte computertechnologieën ooit, maar na al die jaren dat er getwijfeld werd over het wel of niet afschaffen ervan. Is er een groot tekort aan pas afgestudeerden die het voortouw zouden kunnen nemen in de vernieuwing van de mainframe. Innovaties zoals z/OS Connect zouden ervoor zorgen dat het platform terug aantrekkelijker wordt voor nieuwe werkkrachten en om zelfs mensen zonder IT achtergrond te kunnen aanwerven in een mainframe omgeving.
+\\ \\
+De leveranciers hebben dit ook opgemerkt en zijn dus al enkele jaren volop tijd en geld aan het pompen in nieuwe gebruiksvriendelijke en meer hedendaagse tools. Die tools zouden het werken op zo'n omgeving vereenvoudigen voor zowel gebruikers, ontwerpers en administrators.
+\\ \\
+Het onderzoek zal als een succes worden \\beschouwd indien ArcelorMittal er meerwaarde in ziet om het op hun omgeving toe te passen. Met meerwaarde kan er bedoeld worden dat er weinig tot geen performantie verlies is en dat de productiviteit ofwel verbeterd of hetzelfde blijft, deze meerwaarde wordt bepaald tegenover de performantie en productiviteit van de huidige omgeving.
+
+\section{Experimenten}
+
+Er zijn geen experimenten en/of proeven kunnen gebeuren door het feit dat er een probleem was met de installatie van z/OS Connect. Deze was namelijk niet geïnstalleerd op het mainframe van Arcelor Mittal Gent.
+\\ \\
+Een oplossing om toch iets van experimenten te hebben is er contact geweest met Rabobank uit Nederland. Zij hebben wel met succes z/OS Connect geïnstalleerd en geïmplementeerd in hun productieomgeving. Dus de volgende experimenten komen voort uit de informatie die Rabobank heeft gegeven.
+\\ \\
+Het eerste experiment of zeg maar fase dat op de menu stond was een Proof of Technologies kortweg POT. Een Proof of Technologies wil zeggen dat de ontwikkelaars kennis kunnen maken met het product, in dit geval z/OS Connect, om zo een gevoel te krijgen van wat de mogelijkheden zijn en/of kunnen zijn binnen de huidige omgeving.
+\\ \\
+Hierna wordt er pas een Proof of Concept (POC) uitgestipeld en uitgevoerd. De POC bestond erin om bestanden en applicaties die zich bevinden op een mainframe aan te spreken via een applicatie dat zich niet op een mainframe bevindt.
+\\ \\
+De uitvoering van de POC gebeurde vanzelfsprekend met z/OS Connect dat een heleboel API's ter beschikking heeft om bestanden en applicaties aan te spreken. Mocht er nog geen API zijn voor de use case die zonet is voorgesteld dan kon er ook een eigen API ontwikkeld worden. Zo krijg je dat het mainframe zowel REST JSON kan ontvangen en versturen.
+\\ \\
+Het allerlaatste experiment is de pilot, deze bestaat erin om volledig op de productie omgeving te werken. Dit is het einde van de experimentatie-fase, deze pilot is niet zomaar even alles van productie koppelen aan z/OS Connect. Eerst wordt er een klant gekozen om de pilot bij uit te voeren, bij deze klant wordt dan z/OS Connect volledig geïntegreerd. Pas dat de pilot succesvol is verlopen, dit wil zeggen zonder kleerscheuren, wordt er pas overgegaan op een volledige integratie in de productieomgeving.
+
+\section{Voorgestelde road map}
+De onderstaande Gantt chart geeft een idee van hoe het verloop van deze thesis eruit zag of zou hebben gezien mocht de installatie wel gebeurd was.
+
+\begin{center}
+    \hspace*{-1.5cm}%
+    \begin{ganttchart}[
+        vgrid,
+        bar label node/.append style={align=right}
+        ]{1}{28}
+        %labels
+        \gantttitle{Week}{28} \\
+        \gantttitle{1}{2}
+        \gantttitle{2}{2}
+        \gantttitle{3}{2}
+        \gantttitle{4}{2}
+        \gantttitle{5}{2}
+        \gantttitle{6}{2}
+        \gantttitle{7}{2}
+        \gantttitle{8}{2}
+        \gantttitle{9}{2}
+        \gantttitle{10}{2}
+        \gantttitle{11}{2}
+        \gantttitle{12}{2}
+        \gantttitle{13}{2}
+        \gantttitle{14}{2}\\
+        %tasks
+        \ganttbar{Literatuurstudie maken}{1}{3} \\
+        \ganttbar{Vereisten nakomen}{4}{5} \\
+        \ganttbar{Installatie z/OS Connect}{6}{8} \\
+        \ganttbar{Configuratie z/OS Connect}{9}{13} \\
+        \ganttbar{Experimentatie z/OS Connect}{14}{16} \\
+        \ganttbar{Uitzetten en realiseren POC}{17}{22} \\
+        \ganttbar{Resultaten analyse}{23}{24} \\
+        \ganttbar{Conclusie}{25}{26} \\
+        \ganttbar{Scriptie afwerken}{27}{28} \\
+
+        %relations
+        \ganttlink{elem0}{elem1}
+        \ganttlink{elem1}{elem2}
+        \ganttlink{elem2}{elem3}
+        \ganttlink{elem3}{elem4}
+        \ganttlink{elem4}{elem5}
+        \ganttlink{elem5}{elem6}
+        \ganttlink{elem6}{elem7}
+        \ganttlink{elem7}{elem8}
+    \end{ganttchart}
+    \caption{Gantt Chart}
+    \hspace*{-1.5cm}%
+
+\section{Conclusies}
+
+De conclusie van deze thesis is onvolledig doordat het eigenlijke onderzoek met Proof of Concept niet is kunnen doorgaan. Als alternatief is er wel de conclusie die Rabobank had op het einde van hun Proof of Concept.
+\\ \\
+Na heel wat moeilijkheden met de configuratie en het uitwerken van de API's werkt het nu heel goed en is het een duidelijke verbetering ten opzichte van de vorige productieomgeving.
+\\ \\
+De moeilijkheden waren vooral te wijden aan het veel te snel veranderen van Proof of Technologies naar de daadwerkelijke implementering van z/OS Connect. Dat samen met het feit dat er weinig tot geen documentatie was in die periode dat z/OS Connect 2.0 nog maar net uit was zorgde voor de vele moeilijkheden met de sign in.
+
+\end{multicols}
+\end{document}

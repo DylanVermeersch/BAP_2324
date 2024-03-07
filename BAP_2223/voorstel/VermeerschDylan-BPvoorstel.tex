@@ -1,0 +1,48 @@
+%==============================================================================
+% Sjabloon onderzoeksvoorstel bachproef
+%==============================================================================
+% Gebaseerd op document class `hogent-article'
+% zie <https://github.com/HoGentTIN/latex-hogent-article>
+
+\documentclass{hogent-article}
+
+\usepackage{pgfgantt}
+\usepackage{tabularx}
+
+% Invoegen bibliografiebestand
+\addbibresource{voorstel.bib}
+
+% Informatie over de opleiding, het vak en soort opdracht
+\studyprogramme{Professionele bachelor toegepaste informatica}
+\course{Bachelorproef}
+\assignmenttype{Onderzoeksvoorstel}
+
+
+\academicyear{2022-2023}
+
+\title{Onderzoek naar de implementatie van z/OS Connect in een mainframe productieomgeving met proof of concept.}
+
+\author{Dylan Vermeersch}
+\email{dylan.vermeersch@student.hogent.be}
+
+
+\supervisor[Co-promotor]{D. Marichal(ArcelorMittal, \href{mailto:didier.marichal@arcelormittal.com}{didier.marichal@arcelormittal.com})}
+
+\specialisation{Mainframe Expert}
+\keywords{z/OS Connect, mainframe, productieomgeving}
+
+\begin{document}
+
+\begin{abstract}
+  Dit onderzoek zal gaan over de implementatie van z/OS Connect in een mainframe productieomgeving. Dit onderzoek zal een literatuurstudie, een exploratief onderzoek en een proof of concept omvangen. De methodologie zal in dit voorstel worden uitgelegd alsook het verwachte resultaat ervan. Verder zal er nog besproken worden wat voor impact het verwachte resultaat zou hebben op de productieomgeving van ArcelorMittal.
+\end{abstract}
+
+\tableofcontents
+
+% De hoofdtekst van het voorstel zit in een apart bestand, zodat het makkelijk
+% kan opgenomen worden in de bijlagen van de bachelorproef zelf.
+\input{voorstel-inhoud}
+
+\printbibliography[heading=bibintoc]
+
+\end{document}

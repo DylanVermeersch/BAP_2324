@@ -1,0 +1,103 @@
+%---------- Inleiding ---------------------------------------------------------
+
+\section{Introductie}%
+\label{sec:introductie}
+
+Mainframe is een van de oudste en meest gebruikte computertechnologieën ooit, maar na al die jaren dat er getwijfeld werd over het wel of niet afschaffen ervan. Is er een groot tekort aan pas afgestudeerden die het voortouw zouden kunnen nemen in de vernieuwing van de mainframe. Innovaties zoals z/OS Connect zouden ervoor zorgen dat het platform terug aantrekkelijker wordt voor nieuwe werkkrachten en om zelfs mensen zonder IT achtergrond te kunnen aanwerven in een mainframe omgeving.
+\\ \\
+De leveranciers hebben dit ook opgemerkt en zijn dus al enkele jaren volop tijd en geld aan het pompen in nieuwe gebruiksvriendelijke en meer hedendaagse tools. Die tools zouden het werken op zo'n omgeving vereenvoudigen voor zowel gebruikers, ontwerpers en administrators.
+\\ \\
+Het onderzoek zal als een succes worden \\beschouwd indien ArcelorMittal er meerwaarde in ziet om het op hun omgeving toe te passen. Met meerwaarde kan er bedoeld worden dat er weinig tot geen performantie verlies is en dat de productiviteit ofwel verbeterd of hetzelfde blijft, deze meerwaarde wordt bepaald tegenover de performantie en productiviteit van de huidige omgeving.
+
+%---------- Stand van zaken ---------------------------------------------------
+
+\section{State-of-the-art}
+\label{sec:state-of-the-art}
+
+Vroeger waren de industrieel gestandaardiseerde servers gestapeld tot aan het plafond in elk data center. In die tijd was de mainframe computer een dinosaurus die gedoemd was om uit te sterven. IBM zag toch nog een toekomst voor de mainframe, hierdoor bleven ze maar innoveren op het 'Z' platform. Ze werden ondersteund door de opkomst van hybride cloud modellen en vele bedrijfskritische applicaties die op het mainframe moesten blijven. \autocite{Moorhead2022}
+\\ \\
+Deze innovaties waren er niet geweest zonder de vastberadenheid van IBM om het platform in leven te houden en sterker nog het nog levendiger te maken dan het voordien was. Door met name de IBM Wazi Developer for Red Hat CodeReady Workspaces uit te rollen hebben ze een cloud-native ontwikkel ervaring voor het z/OS besturingssysteem gemaakt. Met Wazi kunnen ontwikkelaars hun Integrated Development Environment, kortweg IDE, naar keuze gebruiken om mainframetoepassingen te ontwikkelen op het Red Hat OpenShift Container Platform. Een ander gebied van innovatie voor IBM is het bieden van beveiliging voor commerciële cryptocurrency wallets. \autocite{Bloomberg2021}
+\\ \\
+Naast de huidige innovaties is het ook wel interessant om te kijken naar hoe het landschap er over pakweg 10 jaar zou kunnen uitzien. Volgens Christopher \textcite{Tozzi2022} zal de mainframe nog alom tegenwoordig zijn na die 10 jaar, ook zullen er nog meer innovaties zijn gemaakt om het integreren met andere platformen zoals Windows en Linux of zelfs andere programmeertalen zoals Python, Javascript, C\# en vele anderen mogelijk te maken. Verder zullen de 'oude' technologieën van de COBOL programmeertaal blijven gemoderniseerd worden zodat het nog performanter wordt en nog makkelijker zal worden om COBOL-code te hergebruiken. De fysische voetafdruk van een mainframe zal ook kleiner worden, nu is een moderne mainframe ongeveer even groot als een koelkast maar dat zou in de toekomst nog vele malen kleiner worden volgens Tozzi.
+
+%---------- Methodologie ------------------------------------------------------
+\section{Methodologie}%
+\label{sec:methodologie}
+De methodologie bestaat uit een aantal fases. In de eerste fase van dit onderzoek wordt er een uitgebreide literatuurstudie gemaakt. Deze literatuurstudie zal gebruikt worden als voornaamste gegevensbron voor het verdere verloop van het onderzoek. De literatuurstudie heeft drie grote onderwerpen namelijk de mainframe, RESTfull APIs en z/OS Connect. In het hoofdstuk omtrent de mainframe zal er gekeken worden wat een mainframe is, waarvoor het gebruikt wordt en wat de geschiedenis ervan is.
+\\ \\
+In het stuk over RESTfull APIs zal er beschreven worden wat een API is, hoe een API RESTfull kan worden en waarvoor RESTfull APIs gebruikt kunnen worden. Verder zal er ook te vinden zijn wat een API consumer is en wat een API provider is, er zal ook te vinden zijn wat de verschillende componenten zijn van een API.
+\\ \\
+In het laatste deel van de literatuurstudie zal het gaan over z/OS Connect. Hierin worden een aantal onderwerpen aangeraakt, wat is z/OS Connect, wat zijn de components ervan en hoe z/OS Connect werkt. Ook zal er beschreven zijn waarvoor z/OS Connect wordt gebruikt, wat de architectuur ervan is en op het einde van het deel over z/OS Connect is er een beschrijving van de installatie en configuratie ervan.
+\\ \\
+Na de eerste fase, die geschat is op twee weken, is er een diepgaande en volledige literatuurstudie die de rode draad zal zijn wat betreft informatie in het onderzoek.
+\\ \\
+Het doel van de volgende fase is om gedurende een week het systeem klaar te krijgen voor de installatie, dit wordt bekomen door het controleren van alle vereisten om het installatieproces te kunnen starten. Aan de hand van die vereisten wordt er gekeken of het systeem nog een aantal aanpassingen nodig heeft. Pas daarna kan er overgegaan worden op de effectieve installatie van z/OS Connect. Dit proces zal enkel theoretisch worden besproken aangezien Arcelor Mittal zijn mainframe niet zelf onderhoud en dus niks zelfstandig mag installeren op hun mainframe.
+\\ \\
+De derde fase stelt de installatie van z/OS Connect voor, deze fase zal sterk profiteren van het voorbereidende werk dat in fase twee is gebeurd. Het installatieproces wordt geschat op anderhalve week. Na de installatie is het systeem klaar om volledig geconfigureerd te worden. Hier wordt opnieuw enkel theoretisch over gesproken in de thesis.
+\\ \\
+Na de installatie komt de configuratie, er worden allerhande instellingen geconfigureerd van z/OS Connect zo gaat die naadloos kunnen werken met de huidige mainframe architectuur van Arcelor Mittal Gent. De configuratie wordt uitvoerig getest en dat is dan ook de reden dat deze fase twee en een halve week in beslag neemt. Pas als alle functies van z/OS Connect operationeel zijn kan er overgegaan worden om met z/OS Connect te experimenteren.
+\\ \\
+Er wordt anderhalve week voorzien om even te experimenteren met z/OS Connect en de mogelijkheden ervan eens op de proef te nemen. Deze testen zullen vooral gaan over de ingebouwde APIs en calls die het al bevat. Al zal er ook gekeken worden naar de mogelijkheden die er zijn om eigen calls en APIs te schrijven. Na deze fase kan er overgegaan worden naar de uitzetting van de Proof Of Concept.
+\\ \\
+De uitzetting en realisatie van de POC is een heel belangrijke fase omwille van het feit dat hier de resultaten worden bekomen om een conclusie te trekken op het einde van dit onderzoek. De opdracht bestaat erin om een applicatie, dat niet noodzakelijk een COBOL of PL/I applicatie is, te laten communiceren met de mainframe resources. Zo zal er gekeken worden of een applicatie een bestand kan lezen of aanpassen alsook datzelfde bestand te verwijderen. De gebruiker moet natuurlijk wel de juiste rechten hebben om de gevraagde zaken te kunnen doen. Als die niet de juiste rechten heeft dan moet de gevraagde actie geweigerd worden. De gebruiker moet ook een nieuw bestand kunnen aanmaken met behulp van z/OS Connect, opnieuw rekeninghoudend met de rechten van die gebruiker. Dit alles wordt gestuurd door een .NET applicatie, de communicatie is dus over twee verschillende platformen heen. Deze communicatie kan langs beide kanten gaan, zo kan een mainframe applicatie een .NET applicatie oproepen en andersom. Na deze twee en een half week durende fase is alle informatie om een conclusie te trekken aanwezig.
+\\ \\
+De volgende fase van dit onderzoek is om de resultaten die doorheen dit onderzoek zijn bekomen te analyseren. Deze analyse wordt niet gedaan door de developers maar door verschillende business analisten. Al zal er wel gevraagd worden aan de developers en eindegebruikers wat zij vinden van de resultaten van het onderzoek. Zo kan het zijn dat een gebruiker blij is met de resultaten omdat die zijn werkgemak heeft verbeterd door het werken met z/OS Connect. Deze analyse zal 1 week in beslag nemen.
+\\ \\
+Na de resultaten analyse volgt de fase waarin er conclusies worden getrokken, dit zal afhankelijk van de beslissing van de analisten ofwel de volledige uitrolling van z/OS Connect zijn of dan toch het niet gebruiken van z/OS Connect. Voor deze fase wordt er 1 week gerekend.
+\\ \\
+De laatste fase is om de scriptie af te werken, zo zal er in die week gekeken worden om alle puntjes op de i te zetten en alles nog eens goed na te kijken alvorens in te dienen.
+\\ \\
+Hieronder een Gantt chart met alle fasen nog eens weergegeven op een visuele manier.
+\\ \\ \\ \\ \\
+\begin{center}
+    \hspace*{-1.5cm}%
+    \begin{ganttchart}[
+        vgrid,
+        bar label node/.append style={align=right}
+        ]{1}{28}
+        %labels
+        \gantttitle{Week}{28} \\
+        \gantttitle{1}{2}
+        \gantttitle{2}{2}
+        \gantttitle{3}{2}
+        \gantttitle{4}{2}
+        \gantttitle{5}{2}
+        \gantttitle{6}{2}
+        \gantttitle{7}{2}
+        \gantttitle{8}{2}
+        \gantttitle{9}{2}
+        \gantttitle{10}{2}
+        \gantttitle{11}{2}
+        \gantttitle{12}{2}
+        \gantttitle{13}{2}
+        \gantttitle{14}{2}\\
+        %tasks
+        \ganttbar{Literatuurstudie maken}{1}{3} \\
+        \ganttbar{Vereisten nakomen}{4}{5} \\
+        \ganttbar{Installatie z/OS Connect}{6}{8} \\
+        \ganttbar{Configuratie z/OS Connect}{9}{13} \\
+        \ganttbar{Experimentatie z/OS Connect}{14}{16} \\
+        \ganttbar{Uitzetten en realiseren POC}{17}{22} \\
+        \ganttbar{Resultaten analyse}{23}{24} \\
+        \ganttbar{Conclusie}{25}{26} \\
+        \ganttbar{Scriptie afwerken}{27}{28} \\
+
+        %relations
+        \ganttlink{elem0}{elem1}
+        \ganttlink{elem1}{elem2}
+        \ganttlink{elem2}{elem3}
+        \ganttlink{elem3}{elem4}
+        \ganttlink{elem4}{elem5}
+        \ganttlink{elem5}{elem6}
+        \ganttlink{elem6}{elem7}
+        \ganttlink{elem7}{elem8}
+    \end{ganttchart}
+    %    \caption{Gantt Chart}
+    \hspace*{-1.5cm}%
+\end{center}
+
+%---------- Verwachte resultaten ----------------------------------------------
+\section{Verwacht resultaat, conclusie}%
+\label{sec:verwachte_resultaten}
+
+Aan de hand van de testen wordt er bekeken of de testresultaten gunstig zijn voor ArcelorMittal. De grootste verwachting van de invoering van z/OS Connect is dat het de gebruiksvriendelijkheid zal bevorderen en dat de performantie zo goed als gelijk blijft over de volledige lijn. Dat wil zeggen in elke omgeving die ArcelorMittal heeft op hun mainframe, hun ontwikkelomgeving, productieomgeving en de omgeving voor klanten.

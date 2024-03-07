@@ -1,0 +1,414 @@
+\chapter{\IfLanguageName{dutch}{Stand van zaken}{State of the art}}%
+\label{ch:stand-van-zaken}
+
+In de snel evoluerende wereld van technologie speelt de mainframe nog altijd een essentiële rol als krachtige en betrouwbare computerinfrastructuur. Het is de ruggengraat van talloze organisaties, variërend van grote bedrijven tot overheidsinstanties, die vertrouwen op mainframes voor het verwerken van bedrijfskritieke workloads. Met de opkomst van moderne applicatie-ontwikkeling en de behoefte aan naadloze integratie met externe systemen, hebben mainframes zich aangepast aan het veranderende landschap door het aanbieden van RESTful API's en geavanceerde technologieën zoals z/OS Connect.
+\\ \\
+Deze literatuurstudie onderzoekt de samensmelting van mainframe-technologie, RESTful API's en z/OS Connect als een krachtige combinatie om een brug te slaan tussen het legendarische mainframe-erfgoed en de moderne API-gedreven wereld. Het onderzoek verkent de essentie van mainframes en hun evolutie door de jaren heen, evenals de cruciale rol die ze blijven spelen in het ondersteunen van kritieke bedrijfsprocessen.
+\\ \\
+Daarnaast wordt er dieper ingegaan op RESTful API's, een architecturale benadering voor het ontwikkelen en implementeren van webdiensten. De studie onderzoekt de kenmerken en voordelen van RESTful API's en hoe ze het mogelijk maken om gegevens en functionaliteit bloot te stellen aan externe applicaties en ontwikkelaars op een gestandaardiseerde en uniforme manier.
+\\ \\
+Verder wordt de focus gelegd op z/OS Connect, een krachtig framework ontwikkeld door IBM om mainframes te verbinden met moderne API-ecosystemen. De studie verkent de mogelijkheden van z/OS Connect, zoals het consolideren van verschillende client connect pathways in een gemeenschappelijke gateway, het bieden van standaard RESTful API's voor toegang tot z/OS-bronnen en het faciliteren van de ontdekking en integratie van mainframe-middelen.
+
+%\textcite{Knuth1998} schreef een van de standaardwerken over sorteer- en zoekalgoritmen. Experten zijn het erover eens dat cloud computing een interessante opportuniteit vormen, zowel voor gebruikers als voor dienstverleners op vlak van informatietechnologie~\autocite{Creeger2009}.
+
+\section{De mainframe}%
+\label{sec:De mainframe}
+\subsection{Etymologie van de term mainframe}
+\label{sec:Etymologie van de term mainframe}
+De term "mainframe" is afgeleid van het Engelse woord "frame", dat in dit geval verwijst naar de behuizing of structuur van de computer. Het woord "main" duidt op de centrale rol van deze computer in een gegevensverwerkingsomgeving. Een mainframe was bedoeld als het belangrijkste systeem in een computerinstallatie, waar andere randapparatuur en terminals op waren aangesloten. \autocite{IBM2023}
+\\
+\\
+De oorsprong van de term mainframe kan worden toegeschreven aan de evolutie van computersystemen van die tijd. In de beginjaren van computers werden ze meestal aangeduid als "grote computers" of "elektronische rekenmachines". Naarmate de technologie vorderde en de computers krachtiger en complexer werden, ontstond de behoefte aan een specifieke term om deze geavanceerde systemen te beschrijven. \autocite{IBM2023}
+\\
+\\
+Een van de vroegste vermeldingen van de term "mainframe" is te vinden in een publicatie uit 1958 van IBM met de titel "IBM 704 Electronic Data-Processing System: Reference Manual". In dit document wordt de term gebruikt om te verwijzen naar de centrale computer in een gegevensverwerkingsinstallatie. \autocite{IBM1955}
+\\
+\\
+\subsection{Historie van de IBM mainframe}
+De IBM mainframe heeft een rijke geschiedenis die teruggaat tot de vroege dagen van de computertechnologie.
+\\
+\\
+\subsubsection{IBM 701 Electronic Data Processing Machine (1952)}
+\label{sec:IBM 701 Electronic Data Processing Machine}
+In 1952 werd de IBM 701 gelanceerd als een geavanceerde elektronische gegevensverwerkingsmachine. Het was ontworpen om wetenschappelijke berekeningen en gegevensverwerkingstaken uit te voeren en bood meer rekenkracht en geheugencapaciteit dan eerdere computersystemen. \autocite{IBM1952}
+\\
+\\
+De IBM 701 maakte gebruik van vacuümbuizen als belangrijkste elektronische componenten en kon ongeveer 10.000 optellingen per seconde uitvoeren. Het systeem werd voornamelijk gebruikt door overheidsinstanties, laboratoria en grote bedrijven voor complexe wetenschappelijke en technische berekeningen. \autocite{IBM1952}
+\\
+\\
+De IBM 701 markeerde een belangrijke ontwikkeling in de computertechnologie, aangezien het een van de eerste commercieel succesvolle computers was die specifiek was ontworpen voor gegevensverwerking. Het opende de deur naar geavanceerdere computersystemen en legde de basis voor toekomstige mainframes. \autocite{IBM1952}
+\\
+\\
+\subsubsection{IBM System/360 (1964)}
+\label{sec:IBM System/360}
+De ontwikkeling van de IBM/360 begon in de late jaren 1950 als een ambitieus project binnen IBM om een nieuwe generatie computersystemen te creëren die compatibiliteit zouden bieden tussen verschillende modellen. Het doel was om een reeks computers te ontwikkelen die zowel kleinere als grotere organisaties kon bedienen. \autocite{IBM1964}
+\\
+\\
+Op 7 april 1964 werd de IBM/360 officieel geïntroduceerd en werd het de eerste commercieel succesvolle mainframecomputerreeks. Het systeem bood een breed scala aan modellen met verschillende prestatieniveaus en configuraties, waardoor het aan de behoeften van verschillende organisaties kon voldoen. \autocite{IBM1964}
+\\
+\\
+De IBM/360 was revolutionair omdat het een gemeenschappelijke architectuur introduceerde die compatibiliteit bood tussen de verschillende modellen. Hierdoor konden klanten hun investeringen in software en hardware beschermen, omdat programma's op meerdere systemen konden draaien. Het was ook een van de eerste computersystemen die gebruikmaakte van geïntegreerde schakelingen. \autocite{IBM1964}
+\\
+\\
+De IBM/360 had een enorme impact op de computerindustrie en droeg bij aan de standaardisatie van computerarchitectuur. Het systeem werd breed geadopteerd door bedrijven, overheden en academische instellingen over de hele wereld, en het legde de basis voor de latere ontwikkelingen in de mainframe-technologie. \autocite{IBM1964}
+\\
+\\
+\subsubsection{IBM System/370 (1970)}
+\label{sec:IBM System/370}
+De IBM/370 werd gelanceerd als opvolger van de IBM/360 en introduceerde belangrijke technologische verbeteringen, waaronder een uitgebreidere instructieset, verbeterde virtualisatiemogelijkheden en grotere geheugencapaciteit. Deze verbeteringen maakten het systeem krachtiger en veelzijdiger. \autocite{IBM1970}
+\\
+\\
+Een belangrijk kenmerk van de IBM/370 was de ondersteuning voor virtual memory, waardoor meerdere programma's tegelijkertijd konden worden uitgevoerd en gebruik konden maken van het beschikbare geheugen. Dit leidde tot verbeterde systeemprestaties en efficiënter gebruik van resources. \autocite{IBM1970}
+\\
+\\
+De IBM/370 mainframe werd breed gebruikt door bedrijven en overheidsinstanties voor diverse toepassingen, waaronder gegevensverwerking, transactionele systemen, wetenschappelijke berekeningen en databasebeheer. Het bood hogere prestaties en schaalbaarheid, waardoor het kon voldoen aan de groeiende behoeften van organisaties. \autocite{IBM1970}
+\\
+\\
+\subsubsection{IBM System ZSeries (2000)}
+\label{sec:IBM System zSeries}
+De IBM zSeries, gelanceerd in het jaar 2000, was een belangrijke mijlpaal voor de mainframe-industrie. Het bood verschillende baanbrekende kenmerken en voordelen die een grote impact hadden.
+\\
+\\
+Een van de belangrijkste aspecten van de zSeries was de aanzienlijke verbetering in prestaties en schaalbaarheid. Het systeem was in staat om enorme werklasten te verwerken en te voldoen aan de groeiende behoeften van bedrijven. Dit maakte het een krachtige keuze voor organisaties die behoefte hadden aan grote rekenkracht en verwerkingscapaciteit. \autocite{IBM}
+\\
+\\
+Naast prestatieverbeteringen stond de zSeries bekend om zijn ongeëvenaarde betrouwbaarheid en beschikbaarheid. Het bevatte geavanceerde functies zoals redundantie, fouttolerantie en hot-swappable componenten. Deze kenmerken minimaliseerden ongeplande downtime en waarborgden een hoge beschikbaarheid van systemen, wat van cruciaal belang was voor bedrijfskritieke toepassingen. \autocite{IBM}
+\\
+\\
+Een ander belangrijk aspect van de zSeries was de ondersteuning voor moderne technologieën. Het introduceerde onder andere de ondersteuning voor Linux op mainframes, waardoor organisaties zowel mainframe- als open source-technologieën op één platform konden gebruiken. Dit opende de deur voor een breed scala aan toepassingen en bood flexibiliteit in de ontwikkeling en implementatie van software. \autocite{IBM}
+\\
+\\
+Beveiliging is altijd een cruciale factor geweest in de mainframe-wereld, en de zSeries stelde op dit gebied niet teleur. Het bood geavanceerde beveiligingsfuncties, zoals ingebouwde encryptie, toegangscontrolemechanismen en auditmogelijkheden. Deze functies waarborgden de integriteit en vertrouwelijkheid van gegevens, wat essentieel is in omgevingen waar gevoelige informatie wordt verwerkt. \autocite{Goldberg2020}
+\\
+\\
+Een ander belangrijk voordeel van de zSeries was de mogelijkheid om naadloos te integreren met bestaande legacy-systemen en applicaties. Hierdoor konden organisaties waardevolle bedrijfsactiva behouden en moderniseren zonder de noodzaak van grootschalige herontwikkeling. Dit zorgde voor een soepele overgang naar de nieuwe technologie en minimaliseerde de verstoring van bestaande processen. \autocite{Goldberg2020}
+\\
+\\
+\subsubsection{Tijdlijn van de grootste IBM mainframes}
+\label{sec:Tijdlijn van alle IBM mainframes}
+\color{gray}
+\rule{\linewidth}{1pt}
+    \ytl{1952}{IBM 701-de eerste commerciële mainframe van IBM.}
+    \ytl{1964}{IBM System/360-de eerste mainframe-reeks die compatibiliteit bood over meerdere modellen.}
+    \ytl{1970}{IBM System/370-deze mainframe bood nieuwe mogelijkheden zoals virtueel geheugen en verbeterde instructiesets.}
+    \ytl{1980}{IBM System/38-mainframe met microprocessoren en een nieuwe programmeertaal genaamd \quotedblbase{CPF} (Control Program Facility).}
+    \ytl{1985}{IBM ES/9000-ondersteuning voor geavanceerde besturingssystemen zoals MVS/ESA en VM/ESA.}
+    \ytl{1990}{IBM System/390-opvolger van System/370, met de focus op verbeterde prestaties, beveiliging en schaalbaarheid.}
+    \ytl{2000}{IBM zSeries-deze mainframe had betere ondersteuning voor internet en webgebaseerde toepassingen, en verbeterde virtualisatie- en partitioneringsmogelijkheden.}
+    \ytl{2005}{IBM System z9-de opvolger van de zSeries, met een focus op betere prestaties en beveiliging, en verbeterde virtualisatie- en partitioneringsmogelijkheden.}
+    \ytl{2010}{IBM zEnterprise System-een hybride mainframe dat zowel traditionele mainframe- als BladeCenter-technologie combineerde.}
+    \ytl{2015}{IBM z13-de opvolger van zEnterprise System, met verbeterde prestaties, beveiliging en betere ondersteuning voor cloud computing en big-data analyse.}
+    \ytl{2021}{IBM z15-deze mainframe kreeg betere ondersteuning voor hybride cloud-omgevingen en AI-workloads.}
+    \ytl{2023}{IBM z16-de nieuwste generatie mainframe van IBM, het biedt real-time AI-inferentie en is het eerste kwantumveilige systeem op de markt.}
+\rule{\linewidth}{1pt}%
+\autocite{IBMa}
+\autocite{IBMb}
+\autocite{IBMc}
+\subsection{Concurrentie op het mainframe platform}
+\label{sec:Concurrentie op het mainframe platform}
+\subsubsection{1960s}
+\label{sec:1960s}
+In de jaren 1960 had IBM een dominante positie op de mainframe-markt. Ze waren de toonaangevende leverancier van mainframes en hun System/360-serie was een belangrijke mijlpaal in de computerindustrie. Echter, er waren ook andere belangrijke concurrenten die IBM uitdaagden. Burroughs Corporation was een van deze concurrenten, met hun B5000-serie die bekend stond om zijn geavanceerde architectuur en programmeertaal. Control Data Corporation (CDC) was ook een belangrijke concurrent, met hun CDC 6600 die destijds bekend stond als 's werelds snelste computer. \autocite{Museum}
+\\ \\
+\subsubsection{1970s}
+\label{sec:1970s}
+In de jaren 1970 bleef IBM een dominante positie behouden op de mainframe-markt, maar er waren nieuwe concurrenten die uitdagingen boden. Een belangrijke concurrent was Digital Equipment Corporation (DEC), een bedrijf dat bekend stond om zijn minicomputers. DEC bracht echter ook mainframes op de markt, zoals de DECsystem-10 en DECsystem-20, die aantrekkelijk waren voor verschillende organisaties. \autocite{Society2015}
+\\ \\
+Een andere belangrijke speler was Honeywell, dat zijn eigen reeks mainframes aanbood, zoals de Honeywell 6000-serie. Deze systemen waren populair in sectoren zoals banken en overheidsinstanties. \autocite{Society2015}
+\\ \\
+Bovendien begonnen in de jaren 1970 ook nieuwe bedrijven, zoals Amdahl Corporation en Hitachi, de mainframe-markt te betreden. Amdahl Corporation, opgericht door een voormalige IBM-manager, bood mainframes aan die compatibel waren met IBM-systemen, maar tegen lagere prijzen. \autocite{Society2015}
+\\ \\
+\subsubsection{1980s}
+\label{sec:1980s}
+Doorheen de jaren 1980 werd de concurrentie op de mainframe-markt intenser, met verschillende spelers die de dominante positie van IBM probeerden uit te dagen. Een grote concurrent was Digital Equipment Corporation (DEC), dat in deze periode zijn VAX-computers lanceerde. De VAX-systemen waren krachtige machines die in staat waren om complexe taken uit te voeren en werden populair in bedrijfsomgevingen. \autocite{Society2015}
+\\ \\
+Een andere opkomende concurrent was Amdahl Corporation, dat IBM-compatibele mainframes aanbood tegen lagere prijzen. Amdahl wist een aanzienlijk marktaandeel te veroveren en werd een belangrijke speler in de mainframe-industrie. \autocite{Society2015}
+\\ \\
+Ook Hewlett-Packard (HP) betrad de mainframe-markt met zijn HP 3000-serie. Deze systemen waren gericht op kleinere organisaties en boden een combinatie van mainframe-functionaliteit met de gebruiksvriendelijkheid van minicomputers. \autocite{Society2015}
+\\ \\
+Naast deze concurrenten zette IBM zelf ook belangrijke ontwikkelingen voort. In 1980 introduceerde IBM de IBM 3081-mainframeserie, die verbeterde prestaties bood ten opzichte van eerdere modellen. Later in het decennium lanceerde IBM de IBM 3090-serie, die geavanceerde mogelijkheden bood, zoals verbeterde geheugencapaciteit en verwerkingssnelheid. \autocite{Society2015}
+\\ \\
+
+\subsubsection{1990s}
+\label{sec:1990s}
+Gedurende de jaren '90 bleef IBM leider in de markt, maar er waren ook concurrenten die uitdagende alternatieven aanboden. Zoals Amdahl, dat bracht in deze periode de 9000-serie mainframes uit, die concurrerende prestaties en betrouwbaarheid boden. \autocite{Cerruzi2003}
+\\ \\
+Een andere concurrent die in de jaren 1990 opkwam, was Hitachi met zijn Hitachi Mainframe Systems. Deze systemen waren populair in de Aziatische markt en boden krachtige verwerkingsmogelijkheden en schaalbaarheid. \autocite{Cerruzi2003}
+\\ \\
+Een opvallende ontwikkeling in de jaren 1990 was de opkomst van open systemen en de Unix-besturingssystemen. Sun Microsystems was een belangrijke speler met zijn Sun Enterprise-servers, die draaiden op het Solaris-besturingssysteem. Deze systemen werden vaak gebruikt voor zware reken- en databasetoepassingen. \autocite{Cerruzi2003}
+\\ \\
+Daarnaast begon IBM zelf ook met het aanbieden van open-systemen op basis van de IBM RS/6000-architectuur, die het AIX-besturingssysteem draaiden. Deze systemen combineerden de kracht van mainframes met de flexibiliteit van open systemen. \autocite{Cerruzi2003}
+\\ \\
+\subsubsection{2000s}
+\label{sec:2000s}
+Bij het begin van het nieuwe millenium bleef IBM veruit de grootste speler in de mainframe-wereld. Toch waren er nog altijd geduchte concurrenten zoals Fujitsu, een Japans technologiebedrijf. Fujitsu bood zijn eigen lijn van mainframes aan, zoals de Fujitsu BS2000-serie, die bekend stond om zijn betrouwbaarheid en schaalbaarheid. \autocite{Lamonica2004}
+\\ \\
+Een andere uitdager was Hewlett-Packard (HP), dat de NonStop-servers aanbood. Deze servers waren gericht op transactionele verwerking en waren populair in sectoren zoals banken en financiële dienstverlening. \autocite{Lamonica2004}
+\\ \\
+Naast deze gevestigde spelers begon de opkomst van cloud computing in de jaren 2000 de dynamiek in de mainframe-markt te veranderen. Bedrijven zoals Amazon Web Services (AWS) en Google Cloud Platform (GCP) boden schaalbare en flexibele cloudinfrastructuur aan, waardoor organisaties een alternatief kregen voor het beheren van hun eigen mainframes. \autocite{AWS} \autocite{Google}
+\\ \\
+IBM speelde ook in op de opkomst van cloud computing en introduceerde zijn eigen mainframe-gebaseerde cloudoplossingen, zoals IBM Cloud en IBM Z als een Service. Deze diensten boden klanten de mogelijkheid om mainframe-functionaliteit te benutten in een cloudomgeving. \autocite{IBM2020}
+\\ \\
+\subsubsection{2010s}
+\label{sec:2010s}
+In de jaren 2010 zette IBM zijn dominante positie voort in de mainframe-markt, met zijn IBM Z-systemen die bekend stonden om hun schaalbaarheid, beveiliging en betrouwbaarheid. IBM investeerde voortdurend in de ontwikkeling van nieuwe mainframe-technologieën en introduceerde regelmatig verbeterde versies van zijn mainframe-systemen. \autocite{Goldberg2020}
+\\ \\
+Naast IBM waren er enkele andere spelers die zich in de mainframe-markt begaven. Een belangrijke concurrent was Oracle Corporation, dat zijn Engineered Systems-lijn aanbood, waaronder de Oracle SuperCluster en de Oracle Exadata Database Machine. Deze systemen combineerden high-performance hardware met geoptimaliseerde software en waren specifiek gericht op gegevensverwerking en databasebeheer. \autocite{Oracle}
+\\ \\
+Een andere opkomende trend in die periode was de verschuiving naar gevirtualiseerde en softwaregedefinieerde infrastructuren. Bedrijven zoals VMware, met zijn virtualisatieoplossingen, en OpenStack, met zijn open-source cloudbeheerplatform, begonnen aan populariteit te winnen. Hoewel deze technologieën niet rechtstreeks mainframe-gericht waren, boden ze alternatieve manieren om IT-infrastructuur te beheren en te schalen. Bovendien speelden cloudproviders zoals Amazon Web Services (AWS), Microsoft Azure en Google Cloud Platform (GCP) een steeds grotere rol in de IT-industrie. \autocite{Google} \autocite{AWS} \autocite{VMWare}
+\\ \\
+\subsubsection{Heden}
+\label{sec:Heden}
+In de hedendaagse markt is IBM nog altijd heer en meester met zijn IBM Z-systemen. Deze systemen zijn geoptimaliseerd voor high-performance computing, beveiliging en schaalbaarheid, en worden nog steeds gebruikt door organisaties over de hele wereld voor kritieke workloads en bedrijfsprocessen.
+\\ \\
+Naast IBM hebben andere technologiebedrijven, zoals Fujitsu en Unisys, nog steeds een aanwezigheid in de mainframe-markt. Fujitsu biedt zijn BS2000-mainframes aan, die zich richten op betrouwbaarheid en schaalbaarheid. Unisys heeft zijn ClearPath Libra- en Dorado-systemen die geschikt zijn voor bedrijfskritieke applicaties. \autocite{Fujitsu} \autocite{Unisys}
+\\ \\
+Een opvallende trend is de verschuiving naar hybride cloudarchitecturen en de opkomst van cloud-native technologieën. Bedrijven zijn op zoek naar manieren om mainframe-technologie te integreren met cloudoplossingen, zoals IBM Cloud, Amazon Web Services (AWS), Microsoft Azure en Google Cloud Platform (GCP). Dit stelt organisaties in staat om de schaalbaarheid, flexibiliteit en kostenefficiëntie van de cloud te benutten, terwijl ze nog steeds kunnen profiteren van de kracht en betrouwbaarheid van mainframes voor hun kritieke workloads. \autocite{Google} \autocite{AWS}
+\\ \\
+Een andere belangrijke ontwikkeling in de mainframe-markt is de focus op beveiliging. Met de groeiende dreiging van cyberaanvallen en gegevensinbreuken, is beveiliging een topprioriteit geworden voor organisaties. IBM Z-systemen hebben ingebouwde beveiligingsfuncties, zoals IBM Secure Service Container en Secure Execution voor het beschermen van gevoelige gegevens en het voorkomen van ongeautoriseerde toegang. \autocite{IBMd}
+\\ \\
+\section{RESTful APIs}%
+\label{sec:RESTful APIs}
+In dit hoofdstuk wordt er beschreven wat een RESTful API is en wat een API provider en -consumer is, wat ze kunnen en hoe ze werken. Verder wordt er ook besproken wat en API nu RESTful maakt.
+
+\subsection{Wat is een API?}%
+\label{sec:Wat is een API?}
+\paragraph{Definitie}
+Een Application Programming Interface (API) is een set van regels, protocollen en hulpmiddelen die ontwikkelaars in staat stellen om te communiceren met softwaretoepassingen, besturingssystemen of andere platforms. Het fungeert als een tussenlaag die de interactie tussen verschillende softwarecomponenten vergemakkelijkt door een gestandaardiseerde manier te bieden om gegevens en functionaliteit uit te wisselen. Een API definieert de beschikbare functies, parameters, gegevensstructuren en gedragingen die ontwikkelaars kunnen gebruiken bij het integreren van hun eigen applicaties met externe systemen. \autocite{TransIP}
+\\
+\paragraph{Toepassing van een API}
+Een API fungeert als een tussenlaag tussen verschillende applicaties, waardoor ze met elkaar kunnen communiceren en samenwerken. Het stelt ontwikkelaars in staat om specifieke functionaliteit van een applicatie bloot te stellen en beschikbaar te stellen voor andere applicaties. Dit opent de deur naar talloze toepassingen, zoals:
+\begin{itemize}
+    \item Integratie van systemen: API's vergemakkelijken de integratie van verschillende systemen en applicaties binnen een organisatie. Door middel van goed gedefinieerde interfaces kunnen systemen naadloos gegevens uitwisselen en functionaliteit delen.
+    \item Ontwikkeling van mobiele apps: API's spelen een essentiële rol bij het creëren van mobiele applicaties. Ze stellen ontwikkelaars in staat om toegang te krijgen tot de functionaliteit van andere applicaties of services, zoals het ophalen van gegevens van sociale mediaplatforms of het verwerken van betalingen via externe betalingsgateways.
+    \item Openbare API's: Organisaties bieden openbare API's aan als een manier om externe ontwikkelaars toegang te geven tot hun functionaliteit en gegevens. Dit stimuleert de ontwikkeling van een ecosysteem van applicaties die gebruikmaken van de aangeboden API, wat zowel de organisatie als de ontwikkelaars ten goede komt.
+\end{itemize} \autocite{Schoemaker2019}
+\\
+\paragraph{Nut van een API}
+Het gebruik van een API biedt diverse voordelen die de ontwikkeling van software en de interactie tussen applicaties verbeteren:
+\begin{itemize}
+    \item Hergebruik van functionaliteit: Door het gebruik van een API kunnen ontwikkelaars bestaande functionaliteit hergebruiken in plaats van deze opnieuw te moeten ontwikkelen. Dit bespaart tijd en middelen, en maakt snellere ontwikkeling mogelijk.
+    \item Vereenvoudigde samenwerking: API's stellen verschillende applicaties in staat om samen te werken en gegevens uit te wisselen zonder dat ze volledig afhankelijk zijn van de interne werking van elkaars systemen. Dit vergemakkelijkt de samenwerking tussen verschillende teams en organisaties.
+    \item Flexibiliteit en schaalbaarheid: API's bieden flexibiliteit doordat ze applicaties in staat stellen om onafhankelijk van elkaar te evolueren. Ze maken ook schaalbaarheid mogelijk, waarbij de belasting van een applicatie kan worden verdeeld over meerdere servers of cloud-instanties om aan de toenemende vraag te voldoen.
+    \item Innovatie en groei: API's stimuleren innovatie door externe ontwikkelaars toe te staan nieuwe applicaties en diensten te bouwen die gebruikmaken van de functionaliteit van een API. Dit kan leiden tot nieuwe zakelijke kansen en groei.
+    \item Verbeterde gebruikerservaring: Door gebruik te maken van API's kunnen applicaties naadloos integreren met andere diensten en systemen, wat resulteert in een verbeterde gebruikerservaring. Bijvoorbeeld, het integreren van kaartfunctionaliteit via een API in een reisplanningsapp kan gebruikers helpen bij het vinden van de beste routes en locaties.
+    \item Gegevensuitwisseling en interoperabiliteit: API's vergemakkelijken de uitwisseling van gegevens tussen applicaties met verschillende technologieën en systemen. Ze zorgen voor interoperabiliteit door een gestandaardiseerde manier te bieden om gegevens te delen en te interpreteren.
+\end{itemize} \autocite{Wouter}
+\paragraph{Functionele componenten van een API}
+API's bestaan uit verschillende functionele componenten die de interactie en gegevensuitwisseling mogelijk maken. Deze componenten omvatten:
+\begin{itemize}
+    \item Methoden en operaties: API's specificeren de beschikbare methoden en operaties die ontwikkelaars kunnen gebruiken om bepaalde acties uit te voeren of gegevens te manipuleren. Dit omvat het ophalen, bijwerken, verwijderen of maken van nieuwe gegevens, afhankelijk van de functionaliteit die wordt aangeboden door de API.
+    \item Parameters: API's definiëren de parameters die nodig zijn om de methoden en operaties correct uit te voeren. Parameters kunnen variabelen, objecten of gegevensstructuren zijn die specifieke informatie bevatten die nodig is voor de actie die wordt uitgevoerd. Ontwikkelaars moeten de juiste parameters verstrekken om de gewenste resultaten te verkrijgen.
+    \item Dataformaten: API's specificeren ook de dataformaten die worden gebruikt bij de uitwisseling van gegevens tussen systemen. Dit kan JSON (JavaScript Object Notation), XML (eXtensible Markup Language), CSV (Comma-Separated Values) of andere gestandaardiseerde formaten zijn die breed worden ondersteund en gemakkelijk kunnen worden verwerkt door ontwikkelaars.
+    \item Autorisatie en authenticatie: API's omvatten vaak mechanismen voor autorisatie en authenticatie om de toegang tot gegevens en functionaliteit te beheren.
+\end{itemize} \autocite{Arellano2021}
+\\
+\subsection{Wat maakt een API RESTful?}
+\label{sec:Wat maakt een API RESTful}
+\paragraph{Definitie}
+Een RESTful API (Representational State Transfer) is een architecturale benadering voor het ontwerpen en implementeren van web-API's. Het is gebaseerd op een set principes en best practices die zijn afgeleid van het HTTP-protocol en de fundamentele kenmerken van het web. Een RESTful API maakt gebruik van HTTP-methoden, URI's en dataformaten om communicatie mogelijk te maken tussen verschillende systemen en applicaties. \autocite{Gillis2020}
+\paragraph{Principes van REST}
+Een RESTful API is gebaseerd op een aantal principes die de architectuur en interactie ervan definiëren.
+
+\begin{itemize}
+    \item Statelessness: Een RESTful API is stateless, wat betekent dat elke clientaanvraag alle benodigde informatie bevat om de server te begrijpen en te verwerken. De server slaat geen sessiegegevens op tussen opeenvolgende aanvragen, waardoor schaalbaarheid en betrouwbaarheid worden bevorderd.
+    \item Uniforme interface: Een RESTful API maakt gebruik van een uniforme interface die consistentie en interoperabiliteit bevordert. Deze interface omvat het gebruik van standaard HTTP-methoden, zoals GET, POST, PUT en DELETE, om bewerkingen op bronnen uit te voeren. Daarnaast worden URI's gebruikt om bronnen te identificeren en te lokaliseren.
+    \item Client-Server: Een RESTful API maakt gebruik van een client-serverarchitectuur, waarbij de client en server onafhankelijk van elkaar kunnen evolueren. De server biedt resources aan en verwerkt aanvragen van de client, terwijl de client verantwoordelijk is voor het initiëren van de communicatie.
+    \item Cachebaarheid: Een RESTful API maakt gebruik van caching om de prestaties en schaalbaarheid te verbeteren. De server kan aangeven of een response gecachet mag worden door het gebruik van geschikte HTTP-headers, waardoor clients in staat zijn om toekomstige aanvragen te cachen en sneller te reageren.
+    \item Layered systemen: Een RESTful API maakt gebruik van gelaagdheid, waarbij elke laag specifieke functionaliteit biedt zonder dat de andere lagen daarvan op de hoogte hoeven te zijn. Dit bevordert de flexibiliteit en modulariteit van het systeem.
+\end{itemize} \autocite{Gillis2020}
+
+\paragraph{Representatie en resources in een RESTful API}
+Een RESTful API behandelt resources als de kern van zijn ontwerp. Een resource kan elk concept of elke entiteit zijn die via de API toegankelijk is, zoals gebruikers, producten of bestellingen. Elke resource heeft een unieke URI die het identificeert.
+\\ \\
+Bij het communiceren met een RESTful API worden resources gerepresenteerd door middel van verschillende dataformaten, zoals JSON (JavaScript Object Notation) of XML (eXtensible Markup Language). Deze representatie wordt overgedragen tussen client en server via HTTP-responses. \autocite{Gillis2020}
+
+\subsection{Wat is een API provider?}
+\label{sec:Wat is een API provider?}
+\paragraph{Definitie}
+Een API-provider is een entiteit, meestal een organisatie of een ontwikkelaar, die API's ontwikkelt, beheert en beschikbaar stelt aan andere partijen om te gebruiken in hun applicaties of systemen. Als API-provider speelt een organisatie of ontwikkelaar een cruciale rol bij het ontwikkelen, beheren en beschikbaar stellen van API's aan andere partijen. Door API-ontwikkeling, beheer, authenticatie en autorisatie, en het verstrekken van documentatie en ondersteuning, maakt een API-provider het mogelijk voor andere ontwikkelaars om naadloos te integreren met de aangeboden API's. Met behulp van een API Gateway en ondersteunende technologieën zoals dataformaten en protocollen, kan de API-provider een betrouwbare en gestructureerde manier bieden om gegevensuitwisseling en functionaliteit tussen applicaties mogelijk te maken. \autocite{Cleo2023}
+
+\paragraph{Taken en verantwoordelijkheden}
+De taken en verantwoordelijkheden van een API-provider omvatten:
+
+\begin{itemize}
+    \item API-ontwikkeling: De API-provider is verantwoordelijk voor het ontwikkelen van de API's volgens specifieke vereisten en standaarden. Dit omvat het bepalen van de functionaliteit die de API's bieden, het definiëren van de endpoints, het specificeren van de ondersteunde datatypes en parameters, en het documenteren van de API-specificaties.
+    \item API-beheer: Een API-provider beheert de levenscyclus van de API's, inclusief versiebeheer, het bijhouden van wijzigingen en het bieden van ondersteuning en onderhoud. Dit omvat ook het monitoren van de API-prestaties, het identificeren van eventuele fouten of problemen en het nemen van maatregelen om de stabiliteit en beschikbaarheid van de API te waarborgen.
+    \item Authenticatie en autorisatie: API-providers implementeren mechanismen voor authenticatie en autorisatie om te controleren wie toegang heeft tot hun API's en welke acties ze mogen uitvoeren. Dit kan onder meer het verstrekken van API-sleutels, tokens of het gebruik van OAuth-protocollen om veilige toegang te bieden tot de API's.
+    \item Documentatie en ondersteuning: Het verstrekken van uitgebreide documentatie, handleidingen en voorbeelden is een belangrijke verantwoordelijkheid van een API-provider. Dit stelt ontwikkelaars in staat om de API's gemakkelijk te begrijpen en correct te integreren in hun applicaties. Daarnaast biedt de API-provider technische ondersteuning en helpt bij het oplossen van problemen of het beantwoorden van vragen van ontwikkelaars.
+\end{itemize} \autocite{Cleo2023}
+
+\paragraph{Hoe werkt het?}
+Het werken van een API-provider omvat verschillende technologieën en componenten. Hier zijn enkele belangrijke aspecten van het functioneren van een API-provider:
+
+\begin{itemize}
+    \item API Gateway: Een API Gateway fungeert als een toegangspunt voor alle API-aanvragen. Het fungeert als een tussenlaag tussen de API-provider en de gebruikers van de API's. Het verwerkt verzoeken, voert authenticatie en autorisatie uit, en stuurt de verzoeken door naar de juiste API-endpoints.
+    \item Dataformaten: API's kunnen verschillende dataformaten ondersteunen, zoals JSON (JavaScript Object Notation) of XML (eXtensible Markup Language), voor het uitwisselen van gegevens tussen de API-provider en de gebruikers van de API's.
+    \item Protocollen: API's maken gebruik van standaardprotocollen zoals HTTP (Hypertext Transfer Protocol) voor het verzenden en ontvangen van API-aanvragen en -reacties. Daarnaast kunnen ze ook gebruikmaken van protocollen zoals REST (Representational State Transfer) of SOAP (Simple Object Access Protocol) voor de structurering en communicatie van de API's.
+\end{itemize} \autocite{Cleo2023}
+
+\subsection{Wat is een API consumer?}
+\label{sec:Wat is een API consumer?}
+\paragraph{Definitie}
+Een API-consument is een entiteit, meestal een softwaretoepassing of een ontwikkelaar, die gebruikmaakt van een API (Application Programming Interface) om gegevens, services of functionaliteiten van een andere softwarecomponent of systeem te benaderen. Het fungeert als de client of gebruiker van de API en maakt interactie mogelijk met de aangeboden functionaliteit. \autocite{Cleo2023}
+
+\paragraph{Hoe werkt het?}
+Een API-consument werkt volgens een specifiek proces om toegang te krijgen tot de gewenste gegevens of services.
+In de eerste stap begint een API-consument met het identificeren van de juiste API die de gewenste functionaliteit biedt. Dit omvat het raadplegen van API-documentatie en het begrijpen van de beschikbare endpoints, parameters en gegevenstypen. \autocite{Cleo2023}
+\\ \\
+In de volgende stap wordt er gekeken naar de authenticatie en autorisatie. In veel gevallen vereist een API dat de consument zich authenticeert en geautoriseerd wordt voordat toegang tot de gegevens of services wordt verleend. Dit kan gebeuren door middel van API-sleutels, tokens of OAuth-verificatie. De API-consument moet de benodigde inloggegevens verstrekken om zich te verifiëren en toegang te krijgen tot de API. \autocite{Cleo2023}
+\\ \\
+Als de API-consument nu eenmaal geauthenticeerd is kan die verzoeken indienen bij de API. Dit gebeurt meestal door middel van HTTP-verzoeken, zoals GET, POST, PUT of DELETE, afhankelijk van de gewenste interactie met de API. De consument stuurt het verzoek samen met de vereiste parameters, zoals queryparameters of verzoeklichamen, om specifieke gegevens op te halen, te maken, bij te werken of te verwijderen. \autocite{Cleo2023}
+\\ \\
+De laatste stap is het beheren van de reacties van de API. Zodra het verzoek is verzonden, ontvangt de API-consument een reactie van de API. Deze reactie bevat meestal de gevraagde gegevens of een bevestiging van de uitgevoerde actie. De API-consument moet de ontvangen reactie verwerken, de gegevens extraheren en de benodigde acties ondernemen op basis van de reactie. \autocite{Cleo2023}
+\\
+\section{z/OS Connect}%
+\label{sec:z/OS Connect}
+Dit hoofdstuk zal bespreken wat z/OS Connect is, wat de mogelijkheden ervan zijn, hoe het werkt en hoe de architectuur en beveiliging in elkaar zit.
+
+\subsection{Wat is z/OS Connect?}
+\label{sec:Wat is z/OS Connect?}
+
+\paragraph{Definitie}
+z/OS Connect stelt een framework ter beschikking waarmee z/OS-gebaseerde programma's en gegevens volledig geïntegreerd kunnen worden in de nieuwe API-economie voor mobile en cloud-toepassingen. z/OS Connect is een product van IBM en is gebouwd op de Websphere Application Server voor z/OS Liberty Profile en vertrouwt op veel van zijn eigen kerncapaciteiten voor de essentiële functies. \autocite{IBMe}
+
+\paragraph{De nood aan z/OS Connect}
+Volgens het artikel van Kanhaiya \textcite{Kumar2021}, Principal Technical Lead bij Mortgage Technology, zijn er heel wat voordelen verbonden aan het implementeren van z/OS Connect. Zo beidt z/OS Connect toegevoegde waarde voor klanten die z/OS gebruiken door hen in staat te stellen meerdere client connect pathways te consolideren in een enkele gedeelde gateway of concentrator. Dit stelt gebruikers in staat om synchrone oproepen te doen naar bedrijfsmiddelen en gegevens op z/OS-besturingssystemen. Met behulp van standaard REST HTTP-oproepen kunnen bijna alle z/OS-middelen, applicaties en gegevens worden benaderd. Een belangrijk aspect van z/OS Connect is de mogelijkheid om alle middelen op te vragen of te ontdekken die zijn gedefinieerd in de configuratierepository van z/OS Connect. \autocite{IBMe}
+\\ \\
+z/OS Connect is dus gericht om een verbindingsmiddel te zijn tussen gebruikers die resources van een mainframe willen binnenhalen zonder daadwerkelijk op een mainframe aan te melden. Hierdoor kunnen mensen zonder enige voorkennis over het gebruik van een mainframe gemakkelijk met een enkele REST API call gegevens en handelingen uitvoeren. \autocite{IBMe}
+\\ \\
+\paragraph{De architectuur van z/OS Connect}
+z/OS Connect bestaat uit een heleboel verschillende componenten. Die componenten kunnen onderverdeeld worden in twee groepen, namelijk de Runtime components en de Management components.
+
+\begin{enumerate}
+    \item Runtime Components
+    \begin{itemize}
+        \item API Gateway
+        \item Data Service Provider
+        \item Service Provider Framework
+        \item Security Components
+    \end{itemize}
+    \item Management Components
+    \begin{itemize}
+        \item Administration Console
+        \item Configuration Repository
+        \item Developer Toolkit
+    \end{itemize}
+\end{enumerate} \autocite{IBM2023a}
+
+\paragraph{Runtime Components}
+Een runtime component is een software component die op een computer draait en die verantwoordelijk is voor het uitvoeren van specifieke taken terwijl het systeem operationeel is. Zo'n component kan bijvoorbeeld dienen als een uitvoeringsomgeving voor applicaties of als een interface voor het uitvoeren van specifieke taken op de achtergrond. \autocite{IBM2023a}
+\\ \\
+In het geval van z/OS Connect bestaan de runtime componenten uit de verschillende softwarecomponenten die nodig zijn om API Gateway-services te bieden voor z/OS-applicaties en -gegevens. Deze componenten omvatten onder andere de API Gateway, Data Service Provider, Service Provider Framework en Security Components. De runtime-componenten communiceren met backend z/OS-systemen om de gegevens en services te leveren die nodig zijn om inkomende API-verzoeken te verwerken. \autocite{IBM2023a}
+\\
+\subparagraph{API Gateway} \mbox{} \\
+De API Gateway is een belangrijk onderdeel van de z/OS Connect-architectuur en heeft als belangrijkste taak het ontvangen en routeren van inkomende API-verzoeken naar de juiste backend-applicatie of service die op z/OS draait. \autocite{IBM2023a}
+\\ \\
+De API Gateway is verantwoordelijk voor de verwerking van alle inkomende API-verzoeken en het bieden van een beveiligde en geoptimaliseerde toegang tot de achterliggende systemen. Het handelt authenticatie en autorisatie van de API-verzoeken af en zorgt voor beveiliging van de communicatie via SSL/TLS encryptie. \autocite{IBM2023a}
+\\ \\
+De API Gateway kan ook worden geconfigureerd om de verzoeken te transformeren en om te zetten naar de juiste indeling die nodig is voor de backend-services. Dit betekent dat z/OS Connect API's op een uniforme manier kunnen worden aangeboden, ongeacht de verschillende indelingen van de onderliggende systemen. \autocite{IBM2023a}
+\\ \\
+Over het algemeen maakt de API Gateway het mogelijk om z/OS-applicaties en -gegevens via RESTful API's toegankelijk te maken voor externe klanten en applicaties, terwijl de veiligheid en betrouwbaarheid van de communicatie wordt gegarandeerd. \autocite{IBM2023a}
+\\ \\
+\subparagraph{Data Service Provider} \mbox{} \\
+Deze component heeft als hoofdtaak om een uniforme toegang te bieden tot verschillende soorten backend-databases en -gegevens op z/OS.
+\\ \\
+De Data Service Provider fungeert als een middleware-laag tussen de backend-data en de API Gateway, en biedt een uniforme en gestandaardiseerde manier om toegang te krijgen tot verschillende soorten data. Het stelt ontwikkelaars in staat om data te integreren vanuit verschillende bronnen en het als één enkele bron aan te bieden via RESTful API's. \autocite{IBM2023a}
+\\ \\
+De Data Service Provider ondersteunt verschillende typen database- en dataformaten, zoals IMS-databases, Db2-databases, VSAM-bestanden en MQ-series. Het biedt ook een uniforme API voor het ophalen, updaten, invoegen en verwijderen van data, ongeacht de onderliggende database of datastructuur. \autocite{IBM2023a}
+\\ \\
+\subparagraph{Service Provider Framework} \mbox{} \\
+Het Service Provider Framework biedt een standaard framework en API's voor het ontwikkelen van aangepaste serviceproviders die toegang bieden tot verschillende soorten z/OS-resources, zoals CICS-transacties, IMS-transacties, Db2-databases en MQ-series. Dit stelt ontwikkelaars in staat om snel en gemakkelijk RESTful API's te maken voor deze resources, zonder dat ze diepgaande kennis nodig hebben van de interne werking van deze resources. \autocite{IBM2023a}
+\\ \\
+Het Service Provider Framework fungeert als een interface tussen de API Gateway en de backend-resources, en zorgt voor de vertaling van RESTful API-calls naar de specifieke resource-aanroepen die nodig zijn om de gevraagde acties uit te voeren. Het biedt ook verschillende functionaliteiten, zoals transformatie van data, beveiliging en authenticatie, en het implementeren van businessregels. \autocite{IBM2023a}
+\\ \\
+Het framework is ontworpen om flexibel en uitbreidbaar te zijn, zodat ontwikkelaars eenvoudig nieuwe serviceproviders kunnen toevoegen voor andere soorten z/OS-resources en -services. \autocite{IBM2023a}
+\\ \\
+\subparagraph{Security Components} \mbox{} \\
+De vierde en laatste Runtime Component zijn de Security Components en bieden verschillende beveiligingsfuncties om de API's te beschermen tegen ongeautoriseerde toegang en aanvallen van buitenaf. \autocite{IBM2023a}
+\\ \\
+Een van de belangrijkste beveiligingsfuncties is de ondersteuning voor HTTPS-verbindingen, waarmee alle communicatie tussen de API Gateway en de client-applicaties wordt versleuteld. Hierdoor worden de vertrouwelijkheid en integriteit van de gegevens gewaarborgd. \autocite{IBM2023a}
+\\ \\
+Daarnaast biedt z/OS Connect een geavanceerde autorisatie- en authenticatie-functionaliteit. Gebruikers moeten zich eerst authentiseren via de API Gateway, voordat ze toegang krijgen tot de backend-resources. De API Gateway maakt gebruik van verschillende authenticatiemethoden, zoals LDAP, RACF en Kerberos, om de identiteit van de gebruiker te verifiëren. \autocite{IBM2023a}
+\\ \\
+Verder biedt het ook ondersteuning voor het beheren van toegangsrechten en autorisaties. Ontwikkelaars kunnen aangepaste autorisatieregels implementeren voor specifieke API's, waarbij ze toegangsrechten toekennen op basis van verschillende criteria, zoals rollen, gebruikersgroepen, IP-adressen en meer. \autocite{IBM2023a}
+\\ \\
+Tot slot zijn er ook verschillende logging- en monitoringfuncties om beveiligingsgebeurtenissen te detecteren en te rapporteren, zoals ongeautoriseerde toegangspogingen, verdachte activiteiten en meer. Dit stelt beheerders in staat om snel te reageren op potentiële beveiligingsproblemen en deze op te lossen voordat ze kunnen leiden tot ernstige schade. \autocite{IBM2023a}
+\\ \\
+\paragraph{Management Components}
+Deze component zijn verantwoordelijk voor het beheren en configureren van de andere componenten in de architectuur. Het biedt beheerders en ontwikkelaars een intuïtieve interface om de API Gateway, Service Provider Framework en Data Service Providers te configureren en te beheren. \autocite{IBM2023a}
+\\ \\
+De managementcomponent van z/OS Connect biedt verschillende functies voor het configureren van API's, waaronder het instellen van toegangsbeperkingen, autorisatieregels, URL-paden en meer. Dit stelt ontwikkelaars in staat om API's snel en gemakkelijk te definiëren en te implementeren, en om verschillende configuraties te testen voordat ze in productie worden genomen. \autocite{IBM2023a}
+\\ \\
+Daarnaast biedt het ook uitgebreide monitoring- en rapportagefuncties, waarmee beheerders de prestaties en beschikbaarheid van de API's kunnen bijhouden en eventuele problemen snel kunnen oplossen. Beheerders kunnen verschillende metingen en statistieken bekijken, zoals het aantal aanvragen per API, de responstijden, foutcodes en meer. \autocite{IBM2023a}
+\\ \\
+\subparagraph{Administration Console} \mbox{} \\
+Deze component geeft je een grafische gebruikersinterface (GUI) die wordt gebruikt voor het beheer en de configuratie van z/OS Connect. Het biedt een centrale locatie voor beheerders om de configuratie van de API Gateway, Service Provider Framework en Data Service Providers te bekijken en wijzigen. \autocite{IBM2023a}
+\\ \\
+De administration console biedt verschillende functies voor het configureren van API's, zoals het toevoegen van nieuwe API's, het instellen van autorisatie- en toegangsbeperkingsregels, het instellen van SSL-certificaten en meer. Het biedt ook een gedetailleerd overzicht van de prestaties van API's, inclusief statistieken over het aantal aanvragen per API, responstijden en foutcodes. \autocite{IBM2023a}
+\\ \\
+Een andere belangrijke functie van de console is het beheer van de beveiliging van z/OS Connect. Beheerders kunnen SSL-certificaten beheren, toegangscontroles instellen en beheren, en integreren met externe beveiligingsmechanismen. \autocite{IBM2023a}
+\\ \\
+\subparagraph{Configuration Repository} \mbox{} \\
+De configuration repository fungeert als een centrale opslagplaats voor alle API-configuratiegegevens en biedt beheerders een eenvoudige manier om de API-configuratie te beheren en te wijzigen. Door de configuratiegegevens op te slaan in een centrale repository, kunnen beheerders gemakkelijk wijzigingen aanbrengen en ervoor zorgen dat deze wijzigingen consistent worden toegepast op alle API's. \autocite{IBM2023a}
+\\ \\
+De configuration repository wordt ook gebruikt door de API Gateway om de vereiste informatie te verkrijgen voor het routeren van verzoeken naar de juiste services. Wanneer een verzoek binnenkomt, controleert de API Gateway de configuratiegegevens in de configuration repository om te bepalen welke service moet worden aangeroepen en hoe het verzoek moet worden verwerkt. \autocite{IBM2023a}
+\\ \\
+\subparagraph{Developer Toolkit} \mbox{} \\
+De developer toolkit van z/OS Connect is een set van tools die ontwikkelaars gebruiken om API's te ontwerpen, bouwen en testen. De toolkit is ontworpen om het ontwikkelingsproces van API's te vereenvoudigen en versnellen. \autocite{IBM2023b}
+\\ \\
+De toolkit bevat verschillende tools die ontwikkelaars helpen bij het bouwen van API's, waaronder:
+\begin{itemize}
+    \item API Editor: Hiermee kunnen ontwikkelaars API-beschrijvingen maken in het OpenAPI-formaat. Dit stelt ze in staat om de functionaliteit en vereisten van de API te specificeren.
+    \item API Designer: Dit is een grafische tool waarmee ontwikkelaars de API kunnen ontwerpen en configureren. Het biedt een gebruiksvriendelijke interface voor het definiëren van de API's.
+    \item API Test Client: In deze tool kunnen API-calls uitgevoerd en gecontroleerd worden of deze correct worden verwerkt en of de juiste resultaten worden geretourneerd.
+    \item Codegeneratie: Deze functie is beschikbaar in de API Designer. Hiermee kunnen ontwikkelaars de benodigde code genereren om de API te implementeren. Dit kan de ontwikkelingstijd aanzienlijk verkorten.
+\end{itemize} \autocite{IBM2023b}
+\\ \\
+\subsection{Hoe werkt z/OS Connect?}
+\label{sec:Hoe werkt z/OS Connect?}
+Er zijn heel wat verschillende stappen die nog moeten ondernomen worden voordat je met z/OS Connect kan werken.
+\begin{enumerate}
+    \item Voorbereiden van het installatieproces.
+    \item Uitvoeren van de installatie.
+    \item Configuratie van z/OS Connect.
+    \item Testen en valideren van de installatie.
+\end{enumerate}
+\\ \\
+\subsubsection{Voorbereiden van het installatieproces}
+\label{sec:Voorbereiden van het installatieproces}
+De installatie van z/OS Connect vereist enkele belangrijke voorbereidende stappen om een soepele implementatie en configuratie te waarborgen. In dit deel worden de vereiste voorbereidingen beschreven voordat de installatie van z/OS Connect kan plaatsvinden. Deze stappen zijn cruciaal om ervoor te zorgen dat het installatieproces efficiënt verloopt en dat het uiteindelijke resultaat aan de verwachtingen voldoet. \autocite{Software2012}
+\\ \\
+Allereerst is het essentieel om de vereiste installatiebestanden te verkrijgen. Deze bestanden kunnen worden gedownload van de officiële IBM-website, waar een geldig IBM-klantaccount vereist is. Zorg ervoor dat de juiste versie van z/OS Connect wordt geselecteerd, die compatibel is met de specifieke mainframe-omgeving. \autocite{Software2012}
+\\ \\
+Voordat de installatie van z/OS Connect wordt gestart, moeten de systeemvereisten zorgvuldig worden gecontroleerd. Dit omvat de compatibiliteit van het mainframe met de vereiste hardware en software, zoals het juiste besturingssysteem, voldoende beschikbare opslagruimte en geheugen, en andere relevante systeemparameters. De gedetailleerde systeemvereisten kunnen worden verkregen uit de documentatie of de officiële bronnen van IBM. \autocite{Software2012}
+\\ \\
+Om een succesvolle installatie en configuratie van z/OS Connect te waarborgen, moeten de juiste autorisaties worden verkregen. Dit omvat de benodigde bevoegdheden om bestanden te kopiëren, installeren en configuratiewijzigingen aan te brengen op het mainframe. Samenwerking met het mainframe-administratieteam is nodig om de vereiste autorisaties te verkrijgen. \autocite{Software2012}
+\\ \\
+Voordat wijzigingen worden aangebracht op het mainframe, is het van essentieel belang om een volledige back-up te maken van belangrijke bestanden en configuraties. Dit zorgt ervoor dat er een herstelpunt beschikbaar is in geval van problemen tijdens de installatie of configuratie. Het back-upproces moet worden uitgevoerd in overleg met de mainframe-administrators.  \autocite{Software2012}
+\\ \\
+Aangezien de installatie en configuratie van z/OS Connect enige downtime kunnen veroorzaken, is het van cruciaal belang om deze zorgvuldig te plannen. De installatie dient te worden uitgevoerd op een geschikt moment waarop de impact op lopende bedrijfsprocessen minimaal is. Het is belangrijk om alle relevante belanghebbenden en gebruikers op de hoogte te stellen van de geplande downtime en de verwachte duur ervan, om eventuele verstoringen tot een minimum te beperken.  \autocite{Software2012}
+\\ \\
+Tot slot moet de netwerkconnectiviteit tussen het mainframe en de externe systemen waarmee z/OS Connect zal integreren, worden gecontroleerd. Een stabiele netwerkverbinding is essentieel voor de communicatie van z/OS Connect met externe applicaties. Eventuele belemmeringen, zoals firewalls, beveiligingsinstellingen of netwerkconfiguraties, moeten worden geïdentificeerd en opgelost  \autocite{Software2012}
+\\ \\
+\subsubsection{Uitvoeren van de installatie}
+\label{sec:Uitvoeren van de installatie}
+Het installatieprogramma van z/OS Connect wordt gestart en begeleidt de gebruiker door het installatieproces. Het programma kopieert de benodigde bestanden naar de juiste locaties op het mainframe en voert de nodige configuraties uit. Het is belangrijk om de instructies op het scherm zorgvuldig te volgen en eventuele vereiste invoer te verstrekken, zoals het specificeren van de installatielocatie en het selecteren van gewenste communicatieprotocollen. Het installatieprogramma kan afhankelijkheden detecteren en deze automatisch oplossen.  \autocite{Software2012}
+\\ \\
+\subsubsection{Configuratie van z/OS Connect}
+\label{sec:Configuratie van z/OS Connect}
+\paragraph{Installatieverificatie en voorbereiding}
+Het configuratieproces van z/OS Connect begint met de verificatie van de installatie en de voorbereiding van het systeem. Dit omvat het controleren van de juiste installatie van z/OS Connect op het mainframe en het bevestigen van de succesvolle werking ervan. Het is van essentieel belang om te controleren of alle benodigde bestanden en afhankelijkheden correct zijn geïnstalleerd en dat eventuele vereiste updates zijn toegepast. Daarnaast moeten eventuele voorbereidende taken, zoals het controleren en configureren van netwerkconnectiviteit, worden uitgevoerd voordat de configuratieprocedure wordt gestart. \autocite{IBM2023c}
+\\ \\
+\paragraph{Configuratiebestanden en -instellingen}
+De volgende stap in het configuratieproces is het beheren en aanpassen van configuratiebestanden en -instellingen. Deze bestanden bevatten parameters en configuratie-opties die de functionaliteit en het gedrag van z/OS Connect beïnvloeden. Het is belangrijk om de juiste configuratiebestanden te identificeren en ze te bewerken volgens de specifieke vereisten van het project. Dit omvat het specificeren van de gewenste API-endpoints, het instellen van beveiligingsniveaus, het definiëren van toegangscontrolelijsten en het configureren van authenticatie- en autorisatiemechanismen.  \autocite{IBM2023c}
+\\ \\
+\paragraph{Aanpassen van API-endpoints en bronnen}
+Een belangrijk aspect van de configuratie van z/OS Connect is het definiëren en aanpassen van API-endpoints en bronnen. Dit omvat het identificeren van de API's die beschikbaar moeten zijn voor externe applicaties en het definiëren van de bijbehorende configuratieparameters, zoals de URL's, de gegevensindeling (bijvoorbeeld JSON of XML) en de ondersteunde HTTP-methoden. Daarnaast kunnen bronnen, zoals databases of services, worden geconfigureerd en gekoppeld aan specifieke API-endpoints om toegang tot de gewenste gegevens mogelijk te maken.  \autocite{IBM2023c}
+\\ \\
+\paragraph{Beveiligingsconfiguratie en toegangscontrole}
+Het waarborgen van de beveiliging van z/OS Connect is van cruciaal belang tijdens het configuratieproces. Dit omvat het implementeren van passende beveiligingsmaatregelen, zoals het configureren van SSL/TLS-versleuteling voor veilige communicatie, het instellen van sterke authenticatiemechanismen en het definiëren van autorisatieregels en toegangscontroles. Het is belangrijk om de beveiligingsinstellingen zorgvuldig te configureren volgens de best practices en de beveiligingsvereisten van het specifieke systeem en de toepassing.  \autocite{IBM2023c}
+\\ \\
+\paragraph{Integratie met externe systemen}
+z/OS Connect wordt vaak gebruikt als een brug tussen mainframe-systemen en moderne applicaties. Daarom is het van belang om de integratie met externe systemen goed te configureren. Dit omvat het instellen van de juiste communicatieprotocollen en -formaten, zoals REST, JSON of SOAP, om naadloze interactie mogelijk te maken. Bovendien moeten eventuele gegevensconversie, transformaties of middleware-integraties worden geconfigureerd om compatibiliteit en interoperabiliteit te waarborgen. \autocite{IBM2023c}
+\\ \\
