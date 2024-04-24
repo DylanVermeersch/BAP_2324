@@ -1,0 +1,22 @@
+# Bestand voor de encoding van verschillende bestanden te configureren
+
+
+# line endings
+* text eol=lf
+
+# git's files 
+.gitattributes zos-working-tree-encoding=iso8859-1
+.gitignore zos-working-tree-encoding=iso8859-1
+
+# file encodings
+*.txt zos-working-tree-encoding=ibm-1148 
+*.groovy zos-working-tree-encoding=ibm-1148 
+*.properties zos-working-tree-encoding=ibm-1148
+*.asm zos-working-tree-encoding=ibm-1148
+*.md zos-working-tree-encoding=ibm-1148
+*.log zos-working-tree-encoding=ibm-1148
+*.html zos-working-tree-encoding=ibm-1148
+*.json zos-working-tree-encoding=ibm-1148
+*.jcl zos-working-tree-encoding=ibm-1148
+*.pli zos-working-tree-encoding=ibm-1148
+*.cbl zos-working-tree-encoding=ibm-1148
