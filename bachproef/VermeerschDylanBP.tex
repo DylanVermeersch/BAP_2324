@@ -11,6 +11,7 @@
 \usepackage{graphicx}
 \usepackage{csquotes}
 \usepackage{multicol}
+\usepackage{listings}
 
 \setquotestyle{english}
 
@@ -161,9 +162,91 @@ Dit onderzoek zal gaan over het uitwerken van een werkende Azure DevOps pipeline
 \input{../voorstel/voorstel-inhoud}
 
 %%---------- Andere bijlagen --------------------------------------------------
-% TODO: Voeg hier eventuele andere bijlagen toe. Bv. als je deze BP voor de
-% tweede keer indient, een overzicht van de verbeteringen t.o.v. het origineel.
-%\input{...}
+% TODO: Voeg bijlagen toe van gemaakte/aangepaste code
+
+% Toevoegen van de build-conf bestanden
+\chapter{Properties bestanden (build-conf)}
+\label{ch:appropsbuild}
+\section{build.properties}
+\label{sec:buildprops}
+\lstinputlisting[
+    basicstyle=\footnotesize
+    ]{./documents/build-conf/build.properties}
+
+\pagebreak
+\section{datasets.properties}
+\label{sec:dataprops}
+\lstinputlisting[
+    basicstyle=\footnotesize
+    ]{./documents/build-conf/datasets.properties}
+
+\pagebreak
+\section{Cobol.properties}
+\label{sec:cobpropsbuild}
+\lstinputlisting[
+    basicstyle=\footnotesize
+    ]{./documents/build-conf/Cobol.properties}
+
+%Toevoegen van de Language groovy bestanden
+\chapter{Language groovy scripts}
+\label{ch:aplangroovy}
+\section{Cobol.groovy}
+\label{sec:cobgroovy}
+\lstinputlisting[
+    language=Java,
+    basicstyle=\footnotesize
+    ]{./documents/language-groovy/Cobol.groovy}
+
+
+% Toevoegen van de utility groovy bestanden
+\chapter{Utility groovy scripts}
+\label{ch:aputilgroovy}
+\section{BuildUtilities.groovy}
+\label{sec:buildutilgroovy}
+\lstinputlisting[
+    language=Java,
+    basicstyle=\footnotesize
+    ]{./documents/utility-groovy/BuildUtilities.groovy}
+
+\pagebreak
+\section{BindUtilities.groovy}
+\label{sec:bindutilgroovy}
+\lstinputlisting[
+    language=Java,
+    basicstyle=\footnotesize
+    ]{./documents/utility-groovy/BindUtilities.groovy}
+
+
+% Toevoegen van de application-conf bestanden
+\chapter{Properties bestanden (application-conf)}
+\label{ch:appropappli}
+\section{application.properties}
+\label{sec:appliprops}
+\lstinputlisting[
+    basicstyle=\footnotesize
+    ]{./documents/application-conf/application.properties}
+
+\pagebreak
+\section{file.properties}
+\label{sec:fileprops}
+\lstinputlisting[
+    basicstyle=\footnotesize
+    ]{./documents/application-conf/file.properties}
+
+\pagebreak
+\section{Cobol.properties}
+\label{sec:cobpropsappli}
+\lstinputlisting[
+    basicstyle=\footnotesize
+    ]{./documents/application-conf/Cobol.properties}
+
+\pagebreak
+\section{.gitattributes}
+\label{sec:gitattr}
+\lstinputlisting[
+    basicstyle=\footnotesize
+    ]{./documents/application-conf/.gitattributes}
+
 
 %%---------- Backmatter, referentielijst ---------------------------------------
 
