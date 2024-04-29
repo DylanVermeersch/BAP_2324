@@ -177,12 +177,107 @@ De eerste stap is dus om een repository te clonen naar een lokale map, dit kan r
     \label{fig:azure devops flow}
 \end{figure}
 
-\subsection{Opzetten van een organisatie in Azure DevOps}
+\subsection{Opzetten van een organisatie, agent pool en agent in Azure DevOps}
+Er wordt gewerkt binnen Azure DevOps met organisaties zo kan er op een makkelijke en overzichtelijke manier gescheiden gewerkt worden van andere takken en/of teams binnen een bedrijf. Voordat er kan begonnen worden aan het proces om een organisatie en agent op te zetten moet er toegang zijn tot Azure DevOps. Dit wil zeggen dat er een geregistreerd account ter beschikking moet zijn met de nodige privileges om een organisatie te mogen aanmaken. Indien dat ter beschikking is zouden er geen problemen mogen zijn met het opzetten van een organisatie en agent. 
+\begin{enumerate}
+    \item Inloggen op Azure DevOps.
+    \item Aanmaken van een full acces \textbf{P}ersonal \textbf{A}cces \textbf{T}okens.
+    \item Creëer een nieuwe organisatie.
+    \item Toevoegen van een self hosted agent pool.
+    \item Maken van een nieuwe agent op een Windows machine.
+    \item Configureren van de Windows agent.
+    \item Starten van de agent. 
+\end{enumerate}
+\autocite{Microsoft2024a}
+\autocite{Microsoft2024b}
+\autocite{Microsoft2024c}
+\\ \\
+Het nut van een agent pool en agents is om de pipelines uit te laten voeren. Elke agent kan 1 pipeline uitvoeren. Indien er twee pipelines zijn die uitgevoerd moeten worden, zal er een van de twee in een queue geplaatst worden totdat de agent terug beschikbaar is. Binnen een agent pool kunnen er meerdere agents geïnstalleerd zijn. Hierdoor is het mogelijk om meerdere pipelines tegelijk te laten uitvoeren binnen dezelfde agent pool. 
+\\ \\
+Het is mogelijk om restricties te plaatsen op agents of agent pools in verband met welke pipelines ze mogen/kunnen uitvoeren. Zo kan er een eigen agent pool zijn voor bijvoorbeeld een migratie pipeline en een voor de compilatie/bind van programma's. 
 
+\subsection{Azure DevOps project en connectie met de mainframe}
+Binnen een organisaties kunnen er meerdere projecten aangemaakt worden, zo kan er op een overzichtelijke manier gewerkt worden binnen Azure DevOps. Elk project heeft zijn eigen resources, zo kunnen er bijvoorbeeld meerdere Azure Repo's en Azure Pipelines aangemaakt worden per project. 
+\\ \\
+Naast de resources die al aan bod gekomen zijn is er ook de mogelijkheid om service connecties te leggen, in deze proof of concept werd dat gedaan naar de mainframe van ArcelorMittal Gent. Dit gebeurt binnen de project instellingen en dan service connections, op die manier kan er een SSH connectie gemaakt worden met een mainframe of bij uitbreiding een andere server/computer waarmee verbinding wenst gemaakt te worden. 
+\\ \\
+In het geval van dit onderzoek wordt er gebruik gemaakt van één project waarin geconnecteerd wordt naar de mainframe van ArcelorMittal Gent met behulp van de SSH service connectie. Voor de SSH verbinding moeten de juiste waarden ingevuld worden zoals host name en poort nummer. De authenticatie gebeurt via een RACF user en paswoord, zo is bij het onderzoek gebruik gemaakt van een persoonlijke user. Indien het paswoord van die user verandert zal ook de service connectie moeten aangepast worden naar het nieuwe paswoord.
 
+\subsection{Azure Repo toewijzen aan een project}
+Voordat er kan gewerkt worden op een remote repository moet er eerst een aangemaakt worden, dit gebeurt via het online portaal van Azure DevOps binnen het project waarin de repo aangemaakt dient te worden. 
+\\ \\ 
+Er kan gekozen worden om een nieuwe repo aan te maken of om te starten van een bestaande repository via een import, dit onderzoek zal starten vanaf een lege repository. 
 
+\subsection{Azure Pipeline toewijzen aan een project}
+De verbinding van de repository naar de mainframe wordt behandeld door een pipeline. Dit kan letterlijk gezien worden zoals de naam het aangeeft, het is een pijplijn waardoor allerhande informatie en bestanden wordt doorgegeven aan de repository, de user en de mainframe. 
+\\ \\
+Een pipeline wordt aangemaakt binnen een project en werkt door middel van bash scripts, de bash scripts die nodig zijn voor het werken met IBM DBB worden aangeboden door IBM in een document genaamd \enquote{Azure DevOps and IBM Dependency Based Build Integration}, hierin staan de voorgestelde scripts in vermeld. 
+\\ \\
+Het is aangeraden om te beginnen met een basisscript dat bijvoorbeeld de mappenstructuur toont of de aangemelde user alvorens te springen op de DBB scripts. De scripts van IBM werden aangepast naar de eisen van ArcelorMittal en wijken dus licht af ten opzichte van de originele scripts. Zowel de aangepaste als de originele scripts zijn te vinden in appendix \ref{ch:apbashpipe}.
 
+\subsection{Testen werking pipeline}
+Om er zeker van te zijn dat er over kan gegaan worden naar het gebruik van de IBM DBB bash scripts moet er zekerheid zijn dat de pipeline de goeie connectie maakt naar de mainframe en moet er ook gecloned kunnen worden binnen de USS. Met andere woorden Git moet daar goed geïnstalleerd zijn. Deze zaken kunnen makkelijk getest worden, het eerste wat getest is in dit onderzoek is of er wel degelijk een connectie was. Dat werd getest door een pipeline met het commando \enquote{whoami}, als dat de juiste user weergaf zoals opgegeven bij het aanmaken van de service connectie dan was er geen probleem. Indien die niet werd weergegeven dan is er iets fout gelopen bij de service connectie en moet die stap opnieuw gedaan/bekeken worden. 
+\\ \\
+Als er vastgesteld is dat er een connectie kan gemaakt worden met de mainframe is er in dit onderzoek gekeken naar Git op de USS. Daarvoor zijn er twee stappen namelijk zorgen dat Git geïnstalleerd is op de user die gebruikt wordt voor de service connectie en zorgen dat die user ook een Azure Repo kan clonen. 
+\\ \\
+Om te zien of Git geïnstalleerd is op de user zijn USS wordt het \enquote{git --version} commando gebruikt. Als dat een versie van git weergeeft wil dat zeggen dat Git geïnstalleerd is op die user zijn USS, indien er een boodsschap weergegeven wordt dat het commando niet gevonden werd dan is Git nog niet (goed) geïnstalleerd. 
+\\ \\ 
+Nadat vastgesteld is dat Git goed is geïnstalleerd kan de configuratie voor het clonen beginnen. De clone zal gebeuren aan de hand van een Personal Acces Token (PAT), met PAT kan er connectie gemaakt worden via HTTPS en niet via SSH. Eerste stap in dit proces is om een PAT aan te maken, dit kan via het Azure Repos dashboard door op de knop clone te klikken en dan git credentials aan te laten maken. Het paswoord dat gecreëerd wordt is uitermate belangrijk want deze wordt nergens bijgehouden door Azure DevOps om later terug op te vragen. Dat paswoord moet dan enkel nog omgezet worden naar een Base 64 encoding, dit kan via powershell op windows via de volgende commando's:
+\begin{enumerate}
+    \item \$MyPat='gekopieerd paswoord'
+    \item \$B64Pat=[Convert]::ToBase64String([System.Text.Encoding]::UTF8.GetBytes(\textquotedblleft`:\$MyPat\textquotedblright))
+    \item echo \$B64Pat
+\end{enumerate}
+Na deze commando's verkrijg je de Base 64 geëncodeerde versie van het paswoord en diegene die gebruikt dient te worden door Git op het USS. Om de clone succesvol uit te voeren is het nodig dat het Base 64 geëncodeerd paswoord wordt opgeslagen in de git config. Dit kan ingesteld worden door het \enquote{git config --global http.extraheader \textquotedblright Authorization: Basic GEKOPIEERD B64 PASWOORD\textquotedblleft} commando in te geven binnen een terminal zoals dat kan op IDz. Hierna kan het git clone commando uitgevoerd worden zonder problemen. 
+\\ \\
+Als beide testen vlekkeloos verlopen zijn dan pas kan er overgegaan worden op de IBM DBB bash scripts. 
 
+\subsection{Pipeline taken, variabelen, opties \& triggers}
+Het gebruik van de IBM DBB bash scripts kan enkel en alleen als er ook een aantal variabelen gedefinieerd zijn. Zo moet er een nieuwe SSH taak toegevoegd worden aan de pipeline met daarin het commando om het bash script te starten en daarna de script parameters. In het kader van dit onderzoek ziet het commando voor het AzRocketGit-init.sh script eruit als \enquote{./AzRocketGit-init.sh \$(MyRepo) \$(MyWorkDir) \$(Build.SourceBranch)} en het AzDBB-build.sh script ziet eruit als \enquote{./AzDBB-build.sh \$(MyWorkDir) \$(MyRepo) \$(MyApp) --impactBuild}.
+\\ \\
+De taken gebruiken variabelen, op die manier kan een pipeline bij meerdere repositories ingezet worden. Azure Pipeline komt inclusief een hele hoop standaard variabelen maar een aantal zijn zelf moeten aangemaakt worden voor dit onderzoek. Diegene die rechtstreeks gebruikt worden in de taken zijn de volgende. 
+\begin{figure}[h]
+    \begin{tabularx}{1\textwidth} { 
+            | >{\centering\arraybackslash}X 
+            | >{\centering\arraybackslash}X 
+            | >{\centering\arraybackslash}X  | }
+        \hline
+        \textbf{Naam} & 
+        \textbf{Waarde} & 
+        \textbf{Uitleg} \\
+        \hline
+        git &
+        Pad naar rocket Git client op USS. &
+        Zorgt ervoor dat de Git client gevonden wordt door de pipeline \\ 
+        \hline
+        MyApp &
+        source &
+        De plaats binnen de repository waar het script de source code kan vinden. \\ 
+        \hline
+        MyRepo &
+        \$(Build.Repository.Uri) &
+        De link van de repository. \\ 
+        \hline
+        MyWorkDir &
+        \$HOME/Azure-WorkSpace/ \$(System.TeamProject)-\$(Build.buildid) &
+        De plaats waar de repository gekloond wordt en de logs aangemaakt. \\ 
+        \hline
+        system.teamProject &
+        Projectnaam &
+        De projectnaam waarin de pipeline is gemaakt. \\ 
+        \hline
+    \end{tabularx}
+    \caption{Pipeline variabelen en hun taak}
+    \label{tab:soorten pipeline variabelen}
+\end{figure}
+\\ \\
+De opties zijn voor dit onderzoek op de standaardwaarden gehouden, bij de pipeline opties zit onder andere hoelang een pipeline maximaal mag duren en indien die gecanceld wordt hoelang die maximum mag nemen om de job te cancelen.  
+\\ \\
+Als laatste zijn er nog triggers die kunnen ingesteld worden voor de pipeline. Hiermee kan continuous integration geactiveerd worden voor bepaald branches of net gedeactiveerd. Zo kan er voor de branch develop continuous integration geactiveerd zijn en voor de main branch niet. 
+\\ \\
+Na al deze zaken overlopen te hebben en waar nodig aangepast te hebben is de pipeline klaar voor gebruik en kan er overgegaan worden op de customisatie van de groovy programma's. 
+
+\section{Aanpassen nieuw systeem voor Cobol compilatie \& bind}
 
 
 

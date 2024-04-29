@@ -13,7 +13,10 @@
 \usepackage{multicol}
 \usepackage{listings}
 
-\setquotestyle{english}
+% \setquotestyle{english}
+\DeclareQuoteStyle{house}
+    {\textquotedblleft}{\textquotedblright}
+    {\textquoteleft}{\textquoteright}
 
 %% Pictures to include in the text can be put in the graphics/ folder
 \graphicspath{{graphics/}}
@@ -247,6 +250,45 @@ Dit onderzoek zal gaan over het uitwerken van een werkende Azure DevOps pipeline
     basicstyle=\footnotesize
     ]{./documents/application-conf/.gitattributes}
 
+% Toevoegen van de pipeline bash scripts, origineel en aangepast
+\chapter{Bash scripts Azure Pipelines}
+\label{ch:apbashpipe}
+\section{AzRocketGit-init.sh (origineel)}
+\label{sec:gitinitorig}
+\lstinputlisting[
+    language=bash,
+    basicstyle=\footnotesize
+    ]{./documents/bash-scripts-pipe-orig/AzRocketGit-init.sh}
+    
+\autocite{IBM2021b}
+
+\pagebreak
+\section{AzDBB-build.sh (origineel)}
+\label{sec:dbbbuildorig}
+\lstinputlisting[
+    language=bash,
+    basicstyle=\footnotesize
+    ]{./documents/bash-scripts-pipe-orig/AzDBB-build.sh}
+    
+\autocite{IBM2021b}
+
+\pagebreak
+\section{AzRocketGit-init.sh (aangepast)}
+\label{sec:gitinit}
+\lstinputlisting[
+    language=bash,
+    basicstyle=\footnotesize
+    ]{./documents/bash-scripts-pipe/AzRocketGit-init.sh}
+
+\pagebreak
+\section{AzDBB-build.sh (aangepast)}
+\label{sec:dbbbuild}
+\lstinputlisting[
+    language=bash,
+    basicstyle=\footnotesize
+    ]{./documents/bash-scripts-pipe/AzDBB-build.sh}
+
+\pagebreak
 
 %%---------- Backmatter, referentielijst ---------------------------------------
 
