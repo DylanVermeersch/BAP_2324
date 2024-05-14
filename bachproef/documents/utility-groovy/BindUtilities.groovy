@@ -12,7 +12,6 @@ import groovy.cli.commons.*
 bind(args)
 
 // Make the DB2 BIND PACKAGE CLIST and have it copied to your DBRMhlq
-// ex.  SIDxxx.PLI.DBRM.CLIST.member.PACKAGE
 def makeBindPackage(String file, String dbrmHLQ, String workDir, String SUBSYS, String OWNER, String QUAL) {
     // define local properties
     def MEMBER = CopyToPDS.createMemberName(file)
@@ -57,7 +56,6 @@ def makeBindPackage(String file, String dbrmHLQ, String workDir, String SUBSYS, 
 }
 
 // Make the DB2 BIND PLAN CLIST and have it copied to your DBRMhlq
-// ex.  SIDxxx.PLI.DBRM.CLIST.member.PLAN
 def makeBindPlan(String file, String dbrmHLQ, String workDir, String SUBSYS) {
     // define local properties
     def MEMBER = CopyToPDS.createMemberName(file)
@@ -73,7 +71,7 @@ def makeBindPlan(String file, String dbrmHLQ, String workDir, String SUBSYS) {
     clistBindPlan << """
         DSN SYSTEM($SUBSYS) RETRY(10) 
         BIND PLAN($MEMBER)                                            +
-            OWNER(SIDDVYE)                                            +
+            OWNER(****)                                            +
             ACTION(REPLACE) RETAIN                                    +
             DISCONNECT(EXPLICIT)                                      +
             PATH(SIDUDT,SIDFUN,SIDPROC,SYSIBM,SYSFUN,SYSPROC,USER)    +

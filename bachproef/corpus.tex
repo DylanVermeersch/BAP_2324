@@ -278,6 +278,43 @@ Als laatste zijn er nog triggers die kunnen ingesteld worden voor de pipeline. H
 Na al deze zaken overlopen te hebben en waar nodig aangepast te hebben is de pipeline klaar voor gebruik en kan er overgegaan worden op de customisatie van de groovy programma's. 
 
 \section{Aanpassen nieuw systeem voor Cobol compilatie \& bind}
+De groovy programma's zijn als het ware het brein achter de hele compile, bind en alles eromheen. Ze maken achterliggend gebruik van Java klassen op die manier is het een soort API om via groovy met het mainframe systeem te communiceren. In dit onderzoek is er gebruik gemaakt van de Cobol.groovy, BuildUtilities.groovy en de BindUtilities.groovy programma's, deze zijn in de loop van het onderzoek volledig aangepast aan het systeem van ArcelorMittal Gent. De volledig aangepaste scripts zijn te vinden in appendix \ref{ch:aplangroovy} en appendix \ref{ch:aputilgroovy}. Er is ook gebruik gemaakt van het standaard build.groovy programma, deze had voor dit onderzoek geen aanpassingen nodig. 
+
+\subsection{Cobol.groovy aanpassen}
+\label{subsec:cobol.groovy aanpassen}
+De grootste aanpassingen die aangebracht moesten worden aan het Cobol.groovy script was inzake het gebruik van de gepersonaliseerde properties om de subsystemen die gebruikt worden te bepalen aan de hand van de meta data die ingevuld wordt door de programmeur. Deze moeten kloppen met de manier waarop subsystemen zoals IMS of DB2 gebruik worden gecompileerd en gebind. Verder is er nog de meta data die gaat over het soort programma, een main, sub of fsub programma. Als een programma een fsub is moet er een DLL aangemaakt worden en moet deze op de juiste plaats in het systeem opgeslagen worden.
+\\ \\
+Binnen ArcelorMittal Gent worden fsub's opgeslagen op 2 manieren, ze worden opgeslagen in een RRS library en een IMS librar. Dit was vroeger omdat er met een andere module moest gebind worden. Tegenwoordig kan er gebruik gemaakt worden van de module DSNULI binnen de syslib concatenatie om zo de juiste zaken mee te nemen. Er moet bij fsub programma's ook altijd de DB2 load library mee gebind worden, deze hoeven wel geen plan- en package bind uit te voeren, tenzij deze ook expliciet DB2 gebruiken. 
+\\ \\
+De standaard Cobol.groovy is terug te vinden op de Github van IBM via de volgende link: https://github.com/IBM/dbb-zappbuild, hierop zijn alle bestanden die we nodig hebben in hun standaard vorm te vinden. Aangezien deze bestanden aangepast zijn in het kader van dit onderzoek worden de bestanden meegegeven en verschillen ze in filosofie niet van elkaar maar de uitvoering van de scripts en de inhoud ervan verschilt wel duidelijk. 
+Het standaard Cobol.groovy is bijvoorbeeld amper 405 lijntjes code terwijl het aangepaste Cobol.groovy programma van dit onderzoek 765 lijntjes code bevat. Dat komt uit op bijna 90\% extra lijntjes om de aanpassingen voor het systeem van ArcelorMittal Gent toe te passen.
+
+\subsection{BuildUtilities.groovy aanpassen}
+In de BuildUtilities.groovy worden er hoofdzakelijk processen gedefinieerd die de hoofdprogramma's, zoals Cobol.groovy, helpen. Dit kan door bijvoorbeeld een buildlist te maken, een LogicalFile aan te maken, variabelen opvullen, ...
+\\ \\
+De grootste veranderingen die er voor dit onderzoek zijn doorgevoerd zijn die in verband met de Logical File properties. In de Logical File properties wordt er gebruik gemaakt van de meta data dat een ontwikkelaar meegeeft via de properties bestanden. Aan de hand van die properties zal de Logical File aangemaakt en ingevuld worden.
+\\ \\
+Nog een verschil met het standaard BuildUtilities.groovy programma, dat te vinden is op dezelfde Github repository als eerder vermeld in \ref{subsec:cobol.groovy aanpassen}. Is het maken van de buildlist, deze werd voorheen enkel maar gesorteerd op programma taal maar in dit onderzoek wordt er gebruik gemaakt van de ArcelorMittal filosofie en daarin staat dat ze niet enkel op taal moeten gesorteerd worden maar ook op type. Zo is de volgorde zo dat de sub programma's eerst moeten verwerkt worden en daarna volgen de fsub's en pas op het einde worden de main programma's verwerkt. Dit is zodat indien er een sub programma gebruikt wordt binnen een fsub of main dat deze direct de goeie versie meekrijgt. Zo zou er in het geval dat een main voor een sub wordt verwerkt de kans bestaan dat die main die sub die aangepast is gebruikt en daardoor met de verkeerde versie van dat sub programma wordt verwerkt. 
+\\ \\
+Er is veel aangepast in de BuildUtilities.groovy maar niet veel toegevoegd dit is te zien aan het aantal lijntjes dat gecodeerd is. In de aangepaste versie zitten er 1036 lijntjes code terwijl dat in de standaard versie 983 lijntjes zijn. Dit komt neer op een toename van amper 5\%, veel minder dan als de toename die er was bij het Cobol.groovy programma. 
+
+\subsection{BindUtilities.groovy aanpassen}
+Net zoals de BuildUtilities.groovy is de BindUtilities.groovy er vooral om het hoofdprogramma te sparen van ellenlange code die hergebruikt kan worden voor vele scripts. De inhoud van de BindUtilities.groovy gaat zoals de naam als aangeeft gaan over de processen die moeten gebeuren om in DB2 een bind uit te voeren. 
+\\ \\
+De standaard versie van dit programma had als enigste functie een die een package bind uitvoerde op DB2. Dit is binnen ArcelorMittal Gent niet genoeg, daar moet namelijk ook een plan bind uitgevoerd worden voor elk programma en er wordt gebruik gemaakt van een bepaald versienummer dat meegegeven wordt die op precies de juiste manier moet zijn opgesteld om compatibel te zijn met het systeem van ArcelorMittal Gent.
+\\ \\
+Er zijn heel wat zaken moeten aangepast worden, zo wordt er in plaats van gebruik te maken van de TSOExec klasse geopteerd om de commando's die nodig zijn om zowel een package bind als plan bind uit te voeren. Op te slaan in een MVS bestand dat dan later via een JCL gelanceerd wordt met de JCLExec klasse. Dit omdat de TSOExec niet werkte binnen de huidige versie van DBB. Net zoals de andere groovy scripts is ook deze te vinden in de appendices, meerbepaald in appendix \ref{ch:aputilgroovy}. 
+\\ \\
+Er is in vergelijking met de ander groovy programma's het meeste aangepast in de BindUtilities.groovy maar doordat deze heel efficiënt zijn gemaakt en een aantal zaken overbodig waren in de standaard versie is er in plaats van een een toename een afname in lijntjes code. Zo is er in de aangepaste versie amper 91 lijntjes code nodig om de logica uit te laten voeren en is dat in de standaard versie 111 lijntjes. Dat is een afname van 18\% ten opzichte van de standaard versie. 
+
+\subsection{Properties bestanden aanpassen (repo kant)}
+Binnen ArcelorMittal Gent is de meta data van een programma heel belangrijk en essentieel voor de goede werking van het systeem. Om die reden moest er dus een oplossing zijn om ook via de pipeline werking aan die meta data te komen. 
+\\ \\
+De meta data wordt in het huidige systeem handmatig door de ontwikkelaar ingevuld en heeft als nut dat er voor bijvoorbeeld problemen bij het juiste team wordt aangeklopt, op dezelfde manier worden ook subsystemen meegeven bij de compilatie en bind. Enkel de subsystemen die gedefinieerd zijn binnen de meta data zullen worden meegenomen. 
+\\ \\
+Om dit systeem na te bootsen wordt er gebruik gemaakt van properties bestanden, zo is er een file.properties die een overkoepelende rol heeft binnen de repository en waardat er dus gekozen heeft om die nieuwe properties ook te definiëren. De propertie om bijvoorbeeld aan te geven dat een programma een fsub is, ziet er als volgt uit:  isFSUB = true :: **/tstdb2.cbl. isFSUB = true geeft aan dat het gaat over een fsub en de **/tstdb2.cbl geeft aan dat het gaat over het programma tstdb2.cbl dat in elke map mag zitten. Stel dat het programma enkel maar een fsub mag zijn als het in de map fsub zit dan kan de volgende lijn gebruikt worden als meta data: isFSUB = true :: **/fsub/tstdb2.cbl. Als er nog een stap verder moet gegaan worden en alle Cobol programma's binnen de map fsub tot de categorie fsub horen dan kan de volgende lijn meegegeven worden: isFSUB = true :: **/fsub/*.cbl. 
+\\ \\
+Deze manier geeft heel erg veel mogelijkheden om wildcards te gebruiken om op die manier zo weinig mogelijk te moeten schrijven/typen. In principe kunnen er policies gemaakt worden dat alle programma's die in een bepaalde map zitten of met een bepaalde letter combinatie beginnen tot een categorie behoren. Dit is buiten de scope van het onderzoek maar toch ook niet onbelangrijk voor eventuele toekomstplannen. 
 
 
 

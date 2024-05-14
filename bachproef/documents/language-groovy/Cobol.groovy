@@ -294,18 +294,18 @@ def createVersion(LogicalFile logicalFile) {
 def createCobolParms(String buildFile, LogicalFile logicalFile) {
     def omgeving = (buildUtils.isDev(logicalFile) && !(buildUtils.isProd(logicalFile))) || (!(buildUtils.isDev(logicalFile)) && !(buildUtils.isProd(logicalFile))) ? "O" : "P"
     def defaultParms = [
-        'MNN':"SID0U0.PLX0.IDZ.PARMLIB(COBMNN${omgeving})", //DONE
-        'MNY':"SID0U0.PLX0.IDZ.PARMLIB(COBMNY${omgeving})", //DONE
-        'MYN':"SID0U0.PLX0.IDZ.PARMLIB(COBMYN${omgeving})", //DONE*
-        'MYY':"SID0U0.PLX0.IDZ.PARMLIB(COBMYY${omgeving})", //DONE*
-        'FNN':"SID0U0.PLX0.IDZ.PARMLIB(COBFNN${omgeving})", //DONE
-        'FNY':"SID0U0.PLX0.IDZ.PARMLIB(COBFNY${omgeving})", //DONE
-        'FYN':"SID0U0.PLX0.IDZ.PARMLIB(COBFYN${omgeving})", //DONE*
-        'FYY':"SID0U0.PLX0.IDZ.PARMLIB(COBFYY${omgeving})", //DONE*
-        'SNN':"SID0U0.PLX0.IDZ.PARMLIB(COBSNN${omgeving})", //DONE
-        'SNY':"SID0U0.PLX0.IDZ.PARMLIB(COBSNY${omgeving})", //DONE
-        'SYN':"SID0U0.PLX0.IDZ.PARMLIB(COBSYN${omgeving})", //DONE*
-        'SYY':"SID0U0.PLX0.IDZ.PARMLIB(COBSYY${omgeving})", //DONE*
+        'MNN':"DEV.PARMLIB(COBMNN${omgeving})", //DONE
+        'MNY':"DEV.PARMLIB(COBMNY${omgeving})", //DONE
+        'MYN':"DEV.PARMLIB(COBMYN${omgeving})", //DONE*
+        'MYY':"DEV.PARMLIB(COBMYY${omgeving})", //DONE*
+        'FNN':"DEV.PARMLIB(COBFNN${omgeving})", //DONE
+        'FNY':"DEV.PARMLIB(COBFNY${omgeving})", //DONE
+        'FYN':"DEV.PARMLIB(COBFYN${omgeving})", //DONE*
+        'FYY':"DEV.PARMLIB(COBFYY${omgeving})", //DONE*
+        'SNN':"DEV.PARMLIB(COBSNN${omgeving})", //DONE
+        'SNY':"DEV.PARMLIB(COBSNY${omgeving})", //DONE
+        'SYN':"DEV.PARMLIB(COBSYN${omgeving})", //DONE*
+        'SYY':"DEV.PARMLIB(COBSYY${omgeving})", //DONE*
     ]
     def extraParms = props.getFileProperty('cobol_extraCompileParms', buildFile) ?: ""
     def errPrefixOptions = props.getFileProperty('cobol_compileErrorPrefixParms', buildFile) ?: ""
@@ -489,7 +489,7 @@ def createCompileCommand(String buildFile, LogicalFile logicalFile, String membe
         compileSyslibConcatenation = compileSyslibConcatenation + ',' + compileSyslibAddConcatenation
 
     if (logicalFile.isDB2()) 
-        compileSyslibConcatenation = 'ONTW.DCLGEN,PROD.DCLGEN,GEBR.DCLGEN,' + compileSyslibConcatenation
+        compileSyslibConcatenation = 'DEV.DCLGEN,PROD.DCLGEN,GEBR.DCLGEN,' + compileSyslibConcatenation
 
     println("compileSyslibConcat: ${compileSyslibConcatenation}")
     if (compileSyslibConcatenation) {
@@ -619,14 +619,14 @@ def createLinkEditCommand(String buildFile, LogicalFile logicalFile, String memb
         linkedit.dd(new DDStatement().name("SYSIN").instreamData(sysin_linkEditInstream))
 
     // add SYSLIN along the reference to SYSIN if configured through sysin_linkEditInstream
-    def omgeving = (buildUtils.isDev(logicalFile) && !(buildUtils.isProd(logicalFile))) || (!(buildUtils.isDev(logicalFile)) && !(buildUtils.isProd(logicalFile))) ? "ONTW" : "SIDM"
+    def omgeving = (buildUtils.isDev(logicalFile) && !(buildUtils.isProd(logicalFile))) || (!(buildUtils.isDev(logicalFile)) && !(buildUtils.isProd(logicalFile))) ? "DEV" : "PROD"
     
     linkedit.dd(new DDStatement().name("SYSLIN").dsn("${props.cobol_objPDS}($member)").options('shr'))
     linkedit.dd(new DDStatement().dsn("CEE.SCEELIB(C128N)").options("shr"))    
     linkedit.dd(new DDStatement().dsn("CBC.SCLBSID(IOSTREAM)").options("shr"))    
     linkedit.dd(new DDStatement().dsn("CBC.SCLBSID(COMPLEX)").options("shr"))
-    linkedit.dd(new DDStatement().dsn("${omgeving}.SOURCE.PARMLIB(IMPORTS)").options("shr"))
-    linkedit.dd(new DDStatement().dsn("SID0U0.PLX0.IDZ.PARMLIB(IMPORTS)").options("shr"))
+    linkedit.dd(new DDStatement().dsn("${omgeving}.PARMLIB(IMPORTS)").options("shr"))
+    linkedit.dd(new DDStatement().dsn("DEV.PARMLIB(IMPORTS)").options("shr"))
             
     // add RESLIB if needed
     if ( props.RESLIB ) 
@@ -641,7 +641,7 @@ def createLinkEditCommand(String buildFile, LogicalFile logicalFile, String memb
 
     // if IMS add syslib concat
     if (logicalFile.isIMS()) {
-        imsReslib = (logicalFile.isDev()) ? 'SID0U0.IMO.IMS.RESLIB':'SID0U0.IMP.IMS.RESLIB'
+        imsReslib = (logicalFile.isDev()) ? 'DEV.IMS.RESLIB':'PROD.IMS.RESLIB'
         linkEditSyslibConcatenation = "$imsReslib,$linkEditSyslibConcatenation"
     }
 
@@ -717,7 +717,7 @@ def createObjectDeleteCommand(String buildFile, String dataset, String member, F
 def addImportStatements(String member) {
     // copy original IMPORTS file to HFS
     def imports = new CopyToHFS()
-    imports.setDataset("SID0U0.PLX0.IDZ.PARMLIB")
+    imports.setDataset("DEV.PARMLIB")
     imports.setMember("IMPORTS")
     imports.setFile(new File("${props.buildOutDir}/imports.imp"))
     imports.execute()
@@ -747,7 +747,7 @@ def addImportStatements(String member) {
     if (result) {
         def newImports = new CopyToPDS()
         newImports.setFile(importsFile)
-        newImports.setDataset("SID0U0.PLX0.IDZ.PARMLIB")
+        newImports.setDataset("DEV.PARMLIB")
         newImports.setMember("IMPORTS")
         newImports.execute()
     }
