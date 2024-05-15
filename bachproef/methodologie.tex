@@ -5,26 +5,72 @@
 \chapter{\IfLanguageName{dutch}{Methodologie}{Methodology}}%
 \label{ch:methodologie}
 
-%% TODO: In dit hoofstuk geef je een korte toelichting over hoe je te werk bent
-%% gegaan. Verdeel je onderzoek in grote fasen, en licht in elke fase toe wat
-%% de doelstelling was, welke deliverables daar uit gekomen zijn, en welke
-%% onderzoeksmethoden je daarbij toegepast hebt. Verantwoord waarom je
-%% op deze manier te werk gegaan bent.
-%% 
-%% Voorbeelden van zulke fasen zijn: literatuurstudie, opstellen van een
-%% requirements-analyse, opstellen long-list (bij vergelijkende studie),
-%% selectie van geschikte tools (bij vergelijkende studie, "short-list"),
-%% opzetten testopstelling/PoC, uitvoeren testen en verzamelen
-%% van resultaten, analyse van resultaten, ...
-%%
-%% !!!!! LET OP !!!!!
-%%
-%% Het is uitdrukkelijk NIET de bedoeling dat je het grootste deel van de corpus
-%% van je bachelorproef in dit hoofstuk verwerkt! Dit hoofdstuk is eerder een
-%% kort overzicht van je plan van aanpak.
-%%
-%% Maak voor elke fase (behalve het literatuuronderzoek) een NIEUW HOOFDSTUK aan
-%% en geef het een gepaste titel.
+\section{Voorbereidend werk}
+\label{sec:voorbereidend werk}
+Om een zo goed mogelijk onderzoek te kunnen verrichten is het van belang dat er een bepaalde expertise aanwezig is van hetgeen onderzocht wordt. In het geval van deze thesis gaat dit over mainframe, IBM Dependecy Based Build (DBB), Azure DevOps, de fundamentele principes van pipelines en werken met Git. Deze expertise is in de vorm van een literatuurstudie ook aangetoond in dit onderzoek, door het opzoekingswerk is er een grotere expertise opgebouwd dan wanneer er blindelings zou gestart worden zonder een goed literatuuronderzoek gevoerd te hebben. De literatuurstudie begint bij het onderwerp mainframe en in dat hoofdstuk wordt er gekeken naar wat een mainframe is, waarvoor het gebruikt wordt en wat de geschiedenis ervan is.
+\\ \\
+In het stuk over IBM Dependency Based Build is er beschreven wat IBM DBB is, wat het doet en hoe het werkt. 
+Verder is er ook te vinden wat een aantal van de valkuilen kunnen zijn waarmee rekening gehouden moet worden.
+\\ \\
+Het voorlaatste deel van de literatuurstudie bevat een toelichting en onderzoek van een aantal Git workflows, hierin is er gezocht naar een workflow die zowel flexibel, veilig en robuust is.
+Allemaal eigenschappen die synoniem staan aan een mainframe dus dat moet ook getoond worden dat dit nog altijd mogelijk is met een Git workflow.
+\\ \\
+In het laatste deel van de literatuurstudie is er beschreven wat Azure DevOps is, wat het kan doen en waarvoor het in dit onderzoek is gebruikt.
+Een aantal onderwerpen die aan bod komen in dit hoofdstuk hebben betrekking op onderdelen van de Azure DevOps suite meer bepaald Azure Repos en Azure Pipelines.
+Waarvoor die zaken in het onderzoek gebruikt kunnen worden en wat voor meerwaarde dat geeft aan het onderzoek.
+\\ \\
+Deze eerste fase die anderhalve week in beslag heeft genomen kent als resultaat een diepgaande en volledige literatuurstudie die de rode draad is wat betreft informatie in het onderzoek. De literatuurstudie moet antwoord kunnen bieden op de volgende vraag. Hoe kan er een DevOps workflow gerealiseerd worden op een mainframe met behulp van IBM Dependency Based Build?
 
-\lipsum[21-25]
+\section{Huidig systeem in kaart brengen}
+\label{sec:huidig systeem}
+Nadat er een zekere expertise is omtrent de theorie van de verschillende factoren in dit onderzoek moet er ook een duidelijk overzicht komen van de huidige situatie binnen de mainframe omgeving van ArcelorMittal Gent. Dit gebeurt aan de hand van een verkenning van de compilatie en bind van programma's binnen het huidige systeem dat werkt met MSP Panapt. 
+\\ \\ 
+Eenmaal dat de huidige werking in kaart is kan er overgegaan worden naar het werken en experimenteren op een nieuw systeem dat minstens evenveel moet kunnen als het oude systeem. Deze verkenning heeft 1 week geduurd en moet een duidelijk antwoord kunnen geven op de vraag hoe een Cobol programma gecompileerd en gebind wordt binnen de mainframe omgeving van ArcelorMittal Gent. 
+
+\section{Configuratie IBM DBB}
+\label{sec:configuratie dbb}
+Het doel van deze fase is om IBM Dependency Based Build volledig te configureren op de omgeving van ArcelorMittal Gent,
+zo zijn er onder andere een aantal .properties bestanden die aangemaakt en aangevuld zijn en hierbij zijn er ook extra properties toegevoegd aan deze bestanden.
+Door deze properties aan te passen zal IBM DBB de volledige toegang hebben tot de nodige datasets en bestanden op zowel z/OS als op Unix System Services (USS) om een goede werking van de scripts horende bij de software te kunnen garanderen. 
+\\ \\
+Dit gebeurt aan de hand van de informatie die is gewonnen bij de vorige fase in verband met het in kaart brengen van het huidige systeem. Dit vergde wat opzoekingswerk en heeft een halve week geduurd om de volledige configuratie van IBM DBB te vervolledigen.
+
+\section{Realiseren Proof Of Concept}
+\label{sec:poc}
+Na de configuratie van IBM DBB kan er overgegaan worden naar de grootste fase van het onderzoek namelijk het uitzetten en realiseren van de proof of concept.
+Deze fase is een heel belangrijke omwille van het feit dat hier de resultaten worden bekomen om een conclusie te trekken aan het einde van dit onderzoek.
+De opdracht bestaat erin om de volledige ontwikkeling van een vooraf gekozen coolgen applicatie van het mainframe te halen als case study, dat wil zeggen dat de source aangemaakt is in een Git ondersteunende IDE zoals bijvoorbeeld Visual Studio Code of IBM Developer for Z (IDz) en vanuit diezelfde IDE een pipeline gestart wordt om het programma dan te compileren, binden en te plaatsen in de juiste load libraries op z/OS.
+\\ \\
+Dit gebeurt onder meer via een push vanuit de IDE naar de Azure Repo die dan het aangepast programma opslaat en daarna een pipeline start om het aangepaste programma ook
+te compileren en te binden en met als doel het plaatsen van de bekomen load module na de bind stap in de juiste load library te plaatsen.
+\\ \\
+Verder moet er ook bij elke succesvolle aanpassing van het programma een nieuwe versie ontstaan zo zal een programma CGTST met initiële versie 1.0 na een succesvolle
+aanpassing bijvoorbeeld de versie 1.1 krijgen toegewezen.
+Zodat er op een duidelijke en overzichtelijke manier wordt bijgehouden wat de huidige versie is van het programma, de vorige versies en eventueel de mogelijkheid om naar een vorige versie terug te gaan.
+\\ \\
+Na deze fase die zes weken heeft geduurd is er genoeg informatie om een goede en volledige conclusie te trekken op de vraag of het zin heeft om volledig over te schakelen naar een DevOps gebaseerde manier van werken binnen de mainframe omgeving van ArcelorMittal Gent.
+
+\section{Resultatenanalyse}
+\label{sec:resulatatenanalyse}
+De volgende fase van dit onderzoek is om de resultaten die erdoorheen zijn bekomen te analyseren. Deze analyse gebeurt in samenspraak met ArcelorMittal en een aantal ontwikkelaars om ook te polsen naar hun mening over het onderzoek en de resultaten ervan.
+Op het einde van deze fase is er een antwoord op de vraag of de ontwikkelaars dit onderzoek verder willen zetten voor andere zaken of dat er meer overleg nodig is. 
+De fase waarin deze analyse gebeurt heeft 1 week in beslag genomen.
+
+\section{Conclusies trekken}
+\label{sec:conclusies}
+Nadat de resultaten zijn geanalyseerd is het nodig om na te gaan of het onderzoek daadwerkelijk een succes kan genoemd worden. Dit wordt gedaan aan de hand van een aantal vereisten waaraan moest voldaan worden. Vereisten die zeker moesten voldaan zijn, zijn als volgt. 
+\begin{itemize}
+    \item Kan het programma gecompileerd worden?
+    \item Kan het programma gebind worden?
+    \item Is de compilatie volgens de juiste compilatie parameters gebeurd?
+    \item Is de bind volgens de juiste bind parameters gebeurd?
+    \item Wordt het resultaat van de compilatie/bind op de juiste plaats en manier opgeslagen?
+    \item Is het proces automatisch of moet er nog ergens manueel ingegrepen worden?
+\end{itemize}
+Indien al deze vereisten zijn voldaan kan er gesproken worden van een succesvol onderzoek.
+Voor het beoordelen van deze vereisten is er een focusgroep gemaakt om het al dan niet behalen van de vereisten te bespreken en meningen uit te wisselen met mensen binnen de mainframe omgeving van ArcelorMittal Gent. Dit heeft opnieuw 1 week in beslag genomen.
+
+\section{Afwerken scriptie}
+\label{sec:afwerken scriptie}
+Doordat er weinig tot geen vertragingen zijn opgelopen was er nog een volledige week over om de scriptie af te werken en alle puntjes op de i te plaatsen. Hierdoor kan er nog eens extra gekeken worden naar eventuele fouten, vergissingen of spelfouten binnen de scriptie. Het spreekt voor zich maar op het einde van al deze fasen is er een afgewerkte scriptie. 
 

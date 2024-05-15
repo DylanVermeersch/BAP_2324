@@ -3,7 +3,7 @@
 %%=============================================================================
 
 \chapter{\IfLanguageName{dutch}{Werking huidig systeem}{Operation of the current system}}%
-\label{ch:current system)}
+\label{ch:current system}
 
 \section{Inleiding}
 \label{sec:inleiding_currsys}
@@ -82,10 +82,10 @@ In de build.properties zit er vooral algemene instellingen en dus geen datasets,
 De taal specifieke properties worden aangepast in onder andere Cobol.properties en de PLI.properties bestanden. Hierin worden onder andere instellingen zoals load libraries, vereiste properties en compiler opties meegegeven die algemeen gelden voor alle programma's van die taal. De volledige properties bestanden zijn te vinden in appendix \ref{ch:appropsbuild}.
 \\ \\
 \subsubsection{Language groovy bestanden}
-De language groovy bestanden zorgen ervoor dat de programma's van die taal succesvol gecompileerd en gebind kunnen worden. Naast de compile en bind wordt er ook gezorgd dat de load module van de applicatie op de juiste plaats beland, dat er een DB2 package bind en/of plan bind uitgevoerd wordt indien nodig. Zo wordt ervoor gezorgd dat het programma niet alleen goed wordt gecompileerd en gebind maar ook uitvoerbaar is op het mainframe van ArcelorMittal Gent. Binnen dit onderzoek is het enigste language groovy programma de Cobol.groovy, het volledige aangepaste script is te vinden in appendix \ref{ch:aplangroovy}.
+De language groovy bestanden zorgen ervoor dat de programma's van die taal succesvol gecompileerd en gebind kunnen worden. Naast de compile en bind wordt er ook gezorgd dat de load module van de applicatie op de juiste plaats beland, dat er een DB2 package bind en/of plan bind uitgevoerd wordt indien nodig. Zo wordt ervoor gezorgd dat het programma niet alleen goed wordt gecompileerd en gebind maar ook uitvoerbaar is op het mainframe van ArcelorMittal Gent. Binnen dit onderzoek is het enigste language groovy programma de Cobol.groovy, de belangrijkste aangepaste methodes zijn te vinden in appendix \ref{ch:aplangroovy}.
 \\ \\
 \subsubsection{Utility groovy bestanden}
-De utility groovy programma's worden door zowel de language groovy bestanden als de build.groovy opgeroepen om language onafhankelijke procedures op te roepen. Zo is er een groovy utility programma dat ervoor zorgt dat onder andere de build lijst wordt aangemaakt, meta data wordt ingevuld, logicalfiles worden aangemaakt en ervoor zorgt dat datasets kunnen aangemaakt worden. Dit is maar een kleine opsomming van de mogelijkheden van de BuildUtility.groovy, hiernaast zijn er nog 7 andere groovy utility programma's. De enigste programma's die aangepast zijn in het kader van het onderzoek zijn BuildUtilities.groovy en BindUtilities.groovy, deze zijn te vinden in appendix \ref{ch:aputilgroovy}. 
+De utility groovy programma's worden door zowel de language groovy bestanden als de build.groovy opgeroepen om language onafhankelijke procedures op te roepen. Zo is er een groovy utility programma dat ervoor zorgt dat onder andere de build lijst wordt aangemaakt, meta data wordt ingevuld, logicalfiles worden aangemaakt en ervoor zorgt dat datasets kunnen aangemaakt worden. Dit is maar een kleine opsomming van de mogelijkheden van de BuildUtility.groovy, hiernaast zijn er nog 7 andere groovy utility programma's. De enigste programma's die aangepast zijn in het kader van het onderzoek zijn BuildUtilities.groovy en BindUtilities.groovy, de belangrijkste aangepaste methodes zijn te vinden in appendix \ref{ch:aputilgroovy}. 
 \\ \\
 \subsubsection{build.groovy}
 Dit groovy programma roept andere programma's op zoals de utility programma's en de language specifieke programma's. Er wordt een build lijst gemaakt op basis van de rangschikking die meegegeven wordt binnen de properties van de build. Er worden dus groovy bestanden aangeroepen en de properties worden ingeladen zodat die gebruikt kunnen worden door de build.groovy en de andere groovy programma's. 
@@ -278,7 +278,7 @@ Als laatste zijn er nog triggers die kunnen ingesteld worden voor de pipeline. H
 Na al deze zaken overlopen te hebben en waar nodig aangepast te hebben is de pipeline klaar voor gebruik en kan er overgegaan worden op de customisatie van de groovy programma's. 
 
 \section{Aanpassen nieuw systeem voor Cobol compilatie \& bind}
-De groovy programma's zijn als het ware het brein achter de hele compile, bind en alles eromheen. Ze maken achterliggend gebruik van Java klassen op die manier is het een soort API om via groovy met het mainframe systeem te communiceren. In dit onderzoek is er gebruik gemaakt van de Cobol.groovy, BuildUtilities.groovy en de BindUtilities.groovy programma's, deze zijn in de loop van het onderzoek volledig aangepast aan het systeem van ArcelorMittal Gent. De volledig aangepaste scripts zijn te vinden in appendix \ref{ch:aplangroovy} en appendix \ref{ch:aputilgroovy}. Er is ook gebruik gemaakt van het standaard build.groovy programma, deze had voor dit onderzoek geen aanpassingen nodig. 
+De groovy programma's zijn als het ware het brein achter de hele compile, bind en alles eromheen. Ze maken achterliggend gebruik van Java klassen op die manier is het een soort API om via groovy met het mainframe systeem te communiceren. In dit onderzoek is er gebruik gemaakt van de Cobol.groovy, BuildUtilities.groovy en de BindUtilities.groovy programma's, deze zijn in de loop van het onderzoek volledig aangepast aan het systeem van ArcelorMittal Gent. De blangrijkste aangepaste stukken code zijn te vinden in appendix \ref{ch:aplangroovy} en appendix \ref{ch:aputilgroovy}. Er is ook gebruik gemaakt van het standaard build.groovy programma, deze had voor dit onderzoek geen aanpassingen nodig. 
 
 \subsection{Cobol.groovy aanpassen}
 \label{subsec:cobol.groovy aanpassen}
@@ -287,7 +287,7 @@ De grootste aanpassingen die aangebracht moesten worden aan het Cobol.groovy scr
 Binnen ArcelorMittal Gent worden fsub's opgeslagen op 2 manieren, ze worden opgeslagen in een RRS library en een IMS librar. Dit was vroeger omdat er met een andere module moest gebind worden. Tegenwoordig kan er gebruik gemaakt worden van de module DSNULI binnen de syslib concatenatie om zo de juiste zaken mee te nemen. Er moet bij fsub programma's ook altijd de DB2 load library mee gebind worden, deze hoeven wel geen plan- en package bind uit te voeren, tenzij deze ook expliciet DB2 gebruiken. 
 \\ \\
 De standaard Cobol.groovy is terug te vinden op de Github van IBM via de volgende link: https://github.com/IBM/dbb-zappbuild, hierop zijn alle bestanden die we nodig hebben in hun standaard vorm te vinden. Aangezien deze bestanden aangepast zijn in het kader van dit onderzoek worden de bestanden meegegeven en verschillen ze in filosofie niet van elkaar maar de uitvoering van de scripts en de inhoud ervan verschilt wel duidelijk. 
-Het standaard Cobol.groovy is bijvoorbeeld amper 405 lijntjes code terwijl het aangepaste Cobol.groovy programma van dit onderzoek 765 lijntjes code bevat. Dat komt uit op bijna 90\% extra lijntjes om de aanpassingen voor het systeem van ArcelorMittal Gent toe te passen.
+Het standaard Cobol.groovy is amper 405 lijntjes code terwijl het aangepaste Cobol.groovy programma van dit onderzoek 765 lijntjes code bevat. Dat komt uit op bijna 90\% extra lijnen code om de aanpassingen voor het systeem van ArcelorMittal Gent toe te passen.
 
 \subsection{BuildUtilities.groovy aanpassen}
 In de BuildUtilities.groovy worden er hoofdzakelijk processen gedefinieerd die de hoofdprogramma's, zoals Cobol.groovy, helpen. Dit kan door bijvoorbeeld een buildlist te maken, een LogicalFile aan te maken, variabelen opvullen, ...
@@ -303,7 +303,7 @@ Net zoals de BuildUtilities.groovy is de BindUtilities.groovy er vooral om het h
 \\ \\
 De standaard versie van dit programma had als enigste functie een die een package bind uitvoerde op DB2. Dit is binnen ArcelorMittal Gent niet genoeg, daar moet namelijk ook een plan bind uitgevoerd worden voor elk programma en er wordt gebruik gemaakt van een bepaald versienummer dat meegegeven wordt die op precies de juiste manier moet zijn opgesteld om compatibel te zijn met het systeem van ArcelorMittal Gent.
 \\ \\
-Er zijn heel wat zaken moeten aangepast worden, zo wordt er in plaats van gebruik te maken van de TSOExec klasse geopteerd om de commando's die nodig zijn om zowel een package bind als plan bind uit te voeren. Op te slaan in een MVS bestand dat dan later via een JCL gelanceerd wordt met de JCLExec klasse. Dit omdat de TSOExec niet werkte binnen de huidige versie van DBB. Net zoals de andere groovy scripts is ook deze te vinden in de appendices, meerbepaald in appendix \ref{ch:aputilgroovy}. 
+Er zijn heel wat zaken moeten aangepast worden, zo wordt er in plaats van gebruik te maken van de TSOExec klasse geopteerd om de commando's die nodig zijn om zowel een package bind als plan bind uit te voeren. Op te slaan in een MVS bestand dat dan later via een JCL gelanceerd wordt met de JCLExec klasse. Dit omdat de TSOExec niet werkte binnen de huidige versie van DBB. Net zoals de andere groovy code is ook deze code te vinden in de appendices, meerbepaald in appendix \ref{ch:aputilgroovy}. 
 \\ \\
 Er is in vergelijking met de ander groovy programma's het meeste aangepast in de BindUtilities.groovy maar doordat deze heel efficiënt zijn gemaakt en een aantal zaken overbodig waren in de standaard versie is er in plaats van een een toename een afname in lijntjes code. Zo is er in de aangepaste versie amper 91 lijntjes code nodig om de logica uit te laten voeren en is dat in de standaard versie 111 lijntjes. Dat is een afname van 18\% ten opzichte van de standaard versie. 
 

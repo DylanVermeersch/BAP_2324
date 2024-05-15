@@ -1,16 +1,3 @@
-@groovy.transform.BaseScript com.ibm.dbb.groovy.ScriptLoader baseScript
-import com.ibm.dbb.build.*
-import com.ibm.dbb.metadata.*
-import com.ibm.dbb.dependency.*
-import groovy.transform.*
-import groovy.cli.commons.*
-
-/**
- * This script builds a DB2 application package for SQL programs in the application.
- */
-
-bind(args)
-
 // Make the DB2 BIND PACKAGE CLIST and have it copied to your DBRMhlq
 def makeBindPackage(String file, String dbrmHLQ, String workDir, String SUBSYS, String OWNER, String QUAL) {
     // define local properties
