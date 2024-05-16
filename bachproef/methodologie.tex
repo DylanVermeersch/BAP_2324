@@ -7,7 +7,7 @@
 
 \section{Voorbereidend werk}
 \label{sec:voorbereidend werk}
-Om een zo goed mogelijk onderzoek te kunnen verrichten is het van belang dat er een bepaalde expertise aanwezig is van hetgeen onderzocht wordt. In het geval van deze thesis gaat dit over mainframe, IBM Dependecy Based Build (DBB), Azure DevOps, de fundamentele principes van pipelines en werken met Git. Deze expertise is in de vorm van een literatuurstudie ook aangetoond in dit onderzoek, door het opzoekingswerk is er een grotere expertise opgebouwd dan wanneer er blindelings zou gestart worden zonder een goed literatuuronderzoek gevoerd te hebben. De literatuurstudie begint bij het onderwerp mainframe en in dat hoofdstuk wordt er gekeken naar wat een mainframe is, waarvoor het gebruikt wordt en wat de geschiedenis ervan is.
+Om een zo goed mogelijk onderzoek te kunnen verrichten is het van belang dat er een bepaalde expertise aanwezig is van hetgeen onderzocht wordt. In het geval van deze thesis gaat dit over mainframe, IBM Dependency Based Build (DBB), Azure DevOps, de fundamentele principes van pipelines en werken met Git. Deze expertise is in de vorm van een literatuurstudie ook aangetoond in dit onderzoek, door het opzoekingswerk is er een grotere expertise opgebouwd dan wanneer er blindelings zou gestart worden zonder een goed literatuuronderzoek gevoerd te hebben. De literatuurstudie begint bij het onderwerp mainframe en in dat hoofdstuk wordt er gekeken naar wat een mainframe is, waarvoor het gebruikt wordt en wat de geschiedenis ervan is.
 \\ \\
 In het stuk over IBM Dependency Based Build is er beschreven wat IBM DBB is, wat het doet en hoe het werkt. 
 Verder is er ook te vinden wat een aantal van de valkuilen kunnen zijn waarmee rekening gehouden moet worden.
@@ -39,10 +39,9 @@ Dit gebeurt aan de hand van de informatie die is gewonnen bij de vorige fase in 
 \label{sec:poc}
 Na de configuratie van IBM DBB kan er overgegaan worden naar de grootste fase van het onderzoek namelijk het uitzetten en realiseren van de proof of concept.
 Deze fase is een heel belangrijke omwille van het feit dat hier de resultaten worden bekomen om een conclusie te trekken aan het einde van dit onderzoek.
-De opdracht bestaat erin om de volledige ontwikkeling van een vooraf gekozen coolgen applicatie van het mainframe te halen als case study, dat wil zeggen dat de source aangemaakt is in een Git ondersteunende IDE zoals bijvoorbeeld Visual Studio Code of IBM Developer for Z (IDz) en vanuit diezelfde IDE een pipeline gestart wordt om het programma dan te compileren, binden en te plaatsen in de juiste load libraries op z/OS.
+De opdracht bestaat erin om de volledige ontwikkeling van een vooraf gekozen Coolgen applicatie van het mainframe te halen als case study, dat wil zeggen dat de source aangemaakt is in een Git ondersteunende IDE zoals bijvoorbeeld Visual Studio Code of IBM Developer for Z (IDz) en vanuit diezelfde IDE een pipeline gestart wordt om het programma dan te compileren, binden en te plaatsen in de juiste load libraries op z/OS.
 \\ \\
-Dit gebeurt onder meer via een push vanuit de IDE naar de Azure Repo die dan het aangepast programma opslaat en daarna een pipeline start om het aangepaste programma ook
-te compileren en te binden en met als doel het plaatsen van de bekomen load module na de bind stap in de juiste load library te plaatsen.
+Dit gebeurt onder meer via een push vanuit de IDE naar de Azure Repo die dan de aangepaste source code opslaat en daarna een pipeline start om de code te compileren en binden. Het doel hiervan is om de bekomen load module na de bind stap in de juiste load library te plaatsen.
 \\ \\
 Verder moet er ook bij elke succesvolle aanpassing van het programma een nieuwe versie ontstaan zo zal een programma CGTST met initiële versie 1.0 na een succesvolle
 aanpassing bijvoorbeeld de versie 1.1 krijgen toegewezen.

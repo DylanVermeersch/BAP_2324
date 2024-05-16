@@ -12,13 +12,13 @@ Beide services maken deel uit van het Azure DevOps pakket dat nog heel vaak zal 
 De leveranciers van mainframe software hebben het belang van modernisering in het landschap opgemerkt en zijn dus al enkele jaren volop tijd en geld aan het pompen in nieuwe gebruiksvriendelijke en meer hedendaagse tools.
 Die tools zouden het werken op zo'n omgeving vereenvoudigen voor zowel gebruikers, ontwikkelaars en administrators.
 \\ \\
-Dit onderzoek werd in samenspraak met het mainframe team van ArcelorMittal Gent opgestart om een efficiëntere manier te vinden om de compilatie en bind uit te voeren van een coolgen programma. Het onderzoek zal vooral impact hebben bij de mainframe system administrators en bij uitbreiding ook de ontwikkelaars van coolgen programma's in ArcelorMittal Gent.
+Dit onderzoek werd in samenspraak met het mainframe team van ArcelorMittal Gent opgestart om een efficiëntere manier te vinden om de compilatie en bind uit te voeren van een Coolgen programma. Het onderzoek zal vooral impact hebben bij de mainframe systeem administrators en bij uitbreiding ook de ontwikkelaars van Coolgen programma's in ArcelorMittal Gent.
 \\ \\
-Het doel van dit onderzoek is dan ook om een coolgen programma, gemaakt met een moderne Git ondersteunende Integrated Development Environment, kortweg IDE, zoals bijvoorbeeld Visual Studio Code.
+Het doel van dit onderzoek is dan ook om een Coolgen programma, gemaakt met een moderne Git ondersteunende Integrated Development Environment, kortweg IDE, zoals bijvoorbeeld Visual Studio Code.
 Volledig automatisch te kunnen compileren en binden op het moment dat er wijzigingen opgeslagen worden naar de Azure Repo, dit zal door een Azure Pipeline in gang gezet worden.
 Hierdoor wordt het bestaande proces dat een aanzienlijk aantal stappen extra heeft vereenvoudigd tot één stap, namelijk de applicatie opslaan en pushen naar een Azure Repo.
 \\ \\
-Het onderzoek zal als een succes worden beschouwd indien de proof of concept een positief resultaat geeft, dit wil zeggen dat er moet aangetoond worden dat het mogelijk is om een coolgen programma
+Het onderzoek zal als een succes worden beschouwd indien de proof of concept een positief resultaat geeft, dit wil zeggen dat er moet aangetoond worden dat het mogelijk is om een Coolgen programma
 automatisch te laten compileren en binden door een Azure Pipeline met behulp van IBM DBB.
 Verder moet ook aangetoond worden dat er versiebeheer mogelijk is met behulp van Azure Repos om zo naar verschillende versies van programma's terug te kunnen keren.
 Indien beide vereisten worden ingelost kan er gesproken worden van een succesvol onderzoek en bijgevolg een succesvolle proof of concept.
@@ -39,7 +39,7 @@ Met Wazi kunnen ontwikkelaars hun Integrated Development Environment, kortweg ID
 Een ander gebied van innovatie voor IBM is het bieden van beveiliging voor commerciële cryptocurrency wallets. \autocite{Bloomberg2021}
 \\ \\
 Een van deze hedendaagse innovaties is IBM Dependency Based Build, IBM DBB werkt aan de hand van een aantal groovy scripts die de verschillende commando's voor bijvoorbeeld een compilatie van een programma op z/OS uitvoeren.
-Deze scripts zijn volledig aanpasbaar waardoor ze een heel hoge mate van personalisatie toelaten, dit is een grote troef vooral in de mainframe omgeving van bedrijven die vaak heel hard aangepast zijn aan de werkwijze of policy's van dat bedrijf.
+Deze scripts zijn volledig aanpasbaar waardoor ze een heel hoge mate van personalisatie toelaten, dit is een grote troef vooral in de mainframe omgeving van bedrijven die vaak heel hard aangepast zijn aan de werkwijze of policies van dat bedrijf.
 Volgens \textcite{Porter2019} is het leren werken met z/OS applicaties via groovy scripts en een moderne IDE zoals Visual Studio Code of IBM Developer for z/OS een goede manier om te leren omgaan met een mainframe zonder zelf op het mainframe zaken uit te voeren in het 3270 scherm.
 Dit zorgt ervoor dat vooral nieuwe ontwikkelaars die hun kans wagen in mainframe applicaties niet overweldigd worden door dat 3270 scherm en ze dus op een gekende/moderne manier kunnen kennismaken met een mainframe om dan eventueel later de stap te zetten naar werken met een green screen op hun eigen tempo. \autocite{Porter2019}
 \\ \\
@@ -55,7 +55,7 @@ Dit is een constructie dat is bedoeld om de software development en operations t
 Naast de huidige innovaties is het ook wel interessant om te kijken naar hoe het landschap er over pakweg 10 jaar zou kunnen uitzien.
 Volgens Christopher \textcite{Tozzi2022} zal de mainframe nog alom tegenwoordig zijn na die 10 jaar, ook zullen er nog meer innovaties zijn gemaakt om het integreren met andere platformen zoals Windows en Linux of zelfs andere programmeertalen zoals Python,
 Javascript, C# en vele anderen mogelijk te maken.
-Verder zullen de 'oude' technologieën van de COBOL programmeertaal blijven gemoderniseerd worden zodat het nog performanter wordt en nog makkelijker zal worden om COBOL-code te hergebruiken. De fysische voetafdruk van een mainframe zal ook alsmaar kleiner worden,
+Verder zullen de 'oude' technologieën van de Cobol programmeertaal blijven gemoderniseerd worden zodat het nog performanter wordt en nog makkelijker zal worden om COBOL-code te hergebruiken. De fysische voetafdruk van een mainframe zal ook alsmaar kleiner worden,
 nu is een moderne mainframe ongeveer even groot als een koelkast maar dat zou in de toekomst nog vele malen kleiner worden volgens Tozzi. \autocite{Tozzi2022}
 
 
@@ -96,7 +96,7 @@ Dit vergt wat opzoekwerk en wordt geschat op 1 week om de volledige configuratie
 \\ \\
 Na de configuratie van IBM DBB kan er overgegaan worden naar de grootste fase van het onderzoek namelijk het uitzetten en realiseren van de proof of concept.
 Deze fase is een heel belangrijke omwille van het feit dat hier de resultaten worden bekomen om een conclusie te trekken op het einde van dit onderzoek.
-De opdracht bestaat erin om de volledige ontwikkeling van een vooraf gekozen coolgen applicatie van het mainframe te halen als case study,
+De opdracht bestaat erin om de volledige ontwikkeling van een vooraf gekozen Coolgen applicatie van het mainframe te halen als case study,
 dat wil zeggen dat de source aangemaakt zal worden in een Git ondersteunende IDE zoals bijvoorbeeld Visual Studio Code of IBM Developer for Z (IDz) en vanuit diezelfde IDE een pipeline
 gestart wordt om het programma dan te compileren, binden en te plaatsen in de juiste load libraries op z/OS.
 Dit zal onder meer gebeuren via een push vanuit de IDE naar de Azure Repo die dan het aangepast programma opslaat en daarna een pipeline start om het aangepaste programma ook
@@ -133,14 +133,14 @@ Deze laatste fase zal niet langer dan 1 week duren en zal ook het einde van dit 
 Aan de hand van de vereisten die gesteld werden in samenspraak met ArcelorMittal Gent zal er gekeken worden of die ook daadwerkelijk worden ingelost.
 Die vereisten zijn als volgt :
 \begin{itemize}
-  \item Het coolgen programma moet zonder fouten gecompileerd worden.
+  \item Het Coolgen programma moet zonder fouten gecompileerd worden.
   \item Het programma moet succesvol gebind worden en in de juiste load libraries opgeslagen worden.
   \item Het programma moet uitvoerbaar zijn na compilatie en bind.
   \item Er moet een automatisch versiebeheer systeem zijn gebaseerd op Git versiebeheer.
   \item Alle taken die hierboven zijn opgesomd moeten automatisch kunnen gebeuren.
 \end{itemize}
 
-De verwachting is dat het onderzoek zal aantonen dat de bovenvernoemde vereisten ingelost kunnen worden, dit zal als resultaat geven dat er een eenvoudige en overzichtelijke pipeline zal
-werken die een coolgen programma compileerd, bind en aan versiebeheer doet.
-Hierdoor zal er geconcludeerd kunnen worden dat het wel degelijk mogelijk is om ontwikkelaars te laten werken buiten een mainframe omgeving aan een coolgen applicatie en zo op die manier een
-release management systeem te gebruiken dat gebasseerd is op IBM DBB met behulp van Azure DevOps en Git.
+De verwachting is dat het onderzoek zal aantonen dat de bovengenoemde vereisten ingelost kunnen worden, dit zal als resultaat geven dat er een eenvoudige en overzichtelijke pipeline zal
+werken die een Coolgen programma compileert, bind en aan versiebeheer doet.
+Hierdoor zal er geconcludeerd kunnen worden dat het wel degelijk mogelijk is om ontwikkelaars te laten werken buiten een mainframe omgeving aan een Coolgen applicatie en zo op die manier een
+release management systeem te gebruiken dat gebaseerd is op IBM DBB met behulp van Azure DevOps en Git.
