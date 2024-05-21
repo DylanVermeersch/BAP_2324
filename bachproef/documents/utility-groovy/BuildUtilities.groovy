@@ -86,12 +86,7 @@ def sortBuildList(List<String> buildList) {
 
 /**
  * Method to create the logical file using SearchPathDependencyResolver
- *
  *  evaluates if it should resolve file flags for resolved dependencies
- *
- * @param spDependencyResolver
- * @param buildFile
- * @return logicalFile
  */
 
 def createLogicalFile(SearchPathDependencyResolver spDependencyResolver, String buildFile) {

@@ -2,9 +2,7 @@
 %% Samenvatting
 %%=============================================================================
 
-% TODO: De "abstract" of samenvatting is een kernachtige (~ 1 blz. voor een
-% thesis) synthese van het document.
-%
+
 % Een goede abstract biedt een kernachtig antwoord op volgende vragen:
 %
 % 1. Waarover gaat de bachelorproef?
@@ -25,24 +23,19 @@
 %
 % LET OP! Een samenvatting is GEEN voorwoord!
 
-%%---------- Nederlandse samenvatting -----------------------------------------
-%
-% TODO: Als je je bachelorproef in het Engels schrijft, moet je eerst een
-% Nederlandse samenvatting invoegen. Haal daarvoor onderstaande code uit
-% commentaar.
-% Wie zijn bachelorproef in het Nederlands schrijft, kan dit negeren, de inhoud
-% wordt niet in het document ingevoegd.
-
-\IfLanguageName{english}{%
-\selectlanguage{dutch}
-\chapter*{Samenvatting}
-\lipsum[1-4]
-\selectlanguage{english}
-}{}
-
 %%---------- Samenvatting -----------------------------------------------------
 % De samenvatting in de hoofdtaal van het document
 
 \chapter*{\IfLanguageName{dutch}{Samenvatting}{Abstract}}
 
-\lipsum[1-4]
+Deze scriptie onderzoekt op welke manier er een Azure DevOps pipeline geïntegreerd kan worden om de compile/bind van bestaande en toekomstige Coolgen programma's uit te voeren en wat de gevolgen van dit nieuw systeem zijn op de werking van het huidige systeem binnen de mainframe omgeving van ArcelorMittal Gent. 
+\\ \\
+Momenteel gebruikt ArcelorMittal Gent Rocket Software MSP (Manager Products) in samenwerking met PANAPT meta dictionaries om de compile en bind uit te voeren van hun Coolgen programma's. Ze willen dat er onderzocht wordt of dit te vervangen valt met een modernere oplossing zoals een pipeline gebaseerd systeem in samenwerking met Git.
+\\ \\
+Het doel van dit onderzoek is dan ook om een duidelijk beeld te scheppen over welke technologieën er gebruikt kunnen/moeten worden om een Azure DevOps pipeline op te zetten die als taak heeft om de compile/bind van Coolgen programma's te verzorgen. Het doel is om dit ook aan te tonen met behulp van een proof of concept. 
+\\ \\ 
+De methodologie die opgesteld is voor dit onderzoek uit te voeren bestaat uit zeven fases. Zo is fase één voorbereidend werk, zo wordt in deze fase zoals de naam zegt voorbereidingen getroffen voor het onderzoek. Dit bestaat onder meer uit het opmaken van een literatuurstudie om de expertise in het onderzoek te verhogen. In fase twee van de methodologie wordt er gekeken om de volledige werking van het huidige systeem in kaart te brengen en te onderzoeken. De derde fase is de configuratie van IBM DBB, hierin wordt IBM DBB volledig klaargestoomd om te kunnen werken binnen de proof of concept. Deze fase bestaat vooral uit het opzoeken van datasets en met behulp van de vorige fase zou dit vrij makkelijk moeten gaan doordat het huidige systeem in kaart is gebracht. In fase vier wordt de proof of concept opgezet en gerealiseerd, zo wordt er hierin aanpassingen gemaakt aan de groovy scripts en aan het build proces van IBM DBB. De vijfde fase focust zich op een analyse van de resultaten van de proof of concept en in de zesde fase worden er aan de hand van de resultatenanalyse conclusies getrokken. De zevende en laatste fase is om de scriptie af te werken zodat deze correct en volledig is. 
+\\ \\
+De resultaten van de proof of concept tonen aan dat het mogelijk is om met behulp van IBM DBB en Azure DevOps een naadloos werkend systeem te ontwikkelen om simultaan te werken met het huidige systeem. De proof of concept bewees dat het ontwikkelde systeem op basis van IBM DBB en Azure DevOps ook helemaal aangepast kan worden naar de manier van werken binnen de mainframe omgeving van ArcelorMittal Gent. Deze resultaten zijn vooral van belang voor ArcelorMittal Gent aangezien hun mainframe omgeving volledig aangepast is naar hun manier van werken met zelfgemaakte software, desondanks kunnen andere bedrijven zeker en vast baten bij het lezen van deze scriptie door de concepten en ideeën die gebruikt zijn binnen dit onderzoek zouden heel veel fouten en problemen vermeden kunnen worden. 
+\\ \\ 
+Uit de resultaten kan de conclusie getrokken worden dat Azure DevOps en IBM DBB een goed team vormden binnen dit onderzoek en dat deze zeker en vast de capaciteiten hebben om op lange termijn weleens het huidige systeem te vervangen. Al is hiervoor wel nog extra onderzoek nodig om de complexiteit van de volledige mainframe omgeving van ArcelorMittal Gent in kaart te brengen.

@@ -5,14 +5,17 @@
 \chapter{Conclusie}%
 \label{ch:conclusie}
 
-% TODO: Trek een duidelijke conclusie, in de vorm van een antwoord op de
-% onderzoeksvra(a)g(en). Wat was jouw bijdrage aan het onderzoeksdomein en
-% hoe biedt dit meerwaarde aan het vakgebied/doelgroep? 
-% Reflecteer kritisch over het resultaat. In Engelse teksten wordt deze sectie
-% ``Discussion'' genoemd. Had je deze uitkomst verwacht? Zijn er zaken die nog
-% niet duidelijk zijn?
-% Heeft het onderzoek geleid tot nieuwe vragen die uitnodigen tot verder 
-%onderzoek?
+In deze bachelorproef wou men onderzoeken op welke manier er een Azure DevOps pipeline geïntegreerd kon worden om de compile/bind van bestaande en toekomstige Coolgen programma's uit te voeren. Men wou ook onderzoeken wat de gevolgen zijn voor het huidige compile/bind systeem voor Coolgen programma's na het integreren van de bekomen pipeline met de mainframe omgeving van ArcelorMittal Gent. Dit is onderzocht aan de hand van een proof of concept waarin er geëxperimenteerd is met een aantal manieren om een Azure DevOps pipeline te integreren binnen de mainframe omgeving van ArcelorMittal Gent. 
+\\ \\
+Uit het onderzoek is gebleken dat zo'n pipeline met Azure DevOps opzetten niet iets is dat even snel kan gebeuren. Als er moet gezorgd worden dat deze pipeline naadloos werkt en geïntegreerd is met de mainframe van ArcelorMittal Gent dan moet er heel wat voorbereiding gebeuren en moeten er ook heel wat veiligheid ingebouwd zijn. Zo moet er als voorbereiding een enorm goede kennis zijn van de werking van het huidige systeem (zonder pipeline) en de processen die dienen te gebeuren alvorens een programma kan/mag gecompileerd of gebind worden. Er moet verder ook een goede kennis zijn van de verschillende load libraries en van de werking van Git en het omgaan met Git repositories en bij voorkeur is er ook een voorkennis van een moderne programmeertaal zoals bijvoorbeeld Java, .NET of python. Dit laatste is vooral om de code, concepten en ideeën van de build scripts te begrijpen en aan te passen. 
+\\ \\
+Het onderzoek toonde dus aan dat er heel wat voorbereidend werk nodig is om nog maar te beginnen aan deze opdracht maar dat was niet alles. Het onderzoek toonde ook dat zo'n pipeline heel goed en consistent kan draaien zo kan er, mits de nodige aanpassingen aangebracht zijn, naadloos samengewerkt worden met het huidige systeem. Dit zorgt ervoor dat het pipeline gebaseerde systeem een goede kandidaat is om in de toekomst in aanmerking te komen om een vaste waarde te worden in de software release management van ArcelorMittal Gent. 
+\\ \\
+Doordat dit onderzoek volledig is aangepast naar de mainframe omgeving van ArcelorMittal zouden andere bedrijven of personen die dit systeem willen gebruiken weinig nut hebben aan de geschreven code binnen het onderzoek. Dit doordat de mainframe omgeving van ArcelorMittal Gent en bij uitbreiding zo goed als elk bedrijf dat een mainframe onderhoud/heeft volledig anders is/kan zijn, door de vele aanpassingen en zelfgeschreven procedures binnen hun mainframe omgeving. Desondanks is dit onderzoek niet onbruikbaar voor andere geïnteresseerden, de concepten/ideeën die gebruikt zijn in dit onderzoek zijn van goudwaarde voor bedrijven die een soortgelijk project willen starten. Met dit onderzoek zouden er heel wat fouten/problemen vermeden kunnen worden bij een soortgelijk onderzoek/project. De grootste meerwaarde van dit onderzoek is dus voor ArcelorMittal Gent die ook vragende partij waren om dit onderzoek te starten. 
+\\ \\
+De manier waarop dit allemaal werkt is met behulp van een aantal producten namelijk Azure DevOps (Pipeline, Repos, ...), IBM Dependency Based Build (DBB), (Rocket)-Git, Microsoft Visual Studio Code, IBM Developer for z/OS (IDz) en IBM DBB zAppbuild. Deze producten zijn samen de ruggengraat van dit onderzoek en die zou niet gelukt zijn zonder de opgesomde softwareproducten. Er kunnen zeker alternatieven gebruikt worden voor bepaalde software, zo kan er bijvoorbeeld een eigen Git server opgesteld worden in samenwerking met Jenkins om zo Azure DevOps te vervangen. Dit was niet de bedoeling van het onderzoek, het onderzoek moest kunnen aantonen dat het mogelijk was om een werkend systeem te krijgen met behulp van een pipeline software. In het geval van dit onderzoek was dat Azure DevOps om de simpele reden dat dit al aangekocht was voordien. 
+\\ \\
+In de toekomst kan het pipeline gebaseerd systeem op termijn het huidige systeem vervangen maar door de vele aanpassingen binnen de mainframe omgeving van ArcelorMittal Gent moet dit nog zorgvuldig onderzocht worden. Het feit dat zo'n systeem met IBM DBB en pipeline software kan is doordat IBM DBB heel erg aangepast kan worden, hierdoor is de kans dat dit systeem weleens de norm wordt binnen ArcelorMittal Gent reëel.
 
-\lipsum[76-80]
+
 
