@@ -13,13 +13,13 @@ In het stuk over IBM Dependency Based Build is er beschreven wat IBM DBB is, wat
 Verder is er ook te vinden wat een aantal van de valkuilen kunnen zijn waarmee rekening gehouden moet worden.
 \\ \\
 Het voorlaatste deel van de literatuurstudie bevat een toelichting en onderzoek van een aantal Git workflows, hierin is er gezocht naar een workflow die zowel flexibel, veilig en robuust is.
-Allemaal eigenschappen die synoniem staan aan een mainframe dus dat moet ook getoond worden dat dit nog altijd mogelijk is met een Git workflow.
+Allemaal eigenschappen die synoniem staan aan een mainframe en dus moet ook aangetoond worden dat dit nog altijd mogelijk is met een Git workflow.
 \\ \\
 In het laatste deel van de literatuurstudie is er beschreven wat Azure DevOps is, wat het kan doen en waarvoor het in dit onderzoek is gebruikt.
 Een aantal onderwerpen die aan bod komen in dit hoofdstuk hebben betrekking op onderdelen van de Azure DevOps suite meer bepaald Azure Repos en Azure Pipelines.
 Waarvoor die zaken in het onderzoek gebruikt kunnen worden en wat voor meerwaarde dat geeft aan het onderzoek.
 \\ \\
-Deze eerste fase die anderhalve week in beslag heeft genomen kent als resultaat een diepgaande en volledige literatuurstudie die de rode draad is wat betreft informatie in het onderzoek. De literatuurstudie moet antwoord kunnen bieden op de volgende vraag. Hoe kan er een DevOps workflow gerealiseerd worden op een mainframe met behulp van IBM Dependency Based Build?
+Deze eerste fase die anderhalve week in beslag heeft genomen, kent als resultaat een diepgaande en volledige literatuurstudie die de rode draad is wat betreft informatie in het onderzoek. De literatuurstudie moet antwoord kunnen bieden op de volgende vraag. Hoe kan er een DevOps workflow gerealiseerd worden op een mainframe met behulp van IBM Dependency Based Build?
 
 \section{Huidig systeem in kaart brengen}
 \label{sec:huidig systeem}
@@ -30,7 +30,7 @@ Eenmaal dat de huidige werking in kaart is kan er overgegaan worden naar het wer
 \section{Configuratie IBM DBB}
 \label{sec:configuratie dbb}
 Het doel van deze fase is om IBM Dependency Based Build volledig te configureren op de omgeving van ArcelorMittal Gent,
-zo zijn er onder andere een aantal .properties bestanden die aangemaakt en aangevuld zijn en hierbij zijn er ook extra properties toegevoegd aan deze bestanden.
+zo zijn er onder andere een aantal properties bestanden die aangemaakt en aangevuld zijn en hierbij zijn er ook extra properties toegevoegd aan deze bestanden.
 Door deze properties aan te passen zal IBM DBB de volledige toegang hebben tot de nodige datasets en bestanden op zowel z/OS als op Unix System Services (USS) om een goede werking van de scripts horende bij de software te kunnen garanderen. 
 \\ \\
 Dit gebeurt aan de hand van de informatie die is gewonnen bij de vorige fase in verband met het in kaart brengen van het huidige systeem. Dit vergde wat opzoekingswerk en heeft een halve week geduurd om de volledige configuratie van IBM DBB te vervolledigen.
@@ -39,7 +39,7 @@ Dit gebeurt aan de hand van de informatie die is gewonnen bij de vorige fase in 
 \label{sec:poc}
 Na de configuratie van IBM DBB kan er overgegaan worden naar de grootste fase van het onderzoek namelijk het uitzetten en realiseren van de proof of concept.
 Deze fase is een heel belangrijke omwille van het feit dat hier de resultaten worden bekomen om een conclusie te trekken aan het einde van dit onderzoek.
-De opdracht bestaat erin om de volledige ontwikkeling van een vooraf gekozen Coolgen applicatie van het mainframe te halen als case study, dat wil zeggen dat de source aangemaakt is in een Git ondersteunende IDE zoals bijvoorbeeld Visual Studio Code of IBM Developer for Z (IDz) en vanuit diezelfde IDE een pipeline gestart wordt om het programma dan te compileren, binden en te plaatsen in de juiste load libraries op z/OS.
+De opdracht bestaat erin om de volledige ontwikkeling van een vooraf gekozen Coolgen applicatie van het mainframe te halen als case study, dat wil zeggen dat de source aangemaakt is in een Git ondersteunende IDE zoals bijvoorbeeld Visual Studio Code of IBM Developer for zOS (IDz) en vanuit diezelfde IDE een pipeline gestart wordt om het programma dan te compileren, binden en te plaatsen in de juiste load libraries op z/OS.
 \\ \\
 Dit gebeurt onder meer via een push vanuit de IDE naar de Azure Repo die dan de aangepaste source code opslaat en daarna een pipeline start om de code te compileren en binden. Het doel hiervan is om de bekomen load module na de bind stap in de juiste load library te plaatsen.
 \\ \\
